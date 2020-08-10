@@ -1,21 +1,19 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
-  </nav>
-
-  <div class="category-container">
-    <div class="category-content">
-      <header class="page-header">
-        <h1>{{category.name}}</h1>
-        {{#if category.description}}
-          <p class="page-header-description">{{category.description}}</p>
-        {{/if}}
-      </header>
-
-      <div class="section-tree">
-        {{#each sections}}
+<div class="container-divider categories-divider"></div>
+<div class="categories-container">
+  <div class="categories-left-col">
+    <!-- Page Left Sub Navigation Links -->
+    <ul class="left-side-category-list article-list list-mains">
+    </ul>
+  </div>
+  <div class="categories-right-col">
+    <div class="categories-breadcrumbs">
+      {{breadcrumbs}}
+      <div class="categories-search">
+        {{search submit=false}}
+      </div>
+    </div>
+    <div class="categories-main-content">
+      {{#each sections}}
           <section class="section">
             <h2 class="section-tree-title">
               <a href="{{url}}">{{name}}</a>
@@ -47,6 +45,8 @@
           </i>
         {{/each}}
       </div>
-    </div>
   </div>
 </div>
+
+
+
