@@ -1,38 +1,34 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
-  </nav>
+<div class="container-divider categories-divider"></div>
+<div class="subnav">
+    <div class="subnav__search">
+        {{search submit=false}}
+    </div>
+   <div class="subnav__breadcrumbs">
+      {{breadcrumbs}}
+   </div>
+  </div>
 
-  <div class="section-container">
-    <section class="section-content">
-      <header class="page-header">
-        <h1>{{section.name}}</h1>
-        {{#if settings.show_follow_section}}
-          {{subscribe}}
-        {{/if}}
-        {{#if section.description}}
-          <p class="page-header-description">{{section.description}}</p>
-        {{/if}}
-      </header>
+<div class="main__container">
+  
+  <div class="col-left">
+      <ul id="sectionsId">
+        
+      </ul>
+  </div>
 
-      {{#if section.sections}}
-        <ul class="section-list section-list--collapsed">
+  <div class="col-right">
+    {{#if section.sections}}
+        <ul class="sub-section">
           {{#each section.sections}}
-          <li class="section-list-item">
+          <li class="sub-section-li">
               <a href="{{url}}">
                 <span>{{name}}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 14.5l6.1-6.1c.2-.2.2-.5 0-.7L5 1.5"/>
-                </svg>
               </a>
             </li>
           {{/each}}
           <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
         </ul>
       {{/if}}
-
 
       {{#if section.articles}}
         <ul class="article-list">
@@ -48,14 +44,35 @@
             </li>
           {{/each}}
         </ul>
-      {{else}}
-        <i class="section-empty">
-          <a href="{{section.url}}">{{t 'empty'}}</a>
-        </i>
       {{/if}}
-
-      {{pagination}}
-
-    </section>
   </div>
 </div>
+
+<script>
+  $.ajax({
+    url: '/api/v2/help_center/en-gb/sections.json',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data){
+      var sections = data.sections.filter(function(item){
+        return item.parent_section_id == null;
+      });
+
+      console.log(sections);
+
+      for (var i = 0; i < sections.length; i++){
+        var isActive = window.location.href.includes(sections[i].id);
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        var className = isActive ? "sidenav-item current-article":"sidenav-item";
+
+        a.setAttribute("class", className);
+        a.textContent = sections[i].name;
+        a.href = sections[i].html_url;
+
+        li.append(a)
+        $("#sectionsId").append(li);
+      }
+    }
+  });
+</script>

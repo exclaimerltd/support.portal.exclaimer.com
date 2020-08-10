@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
   function closest (element, selector) {
     if (Element.prototype.closest) {
@@ -221,4 +222,49 @@ document.addEventListener('DOMContentLoaded', function() {
   ) {
     notificationElm.previousElementSibling.focus();
   }
+
+  // get id and template name
+var _location = window.location.href.split('/en-us/');
+console.log('window.location.href: ' + window.location.href + ', _location: ');
+console.log(_location);
+if (_location.length > 1) {
+  var _split = _location[1].split('-')[0];
+  var _templatename = _split.split('/')[0];
+  var _templateid = _split.split('/')[1];
+}
+
+//Catergories lists
+var categoriesList = function(_categories) {
+  if(typeof HelpCenter.user.locale == 'undefined') {
+    HelpCenter.user.locale = window.location.pathname.replace('/', '').replace('?','/').split('/')[1];
+  }
+
+  $.ajax({
+    url: '/api/v2/help_center/'+HelpCenter.user.locale+'/categories.json',
+    type: 'GET',
+    dataType: 'json',
+    success: _categories
+  });
+};
+
+var _list = '';
+
+categoriesList(function(data){
+  $(data.categories).each(function (idx, itm) {
+    if (itm.name !== 'General') {
+      _list = _list + '<li><a href="' + itm.html_url + '" id="' + itm.id + '">' + itm.name + '</a></li>'
+    } 
+  });
+  $('.left-side-category-list').html(_list);
+  $('.left-side-category-list a#' +_templateid).addClass('active');
+
+  if(_templatename=='sections' || _templatename=='articles') {
+    var categoryid = $('.breadcrumbs > li:nth-child(2) > a').attr('href').split('/categories/')[1].split('-')[0];
+    $('.left-side-category-list a#' + categoryid).addClass('active');
+  }
+
 });
+
+});
+
+
