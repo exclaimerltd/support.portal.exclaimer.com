@@ -4729,6 +4729,24 @@ ul.home-categories__sub > li::before{
   padding: 15px 0;
 }
 
+.breadcrumbs-btn{
+  border: 1px solid #dfe3ee;
+  color: #576476 !important;
+  padding: 5px 7.5px;
+  margin-right: 5px;
+  border-radius: 4px;
+  transition: ease all 0.3s;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.breadcrumbs-btn:hover{
+  color: #fff !important;
+  border: 1px solid #f37021;
+  background-color: #f37021;
+  text-decoration: none;
+}
+
 /* Article Templates */
 
 .notify{
@@ -4857,4 +4875,12 @@ ul.home-categories__sub > li::before{
 .article-body h4{
   font-size: 1em;
   font-weight: 700;
+}
+
+.article-body a{
+  color: #f37021;
+}
+
+.article-body a:visited{
+  color: #f37021;
 }
