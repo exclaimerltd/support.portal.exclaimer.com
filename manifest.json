@@ -1,7 +1,7 @@
 {
   "name": "Exclaimer Cloud - Main KB",
   "author": "Zendesk",
-  "version": "1.12.2",
+  "version": "1.12.4",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [
