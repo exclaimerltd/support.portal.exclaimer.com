@@ -16,15 +16,57 @@
 <div class="main__container">
   
   <div class="col-left">
-    {{#if settings.show_articles_in_section}}
-      <ul>
-        {{#each section.articles}}
+    <ul class="side-bar-custom">
+      <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009924811-Welcome">Welcome home</a>
+      </li>
+      {{!-- <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009924831-Configuration">Configuration</a>
+        <ul class="side-bar-custom-sub">
           <li>
-            <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+            <a class="sidenav-item" href="/hc/en-gb/sections/360009924851-Connect-to-Microsoft-365">Connect to Microsoft 365</a>
           </li>
-        {{/each}}
-      </ul>
-    {{/if}}
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/sections/360009924871-Manage-User-Data">Manage User Data</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/sections/360009924891-Manage-Mail-Flow">Manage Mail Flow</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/sections/360009806832-Outlook-Signatures">Outlook Signatures</a>
+          </li>
+        </ul>
+      </li> --}}
+      <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009806852-Signatures">Signatures</a>
+        <ul class="side-bar-custom-sub">
+          <li>
+            <a class="sidenav-item" href="">Create Signature</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="">Create Folder</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/articles/360049345552-Edit-Signature-Design">Edit Signature Design</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/articles/360049275992-Manage-Signatures-Rules">Manage Signature Rules</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/articles/360049825771-FOLDER-SECURITY">Folder Security</a>
+          </li>
+        </ul>
+      </li>
+      {{!-- <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009806872-Account-Settings">Account Settings</a>
+      </li>
+      <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009924911-Troubleshooting">Troubleshooting</a>
+      </li> --}}
+      <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009924811-Welcome">Glossary</a>
+      </li>
+    </ul>
   </div>
 
   <div class="col-right">
