@@ -4889,3 +4889,7 @@ ul.home-categories__sub > li::before{
 .article-body a:visited{
   color: #f37021;
 }
+
+.article-title{
+  font-size: 26px;
+}
