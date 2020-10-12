@@ -1,3 +1,75 @@
+  <script type="text/javascript">
+  window.zESettings = {
+    webWidget: {
+      launcher: {
+        label: {
+          '*': 'Get help?'
+        },
+        chatLabel: {
+          '*': 'Chat online'
+        },
+        mobile: {
+          labelVisible: true
+        }
+      },
+      contactOptions: {
+        enabled: true,
+        title: {
+          '*': 'Contact Us'
+        },
+        contactButton: {
+          '*': 'Get in touch'
+        },
+        chatLabelOnline: {
+          '*': 'Chat online'
+        },
+        chatLabelOffline: {
+          '*': 'Chat is unavailable'
+        },
+        contactFormLabel: {
+          '*': 'Raise a ticket'
+        }
+      },
+      chat: {
+        title: {
+          '*': 'Ask Us Anything'
+        },
+        departments: {
+          enabled: ['Technical Support','Sales'],
+          select: 'Technical Support'
+        },
+        hidewhenoffline: true,
+        prechatForm: {
+          greeting: {
+            '*': 'In order to help you as quickly as we can, please provide a little background information in the message area below and start the chat. \n\n'
+          },
+          departmentLabel: {
+            '*': 'Select a department'
+          }
+        },
+        offlineForm: {
+          greeting: {
+            '*': "We aren't online right now, please leave a message",
+          }
+        }
+      },
+      helpCenter: {
+        title: {
+          '*': 'Search the help'
+        },
+        searchPlaceholder: {
+          '*': 'Search the knowledge base'
+        }
+      },
+      Talk: {
+        suppress: true
+      },
+      contactForm: {
+        suppress: true
+      }
+    }
+  };
+</script>
 <footer class="footer">
   <div class="footer-inner">
     {{#link 'help_center'}}{{help_center.name}}{{/link}}
