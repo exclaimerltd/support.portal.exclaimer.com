@@ -4,26 +4,85 @@
         {{search submit=false}}
     </div>
    <div class="subnav__breadcrumbs">
-      {{breadcrumbs}}
+      <a href="/hc/en-gb" title="Return to Home" class="breadcrumbs-btn">
+      Return to Home
+    </a>
+    <a href="https://portal.exclaimer.com" title="Return to Portal" class="breadcrumbs-btn" target="_blank">
+      Return to Portal
+    </a>
    </div>
   </div>
 
 <div class="main__container">
   
   <div class="col-left">
-      <ul id="sectionsId">
-        
-      </ul>
+    <ul class="side-bar-custom">
+      <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009924811-Welcome">Welcome home</a>
+      </li>
+      {{!-- <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009924831-Configuration">Configuration</a>
+        <ul class="side-bar-custom-sub">
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/sections/360009924851-Connect-to-Microsoft-365">Connect to Microsoft 365</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/sections/360009924871-Manage-User-Data">Manage User Data</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/sections/360009924891-Manage-Mail-Flow">Manage Mail Flow</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/sections/360009806832-Outlook-Signatures">Outlook Signatures</a>
+          </li>
+        </ul>
+      </li> --}}
+      <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009806852-Signatures">Signatures</a>
+        <ul class="side-bar-custom-sub">
+          <li>
+            <a class="sidenav-item" href="">Create Signature</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="">Create Folder</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/articles/360049345552-Edit-Signature-Design">Edit Signature Design</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/articles/360049275992-Manage-Signatures-Rules">Manage Signature Rules</a>
+          </li>
+          <li>
+            <a class="sidenav-item" href="/hc/en-gb/articles/360049825771-FOLDER-SECURITY">Folder Security</a>
+          </li>
+        </ul>
+      </li>
+      {{!-- <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009806872-Account-Settings">Account Settings</a>
+      </li>
+      <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009924911-Troubleshooting">Troubleshooting</a>
+      </li> --}}
+      <li>
+        <a class="sidenav-item" href="/hc/en-gb/sections/360009924811-Welcome">Glossary</a>
+      </li>
+    </ul>
   </div>
 
   <div class="col-right">
+    <h2 class="section-title">
+      <strong>
+        {{section.name}}
+      </strong>
+    </h2>
     {{#if section.sections}}
         <ul class="sub-section">
           {{#each section.sections}}
-          <li class="sub-section-li">
+            <li class="sub-section-li">
               <a href="{{url}}">
                 <span>{{name}}</span>
               </a>
+              <a href="{{url}}" class="article-list-link-btn">View Section</a>
             </li>
           {{/each}}
           <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
@@ -34,45 +93,11 @@
         <ul class="article-list">
           {{#each section.articles}}
             <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
-              {{#if promoted}}
-                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-              {{/if}}
               <a href="{{url}}" class="article-list-link">{{title}}</a>
-              {{#if internal}}
-                <span class="icon-lock" title="{{t 'internal'}}"></span>
-              {{/if}}
+              <a href="{{url}}" class="article-list-link-btn">View article</a>
             </li>
           {{/each}}
         </ul>
       {{/if}}
   </div>
 </div>
-
-<script>
-  $.ajax({
-    url: '/api/v2/help_center/en-gb/sections.json',
-    type: 'GET',
-    dataType: 'json',
-    success: function(data){
-      var sections = data.sections.filter(function(item){
-        return item.parent_section_id == null;
-      });
-
-      console.log(sections);
-
-      for (var i = 0; i < sections.length; i++){
-        var isActive = window.location.href.includes(sections[i].id);
-        var li = document.createElement("li");
-        var a = document.createElement("a");
-        var className = isActive ? "sidenav-item current-article":"sidenav-item";
-
-        a.setAttribute("class", className);
-        a.textContent = sections[i].name;
-        a.href = sections[i].html_url;
-
-        li.append(a)
-        $("#sectionsId").append(li);
-      }
-    }
-  });
-</script>
