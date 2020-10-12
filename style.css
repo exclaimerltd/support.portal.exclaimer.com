@@ -4628,9 +4628,12 @@ ul.home-categories__sub > li{
 
 ul.home-categories__sub > li::before{
   font-family: "Font Awesome 5 Pro";
-  content: "\f0da";
+  content: "\f111";
   font-weight: 900;
-  margin-right: 10px;
+  font-size: 0.4rem;
+  vertical-align: middle;
+  margin-right: 5px;
+  padding-bottom: 3px;
 }
 
 .article{
@@ -4891,5 +4894,5 @@ ul.home-categories__sub > li::before{
 }
 
 .article-title{
-  font-size: 26px;
+  font-size: 2rem;
 }
