@@ -14,6 +14,25 @@
       {{link 'community'}}
       {{link 'new_request' class='submit-a-request'}}
     </nav>
-    {{user_info}}
+    {{#if signed_in}}
+      <div class="user-info dropdown">
+        <div class="btn with-image dropdown-toggle" aria-haspopup="true">
+          {{user_avatar class="user-avatar"}}
+          <span class="hide-on-mobile">
+            {{user_name}}
+          </span>
+        </div>
+        <div class="dropdown-menu" role="menu">
+          <a role="menuitem" href="https://support.exclaimer.com/hc/en-gb/requests">My activites</a>
+          <a role="menuitem" href="/access/logout?return_to=https://exclaimercloud.zendesk.com/hc/en-gb">Sign out</a>
+        </div>
+      </div>
+    {{else}}
+      {{#link "sign_in" class="sign-in"}}
+        {{t 'sign_in'}}
+      {{/link}}
+    {{/if}}
   </div>
 </header>
+
+
