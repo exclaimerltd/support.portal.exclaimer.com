@@ -1,6 +1,7 @@
 <script type="text/javascript">
   window.zESettings = {
     webWidget: {
+      // Color API - All Sites
       color: {
         theme: '#F37021',
         launcher: '#F37021', // This will also update the badge
@@ -10,47 +11,32 @@
         header: '#576476',
         articleLinks: '#F37021'
       },
+      // Launcher API - All Sites
       launcher: {
         label: {
-          '*': 'Get help?'
+          "*": "Get help?",
         },
         chatLabel: {
-          '*': 'Chat online'
+          "*": "Chat online",
         },
         mobile: {
-          labelVisible: true
-        }
+          labelVisible: true,
+        },
       },
-      contactOptions: {
-        enabled: true,
-        title: {
-          '*': 'Contact Us'
-        },
-        contactButton: {
-          '*': 'Get in touch'
-        },
-        chatLabelOnline: {
-          '*': 'Chat online'
-        },
-        chatLabelOffline: {
-          '*': 'Chat is unavailable'
-        },
-        contactFormLabel: {
-          '*': 'Raise a ticket'
-        }
-      },
+      // Chat API - All Sites
       chat: {
         title: {
-          '*': 'Ask Us Anything'
+          "*": "Ask Us Anything",
         },
         departments: {
-          enabled: ['Technical Support','Sales'],
-          select: 'Technical Support'
+          enabled: ["Technical Support", "Sales", "Resellers"],
+          select: "Technical Support",
         },
-        hidewhenoffline: true,
+        hideWhenOffline: true,
         prechatForm: {
           greeting: {
-            '*': 'In order to help you as quickly as we can, please provide a little background information in the message area below and start the chat. \n\n'
+            "*":
+              "To ensure our representatives can help you as quickly as we can.\n\nPlease provide a as much information as you can about your query in the message area below.\n",
           },
           departmentLabel: {
             '*': 'Select a department'
@@ -58,25 +44,45 @@
         },
         offlineForm: {
           greeting: {
-            '*': "We aren't online right now, please leave a message",
-          }
-        }
+            "*": "We aren't online right now, please leave a message",
+          },
+        },
       },
+      // Contact options - All Sites
+      contactOptions: {
+        enabled: true,
+        title: {
+          "*": "Contact Us",
+        },
+        contactButton: {
+          "*": "Get in touch",
+        },
+        chatLabelOnline: {
+          "*": "Chat online",
+        },
+        chatLabelOffline: {
+          "*": "Chat is unavailable",
+        },
+        contactFormLabel: {
+          "*": "Raise a ticket",
+        },
+      },
+      // Helpcenter API - All Sites
       helpCenter: {
         title: {
-          '*': 'Search the help'
+          "*": "Search for help",
         },
         searchPlaceholder: {
-          '*': 'Search the knowledge base'
+          "*": "Search our Help Center",
+        },
+      },
+      // Contact Form API */
+      contactForm: {
+        title: {
+          "*": "Raise a ticket",
         }
       },
-      Talk: {
-        suppress: true
-      },
-      contactForm: {
-        suppress: true
-      }
-    }
+    },
   };
 </script>
 <footer class="footer">
