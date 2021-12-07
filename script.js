@@ -53,6 +53,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 /*   } */
 
+  // Article Accordion
+  var acc = document.getElementsByClassName("article-accordion");
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+
   // social share popups
   Array.prototype.forEach.call(document.querySelectorAll('.share a'), function(anchor) {
     anchor.addEventListener('click', function(e) {
