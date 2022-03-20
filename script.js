@@ -26,33 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
       '<p id="request_description_hint">To obtain your Sub ID, follow the steps <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/360018307337" target="_blank">here</a></p>'
     );
 
-    // Hides discontinued products from drop down
-    var tagsToRemove = [
-      "as",
-      "ia",
-      "mu",
-      "sm",
-      "exchange_address_tagging",
-      "outlook_photos",
-      "md1",
-      "s365",
-      "smee",
-      "smoe",
-      "ma3",
-      "ar",
-      "ame",
-      "te"
-    ];
-    removeTagsWeDontWant();
-    function removeTagsWeDontWant() {
-      $(".nesty-panel").on("DOMNodeInserted", function () {
-        for (var i in tagsToRemove) {
-          $("li#" + tagsToRemove[i]).remove();
-        }
-      });
-    }
-/*   } */
-
+    // Product (Cloud)
+    $(".form-field.request_custom_fields_4616390161821").append(
+      '<p id="request_description_hint">Using one of our on-premise products? Click <a href="https://support.exclaimer.com/hc/en-gb/requests/new?ticket_form_id=360000355937">here</a></p>'
+    );
 
   // social share popups
   Array.prototype.forEach.call(document.querySelectorAll('.share a'), function(anchor) {
