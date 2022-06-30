@@ -660,7 +660,7 @@
 						<input type="text" id="myText"
 							value="https://outlookclient.exclaimer.net/ecosa/prod/manifest.prod.xml"
 							style="display: none;">
-						<button onclick="copyClick()">Copy the Manifest URL ></button>
+						<button id="copyBtn" onclick="copyClick()">Copy the Manifest URL ></button>
 					</div>
 				</section>
 
@@ -695,7 +695,7 @@
 					<p>Individual or 'All Users' machine deployment via local MSI installation, CMD Script or Group
 						Policy.</p>
 					<h2>Version</h2>
-					<p>1.19</p>
+					<p>1.17.21329.00001</p>
 					<h2>Requirements</h2>
 					<table>
 						<tr>
@@ -772,7 +772,7 @@
 					<p>Desktop Outlook for Mac or macMail only.</p>
 					<p>Individual deployment via local machine installation, or deployed via Intune.</p>
 					<h2>Version</h2>
-					<p>#{macversion}</p>
+					<p>1.1.0.83</p>
 					<h2>Requirements</h2>
 					<table>
 						<tr>
@@ -843,10 +843,15 @@
 					target="_exclaimer_support">Visit support now ></a></p>
 		</div>
 		<script>
+			let button = document.getElementById ('copyBtn');
 			function copyClick() {
 				let input = document.getElementById('myText').value;
-				console.log(input);
 				navigator.clipboard.writeText(input);
+				button.innerHTML = "Copied!";
+				setTimeout(replaceText, 3000);
+			}
+			function replaceText(){
+				button.innerHTML = "Copy the Manifest URL >";
 			}
 		</script>
 </body>
