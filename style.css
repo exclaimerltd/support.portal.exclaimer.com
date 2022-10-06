@@ -4840,6 +4840,21 @@ ul.home-categories__sub > li::before{
   content: "\f121";
 }
 
+.notify--error.code{
+  background-color: rgba(223,227,238,0.15);
+  border-color: rgba(220,53,69,1);
+  color: #576476;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+}
+.notify--error.code::before{
+  margin-right: 5px;
+  font-family: "Font Awesome 5 Pro";
+  font-style: normal;
+  font-weight: 900;
+  content: "\f121";
+}
+
 .article-body > table{
   width: 100%;
   border: 1px solid #576476;
