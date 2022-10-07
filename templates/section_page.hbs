@@ -113,18 +113,18 @@
         <ul class="sub-section">
           {{#each section.sections}}
             <li class="sub-section-li">
-              <a href="{{url}}">
-                <span>{{name}}</span>
-              </a>
-              <a href="{{url}}" class="article-list-link-btn">View Section</a>
+              <a href="{{url}}" class="sub-section-li-link-btn"><span>{{name}}</span></a>
             </li>
           {{/each}}
           <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
         </ul>
       {{/if}}
 
+      <h2 class="section-title" style="padding-top: 15px">
+        <strong>Articles</strong>
+      </h2>
       {{#if section.articles}}
-        <ul class="article-list">
+        <ul class="article-list-custom">
           {{#each section.articles}}
             <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
               <a href="{{url}}" class="article-list-link">{{title}}</a>
