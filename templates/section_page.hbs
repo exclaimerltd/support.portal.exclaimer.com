@@ -104,35 +104,34 @@
   </div>
 
   <div class="col-right">
-    <h2 class="section-title">
+    <h1 class="section-title">
       <strong>
         {{section.name}}
       </strong>
-    </h2>
+    </h1>
     {{#if section.sections}}
-        <ul class="sub-section">
-          {{#each section.sections}}
-            <li class="sub-section-li">
-              <a href="{{url}}" class="sub-section-li-link-btn"><span>{{name}}</span></a>
-            </li>
-          {{/each}}
-          <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
-        </ul>
-      {{/if}}
-
+      <ul class="sub-section">
+        {{#each section.sections}}
+          <li class="sub-section-li">
+            <a href="{{url}}" class="sub-section-li-link-btn"><span>{{name}}</span></a>
+          </li>
+        {{/each}}
+        <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
+      </ul>
+    {{/if}}
+    {{#if section.articles}}
       <h2 class="section-title" style="padding-top: 15px">
         <strong>Articles</strong>
       </h2>
-      {{#if section.articles}}
-        <ul class="article-list-custom">
-          {{#each section.articles}}
-            <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
-              <a href="{{url}}" class="article-list-link">{{title}}</a>
-              <a href="{{url}}" class="article-list-link-btn">View article</a>
-            </li>
-          {{/each}}
-        </ul>
-      {{/if}}
-      {{pagination}}
+      <ul class="article-list-custom">
+        {{#each section.articles}}
+          <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
+            <a href="{{url}}" class="article-list-link">{{title}}</a>
+            <a href="{{url}}" class="article-list-link-btn">View article</a>
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+    {{pagination}}
   </div>
 </div>
