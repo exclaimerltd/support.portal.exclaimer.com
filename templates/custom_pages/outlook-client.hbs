@@ -545,7 +545,7 @@
 					<p>Desktop Outlook on Windows and OWA</p>
 					<p>Individual, Group or Full Tenant deployments from the Microsoft 365 admin console.</p>
 					<h2>Version</h2>
-					<p>1.4.1</p>
+					<p>1.4.400</p>
 					<h2>Requirements:</h2>
 					<table>
 						<tr>
@@ -553,8 +553,9 @@
 							<td>
 								<ol>
 									<li>Windows 10 or above</li>
-									<li>Outlook 2019 C2R or above</li>
+									<li>Outlook for Microsoft 365 or 2019*</li>
 									<li>Outlook Web</li>
+									<li>Office for macOS 16.64 (22081401)</li>
 								</ol>
 							</td>
 						</tr>
@@ -576,12 +577,12 @@
 							</td>
 						</tr>
 					</table>
-					<div class="download-cell" style="padding-bottom:50px">
-						<input type="text" id="myText"
-							value="https://outlookclient.exclaimer.net/ecosa/prod/manifest.prod.xml"
-							style="display: none;">
-						<button id="copyBtn" onclick="copyClick()">Copy the Manifest URL ></button>
+					<div class="download-cell" style="padding-bottom:10px">
+						<a aria-role="button" href="https://appsource.microsoft.com/en-us/product/office/WA200004512?embedHost=admin-portal">Install from App Store ></a>
 					</div>
+						<div style="padding-bottom: 17px">
+							* Outlook Click-To-Run version 2108 (build 14326.20258) or later is required
+							</div>
 				</section>
 
 				<section id="install-addin">
@@ -589,6 +590,7 @@
 					<p>To allow your users to apply signatures using the Outlook Add-in please install the add-in
 						through the Exchange Admin Center.</p>
 					<p>Full installation instructions can be found <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/360020741398">here</a></p>
+					<p>If you are using the older Manifest file, please see the guide <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/6420946508829-Migrate-Exclaimer-Cloud-Outlook-Add-in-from-Manifest-to-App-Store">here</a> on how to migrate to the new App Store release</p>
 				</section>
 			</div>
 			<div class="body-col">
@@ -611,6 +613,7 @@
 									<li>Windows 8.1 or above</li>
 									<li>Outlook 2013 or above</li>
 									<li>.NET Framework 4.6.2 or above</li>
+									<li>&nbsp;</li>
 								</ol>
 							</td>
 						</tr>
@@ -670,8 +673,9 @@
 							<td>
 								<ol>
 									<li>macOS 10.13 or above</li>
-									<li>Outlook for macOS</li>
+									<li>Office for macOS</li>
 									<li>Rosetta 2 (M1/M2 CPUs)</li>
+									<li>&nbsp;</li>
 								</ol>
 							</td>
 						</tr>
