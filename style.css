@@ -5009,6 +5009,7 @@ ul.home-categories__sub > li::before{
   display: flex;
   flex-wrap: wrap;
   word-break: break-word;
+  font-size: 10px;
 }
 
 .content-tag-list li {

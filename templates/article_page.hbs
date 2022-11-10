@@ -138,7 +138,7 @@
 
           {{#if (compare article.content_tags.length ">" 0)}}
             <section class="content-tags">
-              <p>{{t 'content_tags_label'}}</p>
+              <p><b>{{t 'content_tags_label'}}</b></p>
               <ul class="content-tag-list">
                 {{#each article.content_tags}}
                   <li class="content-tag-item" data-content-tag-id="{{id}}">
