@@ -128,7 +128,23 @@
               <li class="meta-data">{{t 'updated'}}</li>
             {{/is}}
             </div>
-          </div>
+          </div>          
+          {{#is article.id 360050180772 }}
+          <div style="padding-left:10px">
+          {{subscribe}}</div>
+          {{/is}}          
+          {{#is article.id 7504854344861 }}
+          <div style="padding-left:10px">
+          {{subscribe}}</div>
+          {{/is}}          
+          {{#is article.id 7077741388445 }}
+          <div style="padding-left:10px">
+          {{subscribe}}</div>
+          {{/is}}          
+          {{#is article.id 5620631767709 }}
+          <div style="padding-left:10px">
+          {{subscribe}}</div>
+          {{/is}}
         </div>
       </header>
 
@@ -167,7 +183,24 @@
         </div>
       </section>
 
-      {{pagination}}
+      <footer>
+        <div class="article-footer">
+          {{#if settings.show_article_sharing}}
+            <div class="article-share">{{share}}</div>
+          {{/if}}
+        </div>
+        {{#with article}}
+          <div class="article-votes">
+            <span class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</span>
+            <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
+              {{vote 'up' role='radio' class='button article-vote article-vote-up' selected_class="button-primary"}}
+              {{vote 'down' role='radio' class='button article-vote article-vote-down' selected_class="button-primary"}}
+            </div>
+            <small class="article-votes-count">
+              {{vote 'label' class='article-vote-label'}}
+            </small>
+          </div>
+        {{/with}}
     </article>
   </div>
 

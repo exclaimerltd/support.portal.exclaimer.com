@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#0072EF"
+          "value": "#0d0a47"
         },
         {
           "identifier": "brand_text_color",
