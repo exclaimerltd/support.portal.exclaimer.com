@@ -5030,3 +5030,14 @@ ul.home-categories__sub > li::before{
 .content-tag-list li:last-child {
   border: none;
 }
+
+
+.search-results .meta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-result-link {
+  color: #f37021!important;
+}
