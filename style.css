@@ -763,10 +763,11 @@ ul {
 /***** Hero component *****/
 .hero {
   background-image: url($assets-hero-bg-png);
-  background-position: right bottom;
-  background-size: auto;
+  background-position: 5% bottom;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-color: #dfe3ee;
+  background-color: #202a50;
+  color: #fff;
   height: 300px;
   padding: 0 20px;
   text-align: left;
@@ -784,20 +785,9 @@ ul {
 /* START - Added code - by MS */
 .hero-inner > .search{
   width: 500px;
-  font-style: italic;
 }
 
-.hero-inner > .search::before {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #dfe3ee;
-  content: "\1F50D";
-  font-size: 18px;
-  position: absolute;
-  right: 15px;
-  left: auto;
-}
+
 
 /* END - Added code - by MS */
 
@@ -995,7 +985,7 @@ ul {
   width: 100%;
   height: 75px;
   margin-top: 20px;
-  background-color: #576476;
+  background-color: #3246d5;
   color: #fff;
 }
 
@@ -1016,18 +1006,21 @@ ul {
 
 .whats-new-btn{
   padding: 10px 15px;
-  background-color: #f37021;
+  background-color: #fff;
+  border: 1px solid #fff;
   border-radius: 4px;
   font-size: .9em;
-  color: #ffffff;
+  color: #0d0a47;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .whats-new-btn:hover{
-  background-color: #db661f;
+  background-color: #0d0a47;
+  border: 1px solid #0d0a47;
   text-decoration: none;
   transition: 0.3s;
+  color: #fff;
 }
 
 @media (min-width: 768px) {
