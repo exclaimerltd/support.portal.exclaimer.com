@@ -120,16 +120,15 @@
                 {{/if}}
               </div>
               <article>
-                <ul class="meta-group">
+                <ul class="meta-group meta-group-search">
                   <li>
                     <ol class="breadcrumbs search-result-breadcrumbs">
                       {{#each path_steps}}
-                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
+                        <li title="{{name}}"><a class="search-result-link" href="{{url}}">{{name}}</a></li>
                       {{/each}}
                     </ol>
                   </li>
-                  <li class="meta-data">{{author.name}}</li>
-                  <li class="meta-data">{{date created_at}}</li>
+                  <li class="meta-data">{{author.name}} - {{date created_at}}</li>
                 </ul>
                 <div class="search-results-description">{{text}}</div>
               </article>
