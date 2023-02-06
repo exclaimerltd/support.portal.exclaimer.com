@@ -105,112 +105,138 @@
   </div>
 
   <div class="col-right">
-    <article class="article">
-      <header class="article-header">
-        <div>
-        <h2 title="{{article.title}}" class="article-title">
-          <strong>
-            {{article.title}}
-          </strong>
-        </h2>
-        </div>
-        <div class="article-author-full">
-          {{#if settings.show_article_author}}
-          <div class="avatar article-avatar">
-            {{#if article.author.agent}}
-              <span class="icon-agent"></span>
-            {{/if}}
-            <img src="{{article.author.avatar_url}}" alt="" class="user-avatar"/>
-          </div>
-          {{/if}}
-          <div class="article-author-info">
-            {{#if settings.show_article_author}}
-              {{#link 'user_profile' id=article.author.id}}
-              {{article.author.name}}
-              {{/link}}
-            {{/if}}
-            <div class="article-meta-data">
-            {{#is article.created_at article.edited_at}}
-              <li class="meta-data">{{date article.created_at timeago=true}}</li>
-            {{else}}
-              <li class="meta-data">{{date article.edited_at timeago=true}}</li>
-              <li class="meta-data">{{t 'updated'}}</li>
-            {{/is}}
-            </div>
-          </div>          
-          {{#is article.id 360050180772 }}
-          <div style="padding-left:10px">
-          {{subscribe}}</div>
-          {{/is}}          
-          {{#is article.id 7504854344861 }}
-          <div style="padding-left:10px">
-          {{subscribe}}</div>
-          {{/is}}          
-          {{#is article.id 7077741388445 }}
-          <div style="padding-left:10px">
-          {{subscribe}}</div>
-          {{/is}}          
-          {{#is article.id 5620631767709 }}
-          <div style="padding-left:10px">
-          {{subscribe}}</div>
-          {{/is}}
-        </div>
-      </header>
-
-      <section class="article-info">
-        <div class="article-content">
-          <div class="article-body">{{article.body}}</div>
-
-          {{#if (compare article.content_tags.length ">" 0)}}
-            <section class="content-tags">
-              <p><b>{{t 'content_tags_label'}}</b></p>
-              <ul class="content-tag-list">
-                {{#each article.content_tags}}
-                  <li class="content-tag-item" data-content-tag-id="{{id}}">
-                    {{#link "search_result" content_tag_id=id target="_blank"}}
-                      {{name}}
-                    {{/link}}
-                  </li>
-                {{/each}}
-              </ul>
-            </section>
-          {{/if}}
-
-          <div class="article-attachments">
-            <ul class="attachments">
-              {{#each attachments}}
-                <li class="attachment-item">
-                  <a href="{{url}}" target="_blank">{{name}}</a>
-                  <div class="attachment-meta meta-group">
-                    <span class="attachment-meta-item meta-data">{{size}}</span>
-                    <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
-                  </div>
+    {{#is section.id 9128956898077}}
+      <div class="faq">
+        <div class="faq-section-selector">
+          <h1 class="faq-title">
+            {{section.name}}
+          </h1>
+          <p class="faq-sub-heading">Please choose a topic below.</p>
+          {{#if section.articles}}
+            <ul class="faq-topics">
+              {{#each section.articles}}
+                <li class="faq-topic">
+                  <a href="{{url}}" class="faq-topic-link">{{title}}</a>
                 </li>
               {{/each}}
             </ul>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <div class="article-footer">
-          {{#if settings.show_article_sharing}}
-            <div class="article-share">{{share}}</div>
           {{/if}}
         </div>
-        {{#with article}}
-          <div class="article-votes">
-            <span class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</span>
-            <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
-              {{vote 'up' role='radio' class='button article-vote article-vote-up' selected_class="button-primary"}}
-              {{vote 'down' role='radio' class='button article-vote article-vote-down' selected_class="button-primary"}}
-            </div>
-            <small class="article-votes-count">
-              {{vote 'label' class='article-vote-label'}}
-            </small>
+        <div class="faq-article">
+          <h2 class="faq-article-title">
+            {{article.title}}
+          </h2>
+          <p>{{article.body}}</p>
+        </div>
+      </div>
+    {{else}}
+      <article class="article">
+        <header class="article-header">
+          <div>
+          <h2 title="{{article.title}}" class="article-title">
+            <strong>
+              {{article.title}}
+            </strong>
+          </h2>
           </div>
-        {{/with}}
-    </article>
+          <div class="article-author-full">
+            {{#if settings.show_article_author}}
+            <div class="avatar article-avatar">
+              {{#if article.author.agent}}
+                <span class="icon-agent"></span>
+              {{/if}}
+              <img src="{{article.author.avatar_url}}" alt="" class="user-avatar"/>
+            </div>
+            {{/if}}
+            <div class="article-author-info">
+              {{#if settings.show_article_author}}
+                {{#link 'user_profile' id=article.author.id}}
+                {{article.author.name}}
+                {{/link}}
+              {{/if}}
+              <div class="article-meta-data">
+              {{#is article.created_at article.edited_at}}
+                <li class="meta-data">{{date article.created_at timeago=true}}</li>
+              {{else}}
+                <li class="meta-data">{{date article.edited_at timeago=true}}</li>
+                <li class="meta-data">{{t 'updated'}}</li>
+              {{/is}}
+              </div>
+            </div>          
+            {{#is article.id 360050180772 }}
+            <div style="padding-left:10px">
+            {{subscribe}}</div>
+            {{/is}}          
+            {{#is article.id 7504854344861 }}
+            <div style="padding-left:10px">
+            {{subscribe}}</div>
+            {{/is}}          
+            {{#is article.id 7077741388445 }}
+            <div style="padding-left:10px">
+            {{subscribe}}</div>
+            {{/is}}          
+            {{#is article.id 5620631767709 }}
+            <div style="padding-left:10px">
+            {{subscribe}}</div>
+            {{/is}}
+          </div>
+        </header>
+
+        <section class="article-info">
+          <div class="article-content">
+            <div class="article-body">{{article.body}}</div>
+
+            {{#if (compare article.content_tags.length ">" 0)}}
+              <section class="content-tags">
+                <p><b>{{t 'content_tags_label'}}</b></p>
+                <ul class="content-tag-list">
+                  {{#each article.content_tags}}
+                    <li class="content-tag-item" data-content-tag-id="{{id}}">
+                      {{#link "search_result" content_tag_id=id target="_blank"}}
+                        {{name}}
+                      {{/link}}
+                    </li>
+                  {{/each}}
+                </ul>
+              </section>
+            {{/if}}
+
+            <div class="article-attachments">
+              <ul class="attachments">
+                {{#each attachments}}
+                  <li class="attachment-item">
+                    <a href="{{url}}" target="_blank">{{name}}</a>
+                    <div class="attachment-meta meta-group">
+                      <span class="attachment-meta-item meta-data">{{size}}</span>
+                      <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+                    </div>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <div class="article-footer">
+            {{#if settings.show_article_sharing}}
+              <div class="article-share">{{share}}</div>
+            {{/if}}
+          </div>
+          {{#with article}}
+            <div class="article-votes">
+              <span class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</span>
+              <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
+                {{vote 'up' role='radio' class='button article-vote article-vote-up' selected_class="button-primary"}}
+                {{vote 'down' role='radio' class='button article-vote article-vote-down' selected_class="button-primary"}}
+              </div>
+              <small class="article-votes-count">
+                {{vote 'label' class='article-vote-label'}}
+              </small>
+            </div>
+          {{/with}}
+      </article>
+    {{/is}}
   </div>
 
 </div>

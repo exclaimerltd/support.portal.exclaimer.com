@@ -113,34 +113,54 @@
   </div>
 
   <div class="col-right">
-    <h1 class="section-title">
-      <strong>
-        {{section.name}}
-      </strong>
-    </h1>
-    {{#if section.sections}}
-      <ul class="sub-section">
-        {{#each section.sections}}
-          <li class="sub-section-li">
-            <a href="{{url}}" class="sub-section-li-link-btn"><span>{{name}}</span></a>
-          </li>
-        {{/each}}
-        <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
-      </ul>
-    {{/if}}
-    {{#if section.articles}}
-      <h2 class="section-title" style="padding-top: 15px">
-        <strong>Articles</strong>
-      </h2>
-      <ul class="article-list-custom">
-        {{#each section.articles}}
-          <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
-            <a href="{{url}}" class="article-list-link">{{title}}</a>
-            <a href="{{url}}" class="article-list-link-btn">View article</a>
-          </li>
-        {{/each}}
-      </ul>
-    {{/if}}
-    {{pagination}}
+    {{#is section.id 9128956898077}} <!-- FAQ Section -->
+      <div class="faq">
+        <div class="faq-section-selector">
+          <h1 class="faq-title">
+            {{section.name}}
+          </h1>
+          <p class="faq-sub-heading">Please choose a topic below to get started.</p>
+          {{#if section.articles}}
+            <ul class="faq-topics">
+              {{#each section.articles}}
+                <li class="faq-topic">
+                  <a href="{{url}}" class="faq-topic-link">{{title}}</a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </div>
+      </div>
+    {{else}} <!-- Generic Sections -->
+      <h1 class="section-title">
+        <strong>
+          {{section.name}}
+        </strong>
+      </h1>
+      {{#if section.sections}}
+        <ul class="sub-section">
+          {{#each section.sections}}
+            <li class="sub-section-li">
+              <a href="{{url}}" class="sub-section-li-link-btn"><span>{{name}}</span></a>
+            </li>
+          {{/each}}
+          <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
+        </ul>
+      {{/if}}
+      {{#if section.articles}}
+        <h2 class="section-title" style="padding-top: 15px">
+          <strong>Articles</strong>
+        </h2>
+        <ul class="article-list-custom">
+          {{#each section.articles}}
+            <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
+              <a href="{{url}}" class="article-list-link">{{title}}</a>
+              <a href="{{url}}" class="article-list-link-btn">View article</a>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+      {{pagination}}
+    {{/is}}
   </div>
 </div>
