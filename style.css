@@ -5043,6 +5043,22 @@ ul.home-categories__sub > li::before{
   color: #f37021!important;
 }
 
+.legacy-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #fa935c;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.legacy-banner-button {
+  color: #fff;
+  margin-left: 10px;
+}
+
+
 .legacy-button {
   display: flex;
   align-items: center;
