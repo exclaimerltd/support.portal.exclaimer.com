@@ -5042,3 +5042,27 @@ ul.home-categories__sub > li::before{
 .search-result-link {
   color: #f37021!important;
 }
+
+
+.legacy-banner {
+  
+}
+
+.legacy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  border: 1px solid #fa935c;
+  border-radius: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #fa935c;
+  transition: ease all 0.3s;
+}
+
+.legacy-button:hover{
+  background-color: #fa935c;
+  color: #fff;
+  text-decoration: none;
+}
