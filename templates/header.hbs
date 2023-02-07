@@ -27,7 +27,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </span>
         </div>
         <div class="dropdown-menu" role="menu">
-          <a role="menuitem" href="https://support.exclaimer.com/hc/en-gb/requests">My activites</a>
+          {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
+          {{link "requests" role="menuitem"}}
+          {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
+          {{contact_details role="menuitem"}}
+          {{change_password role="menuitem"}}
+          <div class="separator" role="separator"></div>
           <a role="menuitem" href="/access/logout?return_to=https://exclaimercloud.zendesk.com/hc/en-gb">Sign out</a>
         </div>
       </div>
