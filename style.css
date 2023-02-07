@@ -5043,11 +5043,6 @@ ul.home-categories__sub > li::before{
   color: #f37021!important;
 }
 
-
-.legacy-banner {
-  
-}
-
 .legacy-button {
   display: flex;
   align-items: center;
@@ -5065,4 +5060,14 @@ ul.home-categories__sub > li::before{
   background-color: #fa935c;
   color: #fff;
   text-decoration: none;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activites-header-50 {
+  width: 60%;
 }
