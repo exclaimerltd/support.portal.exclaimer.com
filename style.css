@@ -5042,3 +5042,21 @@ ul.home-categories__sub > li::before{
 .search-result-link {
   color: #f37021!important;
 }
+
+
+/** Maintenance Page **/
+
+.maint-page-banner {
+  width: 100%;
+  background-color: #202A50;
+  padding: 100px;
+  color: #fff;
+}
+
+.maint-page-banner > h2{
+  width: 50%;
+  font-size: 2em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
