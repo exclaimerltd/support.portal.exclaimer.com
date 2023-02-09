@@ -12,27 +12,28 @@
 </div>
 
 <div class="container">
-  <header class="my-activities-header">
-    <h1>{{t 'my_requests'}}</h1>
-
-    <div class="my-activities-sub-nav">
-      <nav class="collapsible-nav collapsible-nav-border">
-        <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
-        <ul class="collapsible-nav-list">
-          {{#each filters}}
-            {{#if selected}}
-              <li class="current">
-                <a href="{{url}}" aria-current="page">{{name}}</a>
-              </li>
-            {{else}}
-              <li><a href="{{url}}">{{name}}</a></li>
-            {{/if}}
-          {{/each}}
-        </ul>
-      </nav>
+  <header class="my-activities-header flex">
+    <div class="activites-header-50">
+      <h1>{{t 'my_requests'}}</h1>
+      <div class="my-activities-sub-nav">
+        <nav class="collapsible-nav collapsible-nav-border">
+          <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
+          <ul class="collapsible-nav-list">
+            {{#each filters}}
+              {{#if selected}}
+                <li class="current">
+                  <a href="{{url}}" aria-current="page">{{name}}</a>
+                </li>
+              {{else}}
+                <li><a href="{{url}}">{{name}}</a></li>
+              {{/if}}
+            {{/each}}
+          </ul>
+        </nav>
+      </div>
     </div>
+    <a href="https://legacy.support.exclaimer.com/hc/en-gb/requests" class="legacy-button">Looking for older Exclaimer Cloud, or on-prem tickets? Click here</a>
   </header>
-
   {{#form 'requests_filter' class='requests-table-toolbar'}}
     <div class="search">
       {{input 'query' id='quick-search' type='search' class='requests-search'}}
