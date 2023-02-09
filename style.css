@@ -5046,17 +5046,50 @@ ul.home-categories__sub > li::before{
 
 /** Maintenance Page **/
 
-.maint-page-banner {
-  width: 100%;
-  background-color: #202A50;
-  padding: 100px;
-  color: #fff;
+.maint-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  height: calc(100vh - 100px);
+  color: #202A50;
+  border-top: 1px solid #B7BCC4;
 }
 
-.maint-page-banner > h2{
-  width: 50%;
-  font-size: 2em;
-  text-transform: uppercase;
+.maint-body > h2 {
+  font-size: 2rem;
   font-weight: bold;
+}
+
+.maint-body > p {
+  margin-bottom: 0;
+}
+
+.maint-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #202A50;
+  border-radius: 10px;
+  margin: 0 20px;
+  transition: ease all 0.3s;
+  font-size: 1.5em;
+  color: #202A50;
+}
+
+.maint-body-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.maint-button:hover {
+  color: #fff;
+  border-color: #202A50;
+  background-color: #202A50;
+  text-decoration: none;
 }
 
