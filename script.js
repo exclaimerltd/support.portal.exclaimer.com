@@ -281,7 +281,6 @@ categoriesList(function(data){
 
 });
 
-
 });
 
 
