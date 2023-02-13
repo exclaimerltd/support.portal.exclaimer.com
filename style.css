@@ -5058,22 +5058,23 @@ ul.home-categories__sub > li::before{
   margin-left: 10px;
 }
 
-
 .legacy-button {
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding: 20px 10px;
-  border: 1px solid #fa935c;
+  background-color: $brand_color;
   border-radius: 50px;
   margin-top: 10px;
   margin-bottom: 10px;
-  color: #fa935c;
+  color: #fff;
   transition: ease all 0.3s;
 }
 
 .legacy-button:hover{
-  background-color: #fa935c;
+  background-color: #000;
   color: #fff;
   text-decoration: none;
 }
