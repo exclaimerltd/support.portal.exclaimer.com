@@ -1,10 +1,14 @@
+
 <div class="container-divider"></div>
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
+    <div>
     {{search submit=false}}
+    <a href="https://legacy.support.exclaimer.com/hc/en-gb/requests/new" class="legacy-button">Need to raise an On-Premise ticket?</a>
+    </div>
   </nav>
-
+  
   <h1>
     {{t 'submit_a_request'}}
     {{#if follow_up}}
@@ -13,7 +17,6 @@
       </span>
     {{/if}}<br/><br/>
   </h1>
-
   <div class="form">
     {{request_form}}
   </div>

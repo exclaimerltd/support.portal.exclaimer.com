@@ -5043,53 +5043,48 @@ ul.home-categories__sub > li::before{
   color: #f37021!important;
 }
 
-
-/** Maintenance Page **/
-
-.maint-body {
+.legacy-banner {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-flow: column;
-  height: calc(100vh - 100px);
-  color: #202A50;
-  border-top: 1px solid #B7BCC4;
-}
-
-.maint-body > h2 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.maint-body > p {
-  margin-bottom: 0;
-}
-
-.maint-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: 300px;
-  border: 1px solid #202A50;
-  border-radius: 10px;
-  margin: 0 20px;
-  transition: ease all 0.3s;
-  font-size: 1.5em;
-  color: #202A50;
-}
-
-.maint-body-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-.maint-button:hover {
+  width: 100%;
+  background-color: #fa935c;
   color: #fff;
-  border-color: #202A50;
-  background-color: #202A50;
+  padding: 10px 20px;
+}
+
+.legacy-banner-button {
+  color: #fff;
+  margin-left: 10px;
+}
+
+.legacy-button {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 10px;
+  background-color: $brand_color;
+  border-radius: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+  transition: ease all 0.3s;
+}
+
+.legacy-button:hover{
+  background-color: #000;
+  color: #fff;
   text-decoration: none;
 }
 
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activites-header-50 {
+  width: 60%;
+}
