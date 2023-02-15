@@ -43,4 +43,18 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+// FAQ Accordion
+var faqAcc = document.getElementsByClassName("faq-question-title");
+for (var j = 0; j < faqAcc.length; j++) {
+  faqAcc[j].addEventListener("click", function(){
+    this.classList.toggle("faq-question-title-active");
+    var faqBody = this.nextElementSibling;
+    if (faqBody.style.maxHeight){
+      faqBody.style.maxHeight = null;
+    } else {
+      faqBody.style.maxHeight = faqBody.scrollHeight + "px";
+    }
+  })
+}
 </script>
