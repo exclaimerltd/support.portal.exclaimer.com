@@ -16,19 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Support Ticket Form
-/*   if (ticketForm == 360000355937) { */
-    // Licence Key
-    $(".form-field.request_custom_fields_360014285458").append(
-      '<p id="request_description_hint">To locate your licence key for Exclaimer, follow the guide <a href="https://support.exclaimer.com/hc/en-gb/articles/360018306577" target="_blank">here</a></p>'
-    );
     // Subscription ID
     $(".form-field.request_custom_fields_360014356197").append(
-      '<p id="request_description_hint">To obtain your Sub ID, follow the steps <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/360018307337" target="_blank">here</a></p>'
-    );
-
-    // Product (Cloud)
-    $(".form-field.request_custom_fields_4616390161821").append(
-      '<p id="request_description_hint">Using one of our on-premise products? Click <a href="https://support.exclaimer.com/hc/en-gb/requests/new?ticket_form_id=360000355937">here</a></p>'
+      '<p id="request_description_hint">To obtain your Sub ID, follow the steps <a href="https://support.exclaimer.com/hc/en-gb/articles/360018307337" target="_blank">here</a></p>'
     );
 
   // social share popups
