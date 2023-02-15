@@ -5169,6 +5169,7 @@ ul.home-categories__sub > li::before{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  width: 75%;
   justify-content: center;
   margin: 0;
   list-style: none;
@@ -5229,4 +5230,9 @@ ul.home-categories__sub > li::before{
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+.faq-question-body a {
+  color: #f27021;
+  text-decoration: underline;
 }
