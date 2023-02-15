@@ -5236,3 +5236,8 @@ ul.home-categories__sub > li::before{
   color: #f27021;
   text-decoration: underline;
 }
+
+.faq-question-body ul{
+  list-style: disc;
+  padding-left: 40px;  
+}
