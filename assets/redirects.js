@@ -43,7 +43,7 @@ for (var i = 0; i < newRedirects.length; i++) {
 
   for (var k = 0; k < j['from'].length; k++) {
       if (window.location.href.indexOf(j['from'][k]) > -1) {
-          window.location.href = 'https://legacy.support.exclaimer.com/hc/en-gb/articles/' + j["to"]; 
+          window.location.href = 'https://exclaimersupport.zendesk.com/hc/en-gb/articles/' + j["to"]; 
       }
   }
 };
