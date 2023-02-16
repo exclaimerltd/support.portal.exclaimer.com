@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
       element = element.parentElement || element.parentNode;
     } while (element !== null && element.nodeType === 1);
     return null;
-    
+  }
   // Support Ticket Form
     // Subscription ID
     $(".form-field.request_custom_fields_360014356197").append(
