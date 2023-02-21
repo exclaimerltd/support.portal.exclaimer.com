@@ -5240,3 +5240,112 @@ ul.home-categories__sub > li::before{
   list-style: disc;
   padding-left: 40px;  
 }
+
+/** VTE Code **/
+
+.vte-jumbo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 150px 0;
+  margin-bottom: 40px;
+  background-color: #202A50;
+  color: #fff;
+}
+
+.vte-jumbo > h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.vte-jumbo > h3 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  letter-spacing: 0.25rem;
+}
+
+.vte-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+  width: 960px;
+  margin-inline: auto;
+  margin-bottom: 40px;
+}
+
+.vte-accord {
+  position: relative;
+  width: 100%;
+  margin: 10px;
+  background-color: #202A50;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+}
+
+.vte-accord-checker {
+  position: absolute;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.vte-accord-question{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  cursor: pointer;
+  transition: ease all 0.5s;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+}
+
+.vte-accord-question::before {
+  font: var(--fa-font-solid);
+  content: "\f106";
+  margin-right: 20px;
+}
+
+.vte-accord-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0px 20px;
+  transition: ease all 0.5s;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.vte-accord-answer > p {
+  padding: 0;
+  padding-bottom: 1em;
+  margin: 0;
+}
+
+.vte-accord-answer > p:first-child {
+  padding: 1em 0;
+  margin: 0;
+}
+
+.vte-accord-answer > ul {
+  margin-left: 1em;
+  margin-bottom: 1em;
+  list-style: disc;
+}
+
+.vte-accord-checker:checked ~ .vte-accord-question {
+  transition: ease all 0.5s;
+  background-color: #F27021;
+}
+
+.vte-accord-checker:checked ~ .vte-accord-answer {
+  max-height: 500px;
+}
+
+.vte-accord-checker:checked ~ .vte-accord-question::before {
+  content: "\f107";
+}
