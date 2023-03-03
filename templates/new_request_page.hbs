@@ -9,7 +9,7 @@
     </div>
   </nav>
   
-  <h1>
+  <h1 id="formTitle">
     {{t 'submit_a_request'}}
     {{#if follow_up}}
       <span class="follow-up-hint">
@@ -17,7 +17,8 @@
       </span>
     {{/if}}<br/><br/>
   </h1>
-  <div class="form">
+  <p id="formSubTitle" style="display: none">We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.</p>
+  <div id="main-content" class="form">
     {{request_form}}
   </div>
 </div>
