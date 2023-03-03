@@ -299,10 +299,10 @@ function checkTicketId(){
   var formEmail = document.querySelector('label[for=request_anonymous_requester_email]');
   var formCC = document.querySelector('.request_cc_emails');
   var formSubjectContainer = document.querySelector('.request_subject');  //main hero section wrapper
-  var formArticleContainer = document.querySelector('.request_custom_fields_9518432811421');
+  var formArticleContainer = document.querySelector('.request_custom_fields_9489978202909');
   var formMessage = document.querySelector('#request_description_label');
   var formMessageHint = document.querySelector('#request_description_hint');
-  if(window.location.href.indexOf('9518447340317') > 0){  //The numbers are form ID which I get from the form URL
+  if(window.location.href.indexOf('9490217014813') > 0){  //The numbers are form ID which I get from the form URL
     formHeader.innerHTML = 'Knowledgebase feedback';
     formCC.style.display = 'none';
     formSubTitle.style.display = 'block';
