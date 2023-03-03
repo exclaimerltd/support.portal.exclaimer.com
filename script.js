@@ -272,4 +272,45 @@ categoriesList(function(data){
 
 });
 
+// Display message for article downvotes
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector(".article-votes-controls")) {
+    const voteButtons = document.querySelectorAll(".article-vote");
+    const voteMessage = document.querySelector(".downvote-message");
 
+    voteButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        let isDownButton = button.matches(".article-vote-down");
+        let isPressed = button.matches(".button-primary");
+
+        if (isDownButton && !isPressed) {
+          voteMessage.style.display = "block";
+        } else {
+          voteMessage.style.display = "none";
+        }
+      });
+    });
+  }
+});
+
+function checkTicketId(){
+  var formHeader = document.querySelector('#formTitle');
+  var formSubTitle = document.querySelector('#formSubTitle');
+  var formEmail = document.querySelector('label[for=request_anonymous_requester_email]');
+  var formCC = document.querySelector('.request_cc_emails');
+  var formSubjectContainer = document.querySelector('.request_subject');  //main hero section wrapper
+  var formArticleContainer = document.querySelector('.request_custom_fields_9518432811421');
+  var formMessage = document.querySelector('#request_description_label');
+  var formMessageHint = document.querySelector('#request_description_hint');
+  if(window.location.href.indexOf('9518447340317') > 0){  //The numbers are form ID which I get from the form URL
+    formHeader.innerHTML = 'Knowledgebase feedback';
+    formCC.style.display = 'none';
+    formSubTitle.style.display = 'block';
+  	formSubjectContainer.style.display = 'none'; 
+    formArticleContainer.style.display = 'none';
+    formMessage.innerHTML = 'Feedback';
+    formMessageHint.style.display = 'none';
+    formEmail.innerHTML = "We'd love to know who you are. Please provide your email address";
+  }
+}
+checkTicketId();
