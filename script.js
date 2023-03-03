@@ -271,25 +271,3 @@ categoriesList(function(data){
 });
 
 });
-
-// Display message for article downvotes
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector(".article-votes-controls")) {
-    const voteButtons = document.querySelectorAll(".article-vote");
-    const voteMessage = document.querySelector(".downvote-message");
-
-    voteButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        let isDownButton = button.matches(".article-vote-down");
-        let isPressed = button.matches(".button-primary");
-
-        if (isDownButton && !isPressed) {
-          voteMessage.style.display = "block";
-        } else {
-          voteMessage.style.display = "none";
-        }
-      });
-    });
-  }
-});
-
