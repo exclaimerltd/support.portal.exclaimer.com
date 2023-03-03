@@ -230,9 +230,10 @@
                 {{vote 'up' role='radio' class='button article-vote article-vote-up' selected_class="button-primary"}}
                 {{vote 'down' role='radio' class='button article-vote article-vote-down' selected_class="button-primary"}}
               </div>
-              <small class="article-votes-count">
-                {{vote 'label' class='article-vote-label'}}
-              </small>
+              <div class="downvote-message">
+                <p>We would love to hear your feedback so that we can improve this article.</p>
+                <p><a class="downvote-message-link" href="{{page_path 'new_request'}}?ticket_form_id=9490217014813&tf_subject={{title}}&tf_9489978202909=https://support.exclaimer.com{{url}}">Click here to leave feedback.</a></p>
+              </div>
             </div>
           {{/with}}
       </article>
