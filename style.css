@@ -5349,3 +5349,26 @@ ul.home-categories__sub > li::before{
 .vte-accord-checker:checked ~ .vte-accord-question::before {
   content: "\f107";
 }
+
+/* ---- Downvote message ----------- */
+.downvote-message {
+  display: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  padding: 15px;
+  padding-bottom: 0;
+}
+
+.downvote-message-link {
+  color: #F27021;
+}
+
+/* ---
+	Hides the ability to choose multiple forms when raising a ticket.
+--- */
+.request_ticket_form_id {
+  display: none;
+}
