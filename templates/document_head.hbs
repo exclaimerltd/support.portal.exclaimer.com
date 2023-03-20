@@ -1,92 +1,11 @@
-<!-- Google Consent -->
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("consent","default",{ad_storage:"denied",analytics_storage:"denied",tracking_storage:"denied",wait_for_update:500}),dataLayer.push({event:"default_consent"});</script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-J8W9');</script>
-<!-- End Google Tag Manager -->
-
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
-<script src="https://kit.fontawesome.com/e6b3af0e51.js" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/d1d75e8f54.js" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<!-- Start of exclaimercloud Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=a6f15371-cf2c-4dd6-a98d-085850fcc0fb"> </script>
-<!-- End of exclaimercloud Zendesk Widget script -->
-
-<!-- Start of Async Drift Code -->
-<script>
-"use strict";
-!function() {
-  var t = window.driftt = window.drift = window.driftt || [];
-  if (!t.init) {
-    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-    t.factory = function(e) {
-      return function() {
-        var n = Array.prototype.slice.call(arguments);
-        return n.unshift(e), t.push(n), t;
-      };
-    }, t.methods.forEach(function(e) {
-      t[e] = t.factory(e);
-    }), t.load = function(t) {
-      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-      var i = document.getElementsByTagName("script")[0];
-      i.parentNode.insertBefore(o, i);
-    };
-  }
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('hks2ztkubhse');
-</script>
-<!-- End of Async Drift Code -->
-
-<!-- Drift hand off to Zendesk -->
-<script>
-  zE(function() {
-  $zopim(function() {
-    $zopim.livechat.button.hide(); // Hide the Zendesk widget
-  });
-});
-
-  window.drift.on("conversation:buttonClicked", function(data) {
-  console.log(data);
-  if (data.buttonBody == "I need support") {
-    drift.unload();
-    $zopim.livechat.button.show();
-    $zopim.livechat.window.show();
-    $zopim.livechat.say("Hi, there I need support and I came from Drift chat. I can either dump the transcript here or in the notes.");
-    $zopim.livechat.concierge.setName('Chat transferred from Drift');
-    $zopim.livechat.departments.setVisitorDepartment('Support');
-    //$zopim.livechat.setName();
-    //$zopim.livechat.setEmail();
-    // $zopim.livechat.setNotes();
-  } else if (data.buttonBody == "I need customer success") {
-  drift.unload();
-    $zopim.livechat.button.show();
-    $zopim.livechat.window.show();
-    $zopim.livechat.say("Hi, there I need support and I came from Drift chat. I can either dump the transcript here or in the notes.");
-    $zopim.livechat.concierge.setName('Chat transferred from Drift');
-    $zopim.livechat.departments.setVisitorDepartment('Customer Success');
-  }
-});
-</script>
-<!-- End of Drift hand off script -->
+<script src="https://kit.fontawesome.com/0a800149f2.js" crossorigin="anonymous"></script>
+<!-- Make the translated search clear button label available for use in JS -->
+<!-- See buildClearSearchButton() in script.js -->
+<script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KPWCWR28YG"></script>
 
 
-
-<!-- Start of Ada Chatbot script -->
-  <script
-    id="__ada"
-    data-handle="exclaimer"
-    src="https://static.ada.support/embed2.js"
-  ></script>
-<!-- End of Ada Chatbot script -->
-
-<!-- Redirect Script Import -->
+<!-- Redirects -->
 <script src="{{asset 'redirects.js'}}"></script>

@@ -1,24 +1,27 @@
-
 <div class="container-divider"></div>
 <div class="container">
+  <div class="notification-bar">
+   <p><i class="fa-regular fa-circle-exclamation"></i>Need to raise an On-Premise ticket?</p><a href="https://legacy.support.exclaimer.com/hc/en-gb/requests/new" class="btn">Raise a ticket</a>
+  </div>
   <nav class="sub-nav">
     {{breadcrumbs}}
-    <div>
-    {{search submit=false}}
-    <a href="https://legacy.support.exclaimer.com/hc/en-gb/requests/new" class="legacy-button">Need to raise an On-Premise ticket?</a>
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+      {{search submit=false}}
     </div>
   </nav>
-  
-  <h1 id="formTitle">
+
+  <h1>
     {{t 'submit_a_request'}}
-    {{#if follow_up}}
-      <span class="follow-up-hint">
-        {{follow_up}}
-      </span>
-    {{/if}}<br/><br/>
+    <span class="follow-up-hint">
+      {{follow_up}}
+    </span>
   </h1>
-  <p id="formSubTitle" style="display: none">We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.</p>
+
   <div id="main-content" class="form">
-    {{request_form}}
+    {{request_form wysiwyg=true}}
   </div>
 </div>

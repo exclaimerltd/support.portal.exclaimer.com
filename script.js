@@ -1,5 +1,89 @@
+// Vanilla JS debounce function, by Josh W. Comeau:
+// https://www.joshwcomeau.com/snippets/javascript/debounce/
+function debounce(callback, wait) {
+  let timeoutId = null;
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args);
+    }, wait);
+  };
+}
+
+// Define variables for search field
+let searchFormFilledClassName = "search-has-value";
+let searchFormSelector = "form[role='search']";
+
+// Clear the search input, and then return focus to it
+function clearSearchInput(event) {
+  event.target.closest(searchFormSelector).classList.remove(searchFormFilledClassName);
+  
+  let input;
+  if (event.target.tagName === "INPUT") {
+    input = event.target;
+  } else if (event.target.tagName === "BUTTON") {
+    input = event.target.previousElementSibling;
+  } else {
+    input = event.target.closest("button").previousElementSibling;
+  }
+  input.value = "";
+  input.focus();
+}
+
+// Have the search input and clear button respond 
+// when someone presses the escape key, per:
+// https://twitter.com/adambsilver/status/1152452833234554880
+function clearSearchInputOnKeypress(event) {
+  const searchInputDeleteKeys = ["Delete", "Escape"];
+  if (searchInputDeleteKeys.includes(event.key)) {
+    clearSearchInput(event);
+  }
+}
+
+// Create an HTML button that all users -- especially keyboard users -- 
+// can interact with, to clear the search input.
+// To learn more about this, see:
+// https://adrianroselli.com/2019/07/ignore-typesearch.html#Delete 
+// https://www.scottohara.me/blog/2022/02/19/custom-clear-buttons.html
+function buildClearSearchButton(inputId) {
+  const button = document.createElement("button");
+  button.setAttribute("type", "button");
+  button.setAttribute("aria-controls", inputId);
+  button.classList.add("clear-button");
+  const buttonLabel = window.searchClearButtonLabelLocalized;
+  const icon = `<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='${buttonLabel}'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>`;
+  button.innerHTML = icon;
+  button.addEventListener("click", clearSearchInput);
+  button.addEventListener("keyup", clearSearchInputOnKeypress);
+  return button;
+}
+
+// Append the clear button to the search form
+function appendClearSearchButton(input, form) {
+  searchClearButton = buildClearSearchButton(input.id);
+  form.append(searchClearButton);
+  if (input.value.length > 0) {
+    form.classList.add(searchFormFilledClassName);
+  }
+}
+
+// Add a class to the search form when the input has a value;
+// Remove that class from the search form when the input doesn't have a value.
+// Do this on a delay, rather than on every keystroke. 
+const toggleClearSearchButtonAvailability = debounce(function(event) {
+  const form = event.target.closest(searchFormSelector);
+  form.classList.toggle(searchFormFilledClassName, event.target.value.length > 0);
+}, 200)
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Key map
+  var ENTER = 13;
+  var ESCAPE = 27;
+  var SPACE = 32;
+  var UP = 38;
+  var DOWN = 40;
+  var TAB = 9;
+
   function closest (element, selector) {
     if (Element.prototype.closest) {
       return element.closest(selector);
@@ -14,11 +98,15 @@ document.addEventListener('DOMContentLoaded', function() {
     } while (element !== null && element.nodeType === 1);
     return null;
   }
-  // Support Ticket Form
-    // Subscription ID
-    $(".form-field.request_custom_fields_360014356197").append(
-      '<p id="request_description_hint">To obtain your Sub ID, follow the steps <a href="https://support.exclaimer.com/hc/en-gb/articles/360018307337" target="_blank">here</a></p>'
-    );
+
+  // Set up clear functionality for the search field
+  const searchForms = [...document.querySelectorAll(searchFormSelector)];
+  const searchInputs = searchForms.map(form => form.querySelector("input[type='search']"));
+  searchInputs.forEach((input) => {
+    appendClearSearchButton(input, input.closest(searchFormSelector));
+    input.addEventListener("keyup", clearSearchInputOnKeypress);
+    input.addEventListener("keyup", toggleClearSearchButtonAvailability);
+  });
 
   // social share popups
   Array.prototype.forEach.call(document.querySelectorAll('.share a'), function(anchor) {
@@ -78,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     requestCommentSubmitButton = document.querySelector('.request-container .comment-container input[type=submit]');
 
   if (requestMarkAsSolvedButton) {
-    requestMarkAsSolvedButton.addEventListener('click', function () {
+    requestMarkAsSolvedButton.addEventListener('click', function() {
       requestMarkAsSolvedCheckbox.setAttribute('checked', true);
       requestCommentSubmitButton.disabled = true;
       this.setAttribute('data-disabled', true);
@@ -90,9 +178,23 @@ document.addEventListener('DOMContentLoaded', function() {
   // Change Mark as solved text according to whether comment is filled
   var requestCommentTextarea = document.querySelector('.request-container .comment-container textarea');
 
+  var usesWysiwyg = requestCommentTextarea && requestCommentTextarea.dataset.helper === "wysiwyg";
+
+  function isEmptyPlaintext(s) {
+    return s.trim() === '';
+  }
+
+  function isEmptyHtml(xml) {
+    var doc = new DOMParser().parseFromString(`<_>${xml}</_>`, "text/xml");
+    var img = doc.querySelector("img");
+    return img === null && isEmptyPlaintext(doc.children[0].textContent);
+  }
+
+  var isEmpty = usesWysiwyg ? isEmptyHtml : isEmptyPlaintext;
+
   if (requestCommentTextarea) {
     requestCommentTextarea.addEventListener('input', function() {
-      if (requestCommentTextarea.value === '') {
+      if (isEmpty(requestCommentTextarea.value)) {
         if (requestMarkAsSolvedButton) {
           requestMarkAsSolvedButton.innerText = requestMarkAsSolvedButton.getAttribute('data-solve-translation');
         }
@@ -107,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Disable submit button if textarea is empty
-  if (requestCommentTextarea && requestCommentTextarea.value === '') {
+  if (requestCommentTextarea && isEmpty(requestCommentTextarea.value)) {
     requestCommentSubmitButton.disabled = true;
   }
 
@@ -123,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Submit requests filter form on search in the request list page
   var quickSearch = document.querySelector('#quick-search');
   quickSearch && quickSearch.addEventListener('keyup', function(e) {
-    if (e.keyCode === 13) { // Enter key
+    if (e.keyCode === ENTER) {
       e.stopPropagation();
       saveFocus();
       closest(this, 'form').submit();
@@ -142,25 +244,21 @@ document.addEventListener('DOMContentLoaded', function() {
     toggle.focus();
   }
 
-  var burgerMenu = document.querySelector('.header .menu-button');
-  var userMenu = document.querySelector('#user-nav');
+  var menuButton = document.querySelector('.header .menu-button-mobile');
+  var menuList = document.querySelector('#user-nav-mobile');
 
-  burgerMenu.addEventListener('click', function(e) {
+  menuButton.addEventListener('click', function(e) {
     e.stopPropagation();
-    toggleNavigation(this, userMenu);
+    toggleNavigation(this, menuList);
   });
 
 
-  userMenu.addEventListener('keyup', function(e) {
-    if (e.keyCode === 27) { // Escape key
+  menuList.addEventListener('keyup', function(e) {
+    if (e.keyCode === ESCAPE) {
       e.stopPropagation();
-      closeNavigation(burgerMenu, this);
+      closeNavigation(menuButton, this);
     }
   });
-
-  if (userMenu.children.length === 0) {
-    burgerMenu.style.display = 'none';
-  }
 
   // Toggles expanded aria to collapsible elements
   var collapsible = document.querySelectorAll('.collapsible-nav, .collapsible-sidebar');
@@ -173,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     el.addEventListener('keyup', function(e) {
-      if (e.keyCode === 27) { // Escape key
+      if (e.keyCode === ESCAPE) {
         closeNavigation(toggle, this);
       }
     });
@@ -188,21 +286,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // If a section has more than 6 subsections, we collapse the list, and show a trigger to display them all
-  const seeAllTrigger = document.querySelector("#see-all-sections-trigger");
-  const subsectionsList = document.querySelector(".section-list");
-
-  if (subsectionsList && subsectionsList.children.length > 6) {
-    seeAllTrigger.setAttribute("aria-hidden", false);
-
-    seeAllTrigger.addEventListener("click", function(e) {
-      subsectionsList.classList.remove("section-list--collapsed");
-      seeAllTrigger.parentNode.removeChild(seeAllTrigger);
-    });
-  }
-
   // If multibrand search has more than 5 help centers or categories collapse the list
-  const multibrandFilterLists = document.querySelectorAll(".multibrand-filter-list");
+  var multibrandFilterLists = document.querySelectorAll(".multibrand-filter-list");
   Array.prototype.forEach.call(multibrandFilterLists, function(filter) {
     if (filter.children.length > 6) {
       // Display the show more button
@@ -219,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // If there are any error notifications below an input field, focus that field
-  const notificationElm = document.querySelector(".notification-error");
+  var notificationElm = document.querySelector(".notification-error");
   if (
     notificationElm &&
     notificationElm.previousElementSibling &&
@@ -228,46 +313,171 @@ document.addEventListener('DOMContentLoaded', function() {
     notificationElm.previousElementSibling.focus();
   }
 
-  // get id and template name
-var _location = window.location.href.split('/en-us/');
-console.log('window.location.href: ' + window.location.href + ', _location: ');
-console.log(_location);
-if (_location.length > 1) {
-  var _split = _location[1].split('-')[0];
-  var _templatename = _split.split('/')[0];
-  var _templateid = _split.split('/')[1];
-}
+  // Dropdowns
+  
+  function Dropdown(toggle, menu) {
+    this.toggle = toggle;
+    this.menu = menu;
 
-//Catergories lists
-var categoriesList = function(_categories) {
-  if(typeof HelpCenter.user.locale == 'undefined') {
-    HelpCenter.user.locale = window.location.pathname.replace('/', '').replace('?','/').split('/')[1];
+    this.menuPlacement = {
+      top: menu.classList.contains("dropdown-menu-top"),
+      end: menu.classList.contains("dropdown-menu-end")
+    };
+
+    this.toggle.addEventListener("click", this.clickHandler.bind(this));
+    this.toggle.addEventListener("keydown", this.toggleKeyHandler.bind(this));
+    this.menu.addEventListener("keydown", this.menuKeyHandler.bind(this));
   }
 
-  $.ajax({
-    url: '/api/v2/help_center/'+HelpCenter.user.locale+'/categories.json',
-    type: 'GET',
-    dataType: 'json',
-    success: _categories
-  });
-};
+  Dropdown.prototype = {
 
-var _list = '';
+    get isExpanded() {
+      return this.menu.getAttribute("aria-expanded") === "true";
+    },
 
-categoriesList(function(data){
-  $(data.categories).each(function (idx, itm) {
-    if (itm.name !== 'General') {
-      _list = _list + '<li><a href="' + itm.html_url + '" id="' + itm.id + '">' + itm.name + '</a></li>'
-    } 
-  });
-  $('.left-side-category-list').html(_list);
-  $('.left-side-category-list a#' +_templateid).addClass('active');
+    get menuItems() {
+      return Array.prototype.slice.call(this.menu.querySelectorAll("[role='menuitem']"));
+    },
 
-  if(_templatename=='sections' || _templatename=='articles') {
-    var categoryid = $('.breadcrumbs > li:nth-child(2) > a').attr('href').split('/categories/')[1].split('-')[0];
-    $('.left-side-category-list a#' + categoryid).addClass('active');
+    dismiss: function() {
+      if (!this.isExpanded) return;
+
+      this.menu.setAttribute("aria-expanded", false);
+      this.menu.classList.remove("dropdown-menu-end", "dropdown-menu-top");
+    },
+
+    open: function() {
+      if (this.isExpanded) return;
+
+      this.menu.setAttribute("aria-expanded", true);
+      this.handleOverflow();
+    },
+
+    handleOverflow: function() {
+      var rect = this.menu.getBoundingClientRect();
+
+      var overflow = {
+        right: rect.left < 0 || rect.left + rect.width > window.innerWidth,
+        bottom: rect.top < 0 || rect.top + rect.height > window.innerHeight
+      };
+
+      if (overflow.right || this.menuPlacement.end) {
+        this.menu.classList.add("dropdown-menu-end");
+      }
+
+      if (overflow.bottom || this.menuPlacement.top) {
+        this.menu.classList.add("dropdown-menu-top");
+      }
+
+      if (this.menu.getBoundingClientRect().top < 0) {
+        this.menu.classList.remove("dropdown-menu-top")
+      }
+    },
+
+    focusNextMenuItem: function(currentItem) {
+      if (!this.menuItems.length) return;
+
+      var currentIndex = this.menuItems.indexOf(currentItem);
+      var nextIndex = currentIndex === this.menuItems.length - 1 || currentIndex < 0 ? 0 : currentIndex + 1;
+
+      this.menuItems[nextIndex].focus();
+    },
+
+    focusPreviousMenuItem: function(currentItem) {
+      if (!this.menuItems.length) return;
+
+      var currentIndex = this.menuItems.indexOf(currentItem);
+      var previousIndex = currentIndex <= 0 ? this.menuItems.length - 1 : currentIndex - 1;
+
+      this.menuItems[previousIndex].focus();
+    },
+
+    clickHandler: function() {
+      if (this.isExpanded) {
+        this.dismiss();
+      } else {
+        this.open();
+      }
+    },
+
+    toggleKeyHandler: function(e) {
+      switch (e.keyCode) {
+        case ENTER:
+        case SPACE:
+        case DOWN:
+          e.preventDefault();
+          this.open();
+          this.focusNextMenuItem();
+          break;
+        case UP:
+          e.preventDefault();
+          this.open();
+          this.focusPreviousMenuItem();
+          break;
+        case ESCAPE:
+          this.dismiss();
+          this.toggle.focus();
+          break;
+      }
+    },
+
+    menuKeyHandler: function(e) {
+      var firstItem = this.menuItems[0];
+      var lastItem = this.menuItems[this.menuItems.length - 1];
+      var currentElement = e.target;
+
+      switch (e.keyCode) {
+        case ESCAPE:
+          this.dismiss();
+          this.toggle.focus();
+          break;
+        case DOWN:
+          e.preventDefault();
+          this.focusNextMenuItem(currentElement);
+          break;
+        case UP:
+          e.preventDefault();
+          this.focusPreviousMenuItem(currentElement);
+          break;
+        case TAB:
+          if (e.shiftKey) {
+            if (currentElement === firstItem) {
+              this.dismiss();
+            } else {
+              e.preventDefault();
+              this.focusPreviousMenuItem(currentElement);
+            }
+          } else if (currentElement === lastItem) {
+            this.dismiss();
+          } else {
+            e.preventDefault();
+            this.focusNextMenuItem(currentElement);
+          }
+          break;
+        case ENTER:
+        case SPACE:
+          e.preventDefault();
+          currentElement.click();
+          break;
+      }
+    }
   }
 
-});
+  var dropdowns = [];
+  var dropdownToggles = Array.prototype.slice.call(document.querySelectorAll(".dropdown-toggle"));
 
+  dropdownToggles.forEach(function(toggle) {
+    var menu = toggle.nextElementSibling;
+    if (menu && menu.classList.contains("dropdown-menu")) {
+      dropdowns.push(new Dropdown(toggle, menu));
+    }
+  });
+
+  document.addEventListener("click", function(evt) {
+    dropdowns.forEach(function(dropdown) {
+      if (!dropdown.toggle.contains(evt.target)) {
+        dropdown.dismiss();
+      }
+    });
+  });
 });

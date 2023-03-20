@@ -1,167 +1,71 @@
-<div class="container-divider categories-divider"></div>
-<div class="subnav">
-    <div class="subnav__search">
-        {{search submit=false}}
+<div class="container-divider"></div>
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+      {{search scoped=settings.scoped_kb_search submit=false}}
     </div>
-   <div class="subnav__breadcrumbs">
-      <a href="/hc/en-gb" title="Return to Home" class="breadcrumbs-btn">
-      Return to Home
-    </a>
-    <a href="https://portal.exclaimer.com" title="Return to Portal" class="breadcrumbs-btn" target="_blank">
-      Return to Portal
-    </a>
-   </div>
-  </div>
+  </nav>
 
-<div class="main__container">
-  
-  <div class="col-left">
-    <ul class="side-bar-custom">
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/360010737611">Welcome home</a>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/360010737631">Configuration</a>
-        <ul class="side-bar-custom-sub">
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010737751">Connect to Microsoft 365</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/4406844237341">Connect to Google</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010621212">Manage User Data</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010737711">Manage Mail Flow</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010737691">Outlook Signatures</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/4413263355921">Exchange On-Premises</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/8740951222045">Gmail Signatures</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/360010621172" class="border-top">Signatures</a>
-        <ul class="side-bar-custom-sub">
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010804291">Create Signature</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010804331">Create Folder</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010804351">Edit Signature Design</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010804371">Manage Signature Rules</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/360010690532">Folder Security</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/4916372216733">Power Ups</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/4406902610845">Signatures Tester</a>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/4757726923805">Analytics</a>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/360010737651">Account Settings</a>
-        <ul class="side-bar-custom-sub">
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/4404078709009">Billing</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/4404074869905">Subscriptions</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/360010621192">Troubleshooting</a>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/4898617889565">Want to know more...</a>
-        <ul class="side-bar-custom-sub">
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/5138949233693">Exclaimer Cloud</a>        
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/sections/4898619042589">Signature Designer</a>
-          </li>
-          <li>
-            <a class="sidenav-item" href="/hc/en-gb/articles/6174023025821">Navigation Hints</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/sections/9128956898077">FAQ</a>
-      </li>
-      <li>
-        <a class="sidenav-item" href="/hc/en-gb/articles/360050338692">Glossary</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-right">
-    {{#is section.id 9128956898077}} <!-- FAQ Section -->
-      <div class="faq">
-        <div class="faq-section-selector">
-          <h1 class="faq-title">
-            {{section.name}}
-          </h1>
-          <p class="faq-sub-heading">Please choose a topic below to get started.</p>
-          {{#if section.articles}}
-            <ul class="faq-topics">
-              {{#each section.articles}}
-                <li class="faq-topic">
-                  <a href="{{url}}" class="faq-topic-link">{{title}}</a>
-                </li>
-              {{/each}}
-              
-            </ul>
-          {{/if}}
-        </div>
-      </div>
-    {{else}} <!-- Generic Sections -->
-      <h1 class="section-title">
-        <strong>
-          {{section.name}}
-        </strong>
-      </h1>
+  <div class="section-container">
+    <section id="main-content" class="section-content">
+      <header class="page-header">
+        <h1>{{section.name}}</h1>
+        {{#if settings.show_follow_section}}
+          <div class="section-subscribe">{{subscribe}}</div>
+        {{/if}}
+        {{#if section.description}}
+          <p class="page-header-description">{{section.description}}</p>
+        {{/if}}
+      </header>
       {{#if section.sections}}
-        <ul class="sub-section">
+        <ul class="section-list">
           {{#each section.sections}}
-            <li class="sub-section-li">
-              <a href="{{url}}" class="sub-section-li-link-btn"><span>{{name}}</span></a>
+          <li class="section-list-item">
+              <a href="{{url}}">
+                <span>{{name}}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 14.5l6.1-6.1c.2-.2.2-.5 0-.7L5 1.5"/>
+                </svg>
+              </a>
             </li>
           {{/each}}
-          <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
         </ul>
       {{/if}}
+
+      {{pagination "section.sections"}}
+
       {{#if section.articles}}
-        <h2 class="section-title" style="padding-top: 15px">
-          <strong>Articles</strong>
-        </h2>
-        <ul class="article-list-custom">
+        <ul class="article-list">
           {{#each section.articles}}
             <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
+              {{#if promoted}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 12 12" class="icon-star" title="{{t 'promoted'}}">
+                  <path fill="currentColor" d="M2.88 11.73c-.19 0-.39-.06-.55-.18a.938.938 0 01-.37-1.01l.8-3L.35 5.57a.938.938 0 01-.3-1.03c.12-.37.45-.63.85-.65L4 3.73 5.12.83c.14-.37.49-.61.88-.61s.74.24.88.6L8 3.73l3.11.17a.946.946 0 01.55 1.68L9.24 7.53l.8 3a.95.95 0 01-1.43 1.04L6 9.88l-2.61 1.69c-.16.1-.34.16-.51.16z"/>
+                </svg>
+              {{/if}}
               <a href="{{url}}" class="article-list-link">{{title}}</a>
-              <a href="{{url}}" class="article-list-link-btn">View article</a>
+              {{#if internal}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                  <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+                  <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+                </svg>
+              {{/if}}
             </li>
           {{/each}}
         </ul>
+      {{else}}
+        <i class="section-empty">
+          <a href="{{section.url}}">{{t 'empty'}}</a>
+        </i>
       {{/if}}
-      {{pagination}}
-    {{/is}}
+
+      {{pagination "section.articles"}}
+
+    </section>
   </div>
 </div>
