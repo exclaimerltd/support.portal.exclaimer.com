@@ -5650,6 +5650,78 @@ color: white!important;
   padding-left: 40px;  
 }
 
+.article {
+  max-width: unset;
+}
+
+.article-body > table{
+  width: 100%;
+  border: 1px solid #B7BCC4;
+}
+
+.article-body > table > tbody > tr > th{
+  text-align: left;
+  border: 1px solid #B7BCC4;
+  padding: 0.75em;
+  width: 200px;
+  background-color: #dfe3ee;
+  font-weight: 700;
+}
+
+.article-body > table > tbody > tr > td.highlight{
+  width: 200px;
+  background-color: #dfe3ee;
+  font-weight: 700;
+}
+
+.article-body > table > tbody > tr > td{
+  border: 1px solid #B7BCC4;
+  padding: 0.75em;
+}
+
+.article-votes {
+  padding-bottom: 0;
+}
+
+button {
+  border-radius: 50px;
+  padding: 10px 15px;
+}
+
+button[aria-label="Follow"], button[aria-label="Unfollow"] {
+  border-radius: 50px;
+  padding: 10px 15px;
+}
+
+button[aria-label="Follow"]::before {
+  font: var(--fa-font-light);
+  content: '\f004';
+  margin-right: 10px;
+}
+
+button[aria-label="Unfollow"]::before {
+  font: var(--fa-font-solid);
+  content: '\f004';
+  margin-right: 10px;
+}
+
+.button {
+  border-radius: 50px;
+  padding: 10px 15px;
+}
+
+.article-vote-up::before {
+  font: var(--fa-font-solid);
+  content: "\f164";
+  margin-right: 10px;
+}
+
+.article-vote-down::before {
+  font: var(--fa-font-solid);
+  content: "\f165";
+  margin-right: 10px;
+}
+
 /*** MEDIA QUERIES - MS ***/
 @media screen and (max-width: 768px) {
   .activityhome {
