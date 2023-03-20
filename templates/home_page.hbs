@@ -1,114 +1,91 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
-<div class="legacy-banner">
-  <a href="https://legacy.support.exclaimer.com/hc/en-gb" class="legacy-banner-button">Looking for On-Premise Support? Head over to our Legacy Support Site.</a>
-</div>
-<section class="section hero">
+<section id="main-content" class="section hero">
   <div class="hero-inner">
-    <h2><strong>How can we help?</strong></h2>
-    <p>Start by typing a question or topic below.</p>
+    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+    </svg>
     {{search submit=false instant=settings.instant_search class='search search-full'}}
   </div>
 </section>
 
-<section class="section whats-new">
-  <div class="container whats-new-container">
-    <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/360050180772" title="Whats new in Exclaimer Cloud" class="whats-new-link">
-      <h3>Whats new in Exclaimer Cloud</h3>    
-      <p class="whats-new-p">Releases and changes to Exclaimer Cloud</p>
-    </a>
-    <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/360050180772" title="Whats new in Exclaimer Cloud" class="whats-new-btn">
-      Read more
-    </a>
-  </div>
-</section>
+<div class="container">
 
-<section class="main-section">
-  <div class="left-col">
-    <h2 class="home-categories__header">Choose a category below</h2>
-    <ul class="home-categories">
-      <li>
-        <a href="/hc/en-gb/sections/360010737611">Welcome home</a>
-      </li>
-      <li>
-        <a href="/hc/en-gb/sections/360010737631">Configuration</a>
-        <ul class="home-categories__sub">
-          <li>
-            <a href="/hc/en-gb/sections/360010737751">Connect to Microsoft 365</a>
-          </li>
-          <li>
-            <a href="/hc/en-gb/sections/4406844237341">Connect to Google</a>
-          </li>
-          <li>
-            <a href="/hc/en-gb/sections/360010621212">Manage User Data</a>
-          </li>
-          <li>
-            <a href="/hc/en-gb/sections/360010737711">Manage Mail Flow</a>
-          </li>
-          <li>
-            <a href="/hc/en-gb/sections/360010737691">Outlook Signatures</a>
-          </li>
-          <li>
-            <a href="/hc/en-gb/sections/4413263355921">Exchange On-Premises</a>
-          </li>
-          <li>
-            <a href="/hc/en-gb/sections/8740951222045">Gmail Signatures</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="/hc/en-gb/sections/360010621172" class="border-top">Signatures</a>
-        <ul class="home-categories__sub">
-          <li>
-            <a href="/hc/en-gb/sections/4916372216733">Power Ups</a>
-          </li>
-          </ul>
-      </li>
-      <li>
-        <a href="/hc/en-gb/sections/4406902610845">Signatures Tester</a>
-      </li>
-      <li>
-        <a href="/hc/en-gb/sections/4757726923805">Analytics</a>
-      </li>
-      <li>
-        <a href="/hc/en-gb/sections/360010737651">Account Settings</a>
-        <ul class="home-categories__sub">
-          <li>
-            <a href="/hc/en-gb/sections/4404078709009">Billing</a>
-          </li>
-          <li>
-            <a href="/hc/en-gb/sections/4404074869905">Subscriptions</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="/hc/en-gb/sections/360010621192">Troubleshooting</a>
-      </li>
-      <li>
-        <a href="/hc/en-gb/sections/4898617889565">Want to know more...</a>
-        <ul class="home-categories__sub">
-          <li>
-            <a href="/hc/en-gb/sections/5138949233693">Exclaimer Cloud</a>        
-          </li>
-          <li>
-            <a href="/hc/en-gb/sections/4898619042589">Signature Designer</a>
-          </li>
-          <li>
-            <a href="/hc/en-gb/articles/6174023025821">Navigation Hints</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="/hc/en-gb/sections/9128956898077">FAQ</a>
-      </li>
-      <li>
-        <a href="/hc/en-gb/articles/360050338692">Glossary</a>
-      </li>
-    </ul>
-  </div>  
-  <div class="right-col">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
+  <div class="notification-bar notification-bar-home">
+   <p><i class="fa-regular fa-circle-exclamation"></i>Looking for On-Premise Support? Head over to our Legacy Support Site.</p><a href="https://legacy.support.exclaimer.com/hc/en-gb" class="btn">Legacy Support</a>
   </div>
-</section>
+
+  <section class="section knowledge-base kbhome">
+    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
+    
+    <section class="toc">
+      <ul class="toc_menu">
+        <!-- CATEGORY -->
+        {{#each categories}}
+          <!-- SECTION -->
+          {{#each sections}}
+            {{#is name 'Legacy UI'}}{{else}}
+              {{#is name 'Frequently Asked Questions'}}{{else}}
+                {{#is name 'Signature Design - videos ??'}}{{else}}
+                  {{#is name 'Signature Design - Best Practices'}}{{else}}
+                    <li class="toc_menu-s">
+                      <a href="{{url}}">{{name}}</a>
+                      {{#each sections}}
+                        <li class="toc_menu-ss">
+                          <a href="{{url}}">{{name}}</a>
+                        </li>
+                      {{/each}}
+                    </li>
+                  {{/is}}
+                {{/is}}
+              {{/is}}
+            {{/is}}
+          {{/each}}
+          <!-- END: SECTION -->
+        {{/each}}
+        <!-- END: Category -->
+      </ul>
+      {{pagination}}
+    </section>
+
+    <section class="section home-section activityhome">
+      {{#if settings.show_recent_activity}}
+        {{recent_activity}}
+      {{/if}}
+    </section>
+
+    {{!-- {{#if promoted_articles}}
+      <section class="articles">
+        <h2>{{t 'promoted_articles'}}</h2>
+        <ul class="article-list promoted-articles">
+          {{#each promoted_articles}}
+            <li class="promoted-articles-item">
+                <a href="{{url}}">
+                  {{title}}
+                  {{#if internal}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                      <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+                      <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+                    </svg>
+                  {{/if}}
+                </a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/if}} --}}
+  </section>
+
+  {{!-- {{#if help_center.community_enabled}}
+    <section class="section home-section community">
+      <h2>{{t 'community'}}</h2>
+      {{#link 'community' class='community-link'}}
+        {{t 'join_conversation'}}
+      {{/link}}
+
+      <div class="community-image"></div>
+    </section>
+  {{/if}} --}}
+</div>

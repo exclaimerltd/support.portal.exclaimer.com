@@ -2,14 +2,20 @@
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
-    {{search submit=false}}
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+      {{search submit=false}}
+    </div>
   </nav>
 
   <h1 class="form-header">
     {{t 'what_is_your_post_about'}}
   </h1>
 
-  <div class="form">
+  <div id="main-content" class="form">
     {{#form 'post' class='new_community_post'}}
       <div class="form-field">
         {{#required 'title'}}
@@ -57,6 +63,23 @@
         {{#validate 'topic'}}
           <div class="notification notification-error notification-inline">
             {{error 'topic'}}
+          </div>
+        {{/validate}}
+      </div>
+
+      <div class="form-field">
+        {{#required 'content_tags'}}
+          {{label 'content_tags'}}
+        {{else}}
+          {{#label 'content_tags'}}
+            {{t 'content_tags_label'}}<span class="optional">({{t 'optional'}})</span>
+          {{/label}}
+        {{/required}}
+        <span class="content-tags-add-hint">{{t 'content_tags_description'}}</span>
+        {{multiselect 'content_tags'}}
+        {{#validate 'content_tags'}}
+          <div class="notification notification-error notification-inline">
+            {{error 'content_tags'}}
           </div>
         {{/validate}}
       </div>
