@@ -10,6 +10,31 @@
       {{search scoped=settings.scoped_kb_search submit=false}}
     </div>
   </nav>
+  {{#is section.id 9128956898077}}
+    <div class="faq">
+      <div class="faq-section-selector">
+        <h1 class="faq-title">
+          <a href="/hc/en-gb/sections/9128956898077-Frequently-Asked-Questions">{{section.name}}</a>
+        </h1>
+        <p class="faq-sub-heading">Please choose a topic below.</p>
+        {{#if section.articles}}
+          <ul class="faq-topics">
+            {{#each section.articles}}
+              <li class="faq-topic">
+                <a href="{{url}}" class="faq-topic-link">{{title}}</a>
+              </li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      </div>
+      <div class="faq-article">
+        <h2 class="faq-article-title">
+          {{article.title}}
+        </h2>
+        <p>{{article.body}}</p>
+      </div>
+    </div>
+  {{else}}
   <div class="article-container" id="article-container">
     <aside class="article-sidebar" aria-labelledby="section-articles-title">
       {{#if settings.show_articles_in_section}}
@@ -332,4 +357,5 @@
       {{/if}}
     </article>
   </div>
+  {{/is}}
 </div>
