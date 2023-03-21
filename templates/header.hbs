@@ -16,7 +16,7 @@
         <ul class="user-nav-list">
           <li><a href="{{page_path 'help_center'}}/sections/9128956898077-Frequently-Asked-Questions" class="btn" aria-label="faq">{{ dc 'faq' }}</a></li>
           {{!-- <li>{{link 'community'}}</li> --}}
-          <li>{{link 'new_request' class='submit-a-request'}}</li>
+          <li><a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557">{{t 'submit_a_request'}}</a></li>
           {{#unless signed_in}}
             <li>
               {{#link "sign_in" class="sign-in"}}
