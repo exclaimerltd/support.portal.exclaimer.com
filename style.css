@@ -5722,6 +5722,34 @@ button[aria-label="Unfollow"]::before {
   margin-right: 10px;
 }
 
+/*** Downvote Message ***/
+.downvote-message {
+  display: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.feedback-link, .feedback-link:hover {
+  text-decoration: underline;
+}
+
+.feedback-link:hover {
+  color: #F27021;
+}
+
+.request_ticket_form_id {
+  display: none;
+}
+
+.formHeader {
+  margin-bottom: 0.335em;
+}
+
+.formSubTitle {
+  display: none;
+}
+
 /*** MEDIA QUERIES - MS ***/
 @media screen and (max-width: 768px) {
   .activityhome {
