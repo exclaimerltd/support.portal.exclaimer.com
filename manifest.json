@@ -1,7 +1,7 @@
 {
   "name": "ExclaimerV2",
   "author": "Exclaimer/Zendesk",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "api_version": 2,
   "default_locale": "en-us",
   "settings": [
@@ -20,7 +20,7 @@
           "type": "color",
           "description": "brand_accent_color_description",
           "label": "brand_accent_color_label",
-          "value": "#0d0a47"
+          "value": "#202A50"
         },
         {
           "identifier": "brand_text_color",
@@ -41,21 +41,21 @@
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#F27021"
+          "value": "#202A50"
         },
         {
           "identifier": "hover_link_color",
           "type": "color",
           "description": "hover_link_color_description",
           "label": "hover_link_color_label",
-          "value": "#FA935C"
+          "value": "#F27021"
         },
         {
           "identifier": "visited_link_color",
           "type": "color",
           "description": "visited_link_color_description",
           "label": "visited_link_color_label",
-          "value": "#9358B0"
+          "value": "#202A50"
         },
         {
           "identifier": "background_color",

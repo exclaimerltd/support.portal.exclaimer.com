@@ -479,7 +479,55 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdown.dismiss();
       }
     });
-  });
+  });  
 
-  
+  // Form ID 9490217014813 - KB Feedback
+  function checkTicketId(){
+    const formHeader = document.querySelector('.formHeader');
+    const formSubTitle = document.querySelector('.formSubTitle');
+    const ccLabel = document.querySelector('label[for=request_collaborators_]');
+    const emailLabel = document.querySelector('label[for=request_anonymous_requester_email]');
+    const subject = document.querySelector('#request_subject');
+    var subjectAfter = " - [Article Feedback]";
+    const suggested = document.querySelector('.suggestion-list');
+    const helpURL = document.querySelector('.request_custom_fields_9489978202909');
+    const desc = document.querySelector('label[for=request_description]');
+
+    if(window.location.href.indexOf('9490217014813') > 0){  //The numbers are form ID which I get from the form URL
+      formHeader.innerHTML = "Knowledgebase Feedback";
+      formSubTitle.style.display = 'block';
+      if (ccLabel !== null) {
+        ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
+      }
+      if (emailLabel !== null) {
+        emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
+      }
+      subject.value += subjectAfter;
+      suggested.style.display = 'none';
+      helpURL.style.display = 'none';
+      desc.innerHTML = 'Feedback';
+    }
+  }
+  checkTicketId();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector(".article-votes-controls")) {
+    const voteButtons = document.querySelectorAll(".article-vote");
+    const voteMessage = document.querySelector(".downvote-message");
+
+    voteButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        let isDownButton = button.matches(".article-vote-down");
+        let isPressed = button.matches(".button-primary");
+
+        if (isDownButton && !isPressed) {
+          voteMessage.style.display = "block";
+        } else {
+          voteMessage.style.display = "none";
+        }
+      });
+    });
+  }
+});
+
