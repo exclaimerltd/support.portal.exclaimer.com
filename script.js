@@ -487,7 +487,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const formSubTitle = document.querySelector('.formSubTitle');
     const ccLabel = document.querySelector('label[for=request_collaborators_]');
     const emailLabel = document.querySelector('label[for=request_anonymous_requester_email]');
-    const subject = document.querySelector('#request_subject');
+    const subject = document.querySelector('.request_subject');
+    const subjectWords = document.querySelector('#request_subject');
     var subjectAfter = " - [Article Feedback]";
     const suggested = document.querySelector('.suggestion-list');
     const helpURL = document.querySelector('.request_custom_fields_9489978202909');
@@ -502,7 +503,8 @@ document.addEventListener('DOMContentLoaded', function() {
       if (emailLabel !== null) {
         emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
       }
-      subject.value += subjectAfter;
+      subjectWords.value += subjectAfter;
+      subject.style.display = 'none';
       suggested.style.display = 'none';
       helpURL.style.display = 'none';
       desc.innerHTML = 'Feedback';
