@@ -40,15 +40,15 @@
     });
   }
 
-  var faqAcc = document.getElementsByClassName("faq-question-title");
-  for (var j = 0; j < faqAcc.length; j++) {
-    faqAcc[j].addEventListener("click", function(){
-      this.classList.toggle("faq-question-title-active");
-      var faqBody = this.nextElementSibling;
-      if (faqBody.style.maxHeight){
-        faqBody.style.maxHeight = null;
+  var sectionSelector = document.getElementsByClassName("section-question-title");
+  for (var j = 0; j < sectionSelector.length; j++) {
+    sectionSelector[j].addEventListener("click", function(){
+      this.classList.toggle("section-question-title-active");
+      var sectionBody = this.nextElementSibling;
+      if (sectionBody.style.maxHeight){
+        sectionBody.style.maxHeight = null;
       } else {
-        faqBody.style.maxHeight = faqBody.scrollHeight + "px";
+        sectionBody.style.maxHeight = sectionBody.scrollHeight + "px";
       }
     })
   }

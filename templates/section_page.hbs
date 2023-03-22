@@ -11,24 +11,47 @@
     </div>
   </nav>
   {{#is section.id 9128956898077}}
-    <div class="faq">
-        <div class="faq-section-selector">
-          <h1 class="faq-title">
+    <div id="faq">
+      <div class="section-selector">
+        <h1 class="section-title">
+          {{section.name}}
+        </h1>
+        {{#if section.description}}
+          <p>{{section.description}}</p>
+        {{/if}}
+        {{#if section.articles}}
+          <ul class="section-topics">
+            {{#each section.articles}}
+              <li class="section-topic">
+                <a href="{{url}}" class="section-topic-link">{{title}}</a>
+              </li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      </div>
+    </div>
+  {{else}}
+    {{#is section.id 9982628913437}}
+      <div id="whatsNew">
+        <div class="section-selector">
+          <h1 class="section-title">
             {{section.name}}
           </h1>
-          <p class="faq-sub-heading">Please choose a topic below to get started.</p>
+          {{#if section.description}}
+            <p>{{section.description}}</p>
+          {{/if}}
           {{#if section.articles}}
-            <ul class="faq-topics">
+            <ul class="section-topics">
               {{#each section.articles}}
-                <li class="faq-topic">
-                  <a href="{{url}}" class="faq-topic-link">{{title}}</a>
+                <li class="section-topic">
+                  <a href="{{url}}" class="section-topic-link">{{title}}</a>
                 </li>
               {{/each}}
             </ul>
           {{/if}}
         </div>
-      </div>
-  {{else}}
+      </div>  
+    {{else}}
     <div class="section-container">
       <section id="main-content" class="section-content">
         <header class="page-header">
@@ -86,6 +109,7 @@
 
       </section>
     </div>
+    {{/is}}
   {{/is}}
   
 </div>

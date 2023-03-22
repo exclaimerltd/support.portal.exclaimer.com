@@ -511,6 +511,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   checkTicketId();
+
+  function checkArticleDate() {
+    const currentArticle = document.querySelector('.faq-topic-link');
+    if(currentArticle.innerHTML === '2022') {
+      console.log('True!');
+    }
+  }
+  checkArticleDate();
+
 });
 
 document.addEventListener("DOMContentLoaded", () => {

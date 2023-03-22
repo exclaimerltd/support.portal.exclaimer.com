@@ -1,6 +1,6 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
-<header>
+<header class="header-color">
   <div class="header header-container">
     <div class="logo">
       {{#link 'help_center'}}
@@ -14,9 +14,10 @@
     <div class="nav-wrapper-desktop">
       <nav class="user-nav" id="user-nav">
         <ul class="user-nav-list">
-          <li><a href="{{page_path 'help_center'}}/sections/9128956898077-Frequently-Asked-Questions" class="btn" aria-label="faq">{{ dc 'faq' }}</a></li>
-          {{!-- <li>{{link 'community'}}</li> --}}
           <li><a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557">{{t 'submit_a_request'}}</a></li>
+          <li><a href="{{page_path 'help_center'}}/sections/9982628913437" class="btn" aria-label="whatsNew">{{ dc 'whats_new' }}</a></li>
+          <li><a href="{{page_path 'help_center'}}/sections/9128956898077" class="btn" aria-label="faq">{{ dc 'faq' }}</a></li>
+          {{!-- <li>{{link 'community'}}</li> --}}
           {{#unless signed_in}}
             <li>
               {{#link "sign_in" class="sign-in"}}
@@ -84,7 +85,8 @@
             <li class="nav-divider"></li>
           {{/if}}
           <li class="item">{{link 'community' role="menuitem"}}</li>
-          <li class="item">{{link 'new_request' role="menuitem" class='submit-a-request'}}</li>
+          <li><a href="{{page_path 'help_center'}}/sections/9982628913437" class="btn">{{ dc 'whats_new' }}</a></li>
+          <li><a href="{{page_path 'help_center'}}/sections/9128956898077" class="btn">{{ dc 'faq' }}</a></li>
           <li class="nav-divider"></li>
           {{#if signed_in}}
             <li class="item">
