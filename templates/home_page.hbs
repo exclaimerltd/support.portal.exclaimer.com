@@ -1,13 +1,16 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">
-  <div class="hero-inner">
-    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-    </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+  <div class="hero-container">
+    <h2 class="hero-heading">Hello how can we help you today?</h2>
+    <p>Search our knowledge base for answers to common questions</p>
+    <div class="hero-inner">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+      {{search submit=false instant=settings.instant_search class='search search-full search-home'}}
+    </div>
   </div>
 </section>
 
@@ -30,6 +33,7 @@
               {{#is name 'Frequently Asked Questions'}}{{else}}
                 {{#is name 'Signature Design - videos ??'}}{{else}}
                   {{#is name 'Signature Design - Best Practices'}}{{else}}
+                    {{#is name 'Whats new in Exclaimer Cloud'}}{{else}}
                     <li class="toc_menu-s">
                       <a href="{{url}}">{{name}}</a>
                       {{#each sections}}
@@ -38,6 +42,7 @@
                         </li>
                       {{/each}}
                     </li>
+                    {{/is}}
                   {{/is}}
                 {{/is}}
               {{/is}}
