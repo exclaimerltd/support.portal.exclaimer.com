@@ -25,32 +25,35 @@
     
     <section class="toc">
       <ul class="toc_menu">
-        <!-- CATEGORY -->
         {{#each categories}}
-          <!-- SECTION -->
           {{#each sections}}
-            {{#is name 'Legacy UI'}}{{else}}
-              {{#is name 'Frequently Asked Questions'}}{{else}}
-                {{#is name 'Signature Design - videos ??'}}{{else}}
-                  {{#is name 'Signature Design - Best Practices'}}{{else}}
-                    {{#is name 'Whats new in Exclaimer Cloud'}}{{else}}
-                    <li class="toc_menu-s">
-                      <a href="{{url}}">{{name}}</a>
-                      {{#each sections}}
-                        <li class="toc_menu-ss">
-                          <a href="{{url}}">{{name}}</a>
-                        </li>
-                      {{/each}}
-                    </li>
-                    {{/is}}
-                  {{/is}}
-                {{/is}}
-              {{/is}}
-            {{/is}}
+          {{#is name 'Legacy UI'}}{{else}}
+          {{#is name 'Frequently Asked Questions'}}{{else}}
+          {{#is name 'Signature Design - videos ??'}}{{else}}
+          {{#is name 'Signature Design - Best Practices'}}{{else}}
+          {{#is name 'Whats new in Exclaimer Cloud'}}{{else}}
+          <li class="toc_menu-item">
+            {{#if sections}}
+            <input class="toc_submenu-controls" type="checkbox" id="{{name}}" name="accordion">
+            <label class="toc_submenu-label" for="{{name}}">
+              <a href="{{url}}" class="toc_link">{{name}}</a>
+            </label>
+            <ul class="toc_submenu">
+              {{#each sections}}
+              <li class="toc_submenu-item"><a href="{{url}}" class="toc_link">{{name}}</a></li>
+              {{/each}}
+            </ul>
+            {{else}}
+              <a href="{{url}}" class="toc_link">{{name}}</a>
+            {{/if}}
+          </li>
+          {{/is}}
+          {{/is}}
+          {{/is}}
+          {{/is}}
+          {{/is}}
           {{/each}}
-          <!-- END: SECTION -->
         {{/each}}
-        <!-- END: Category -->
       </ul>
       {{pagination}}
     </section>

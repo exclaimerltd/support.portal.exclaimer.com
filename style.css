@@ -5218,64 +5218,103 @@ html[dir="rtl"] .notification-left-aligned {
   gap: 5%;
 }
 
-/***** ToC Changes *****/
+/**** Table of Contents ****/
 .toc {
-  display: flex;
+  width: 100%;
 }
 
+/**** ToC Menu ****/
 .toc_menu {
   width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.toc_menu-s {
+.toc_menu-item {
   width: 100%;
-  margin: 5px;
-  margin-bottom: 15px;
-  padding: 5px;
-  font-size: 1.1rem;
-  font-weight: 700;
+  margin: 7.5px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.toc_menu-item > .toc_link {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
   border-bottom: 1px solid #B7BCC4;
 }
 
-.toc_menu-s > a {
-  color: #202A50;
-  transition: color 0.3s ease;
+/**** ToC Submenu ****/
+.toc_submenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding-left: 15px;
 }
 
-.toc_menu-s > a:hover {
-  color: #F27021;
-  text-decoration: none;
+.toc_submenu-item {
+  display: block;
+  margin-left: 1.25em;
+  font-size: 15px;
+  font-weight: normal;
+  color: #434343;
+  padding-top: 9px;
 }
 
-.toc_menu-s > a:focus {
-  color: #F27021;
-  text-decoration: none;
-  outline: 1;
-  outline-color: #F27021;
-  outline-width: thin;
+.toc_submenu-item:last-child {
+  margin-bottom: 18px;
 }
 
-.toc_menu-ss{
-  margin: 5px;
-  margin-left: 20px;
+/** ToC Submenu Controls **/
+.toc_submenu-controls {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  cursor: pointer;
 }
 
-.toc_menu-ss > a {
-  color: #202A50;
-  transition: color 0.3s ease;
+.toc_submenu-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  border-bottom: 1px solid #B7BCC4;
 }
 
-.toc_menu-ss > a:hover {
-  color: #F27021;
-  text-decoration: none;
+.toc_submenu-label > .toc_link {
+  display: block;
+  padding: 10px 0;
 }
 
-.toc_menu-ss > a:focus {
-  color: #F27021;
-  text-decoration: none;
-  outline: 1;
-  outline-color: #F27021;
-  outline-width: thin;
+.toc_submenu-label::after {
+  content: "\f107";
+  font: var(--fa-font-solid);
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  color: #B7BCC4;
+}
+
+.toc_submenu {
+  max-height: 0vh;
+  overflow: hidden;
+  transition: ease all 0.75s;
+}
+
+.toc_submenu-controls:checked ~ .toc_submenu {
+  max-height: 100vh;
+}
+
+.toc_submenu-controls:checked ~ .toc_submenu-label::after {
+  font: var(--fa-font-solid);
+  content: "\f106";
+  font-size: 16px;
+}
+
+.toc_link:hover {
+  color: #f27021;
 }
 
 /*** HERO OVERRIDE - MS ***/
@@ -6071,7 +6110,6 @@ button[aria-label="Unfollow"]::before {
   .vte-container {
     display: block;
     width: auto ;
-    
   }
   .vte-accord {
     margin: 0;
