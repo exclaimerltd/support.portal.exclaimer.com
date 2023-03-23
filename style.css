@@ -663,21 +663,14 @@ ul {
 
 /***** Header *****/
 .header {
+  width: 100%;
   max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 5%;
-  position: relative;
-  align-items: center;
-  display: flex;
   height: 71px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
   justify-content: space-between;
-}
-
-@media (min-width: 1160px) {
-  .header {
-    padding: 0;
-    width: 90%;
-  }
+  align-items: center;
 }
 
 .logo img {
@@ -798,6 +791,9 @@ ul {
   width: auto;
   min-width: 71px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #fff;
 }
 
 .nav-wrapper-mobile .menu-button-mobile .icon-menu {
@@ -1238,7 +1234,7 @@ ul {
 /***** Hero component *****/
 .hero {
   background-image: url($homepage_background_image);
-  background-position: center;
+  background-position: center bottom;
   background-size: cover;
   height: 300px;
   padding: 0 20px;
@@ -5535,6 +5531,10 @@ a:hover {
 }
 
 /*** Header Changes ***/
+header {
+  padding: 0 20px;
+}
+
 .header-color {
   display: flex;
   align-items: center;
@@ -5597,6 +5597,29 @@ a[aria-label="whatsNew"]::before {
 }
 
 a:hover[aria-label="whatsNew"] {
+  background-color: white!important;
+  color: $brand_color!important;
+}
+
+a[aria-label="raiseticket"] {
+  display: flex;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  padding: 10px 15px;
+  margin-right: 10px;
+  transition: all ease 0.3s;
+  color: #fff!important;
+}
+
+a[aria-label="raiseticket"]::before {
+  font: var(--fa-font-solid);
+  content: '\f4a4';
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+a:hover[aria-label="raiseticket"] {
   background-color: white!important;
   color: $brand_color!important;
 }
@@ -6079,6 +6102,12 @@ button[aria-label="Unfollow"]::before {
 }
 
 /*** MEDIA QUERIES - MS ***/
+@media screen and (max-width: 1024px) {
+  .nav-wrapper-desktop{
+    display: none;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .activityhome {
     width: 50%;
@@ -6159,10 +6188,6 @@ button[aria-label="Unfollow"]::before {
   }
   .notification-bar > p > i {
     display: none;
-  }
-  .header {
-    width: 100%;
-    margin: unset;
   }
   .icon-menu {
     color: white;
