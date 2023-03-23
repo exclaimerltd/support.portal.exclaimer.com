@@ -6101,6 +6101,30 @@ button[aria-label="Unfollow"]::before {
   content: "\f107";
 }
 
+.nav-wrapper-mobile .menu-button-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #b7bcc4;
+  border-radius: 10px;
+}
+
+.nav-wrapper-mobile .menu-button-mobile[aria-expanded="true"] {
+  background-color: #f27021;
+  border-color: #f27021;
+}
+
+.nav-wrapper-mobile .menu-button-mobile[aria-expanded="true"] .icon-menu {
+  background-color: transparent;
+}
+
+.nav-wrapper-mobile .menu-list-mobile {
+  top: 79px;
+}
+
 /*** MEDIA QUERIES - MS ***/
 @media screen and (max-width: 1024px) {
   .nav-wrapper-desktop{
