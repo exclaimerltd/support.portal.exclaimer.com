@@ -14,7 +14,7 @@
     <div class="nav-wrapper-desktop">
       <nav class="user-nav" id="user-nav">
         <ul class="user-nav-list">
-          <li><a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557">{{t 'submit_a_request'}}</a></li>
+          <li><a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557" class="btn" aria-label="raiseticket">{{t 'submit_a_request'}}</a></li>
           <li><a href="{{page_path 'help_center'}}/sections/9982628913437" class="btn" aria-label="whatsNew">{{ dc 'whats_new' }}</a></li>
           <li><a href="{{page_path 'help_center'}}/sections/9128956898077" class="btn" aria-label="faq">{{ dc 'faq' }}</a></li>
           {{!-- <li>{{link 'community'}}</li> --}}
@@ -71,6 +71,8 @@
                 </div>
               {{/my_profile}}
             </li>
+            <li class="nav-divider"></li>
+            <li><a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557">{{t 'submit_a_request'}}</a></li>
             <li class="item">{{link "requests" role="menuitem"}}</li>
             <li class="item">{{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}</li>
             <li class="item">{{contact_details role="menuitem"}}</li>
