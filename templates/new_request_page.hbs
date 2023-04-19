@@ -1,7 +1,7 @@
 <div class="container-divider"></div>
 <div class="container">
   <div class="notification-bar">
-   <p><i class="fa-regular fa-circle-exclamation"></i>Need to raise an On-Premise ticket?</p><a href="https://legacy.support.exclaimer.com/hc/en-gb/requests/new" class="btn">Raise a ticket</a>
+   <p><i class="fa-regular fa-circle-exclamation"></i>{{ dc 'kb_raiseonprem' }}</p><a href="https://legacy.support.exclaimer.com/hc/en-gb/requests/new" class="btn">{{ t 'submit_a_request' }}</a>
   </div>
   <nav class="sub-nav">
     {{breadcrumbs}}
@@ -20,7 +20,7 @@
     </span>
   </h1>
 
-  <p class="formSubTitle">We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.</p>
+  <p class="formSubTitle"></p>
 
   <div id="main-content" class="form">
     {{request_form wysiwyg=true}}
