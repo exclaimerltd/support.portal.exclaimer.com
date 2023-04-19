@@ -2,8 +2,8 @@
 
 <section id="main-content" class="section hero">
   <div class="hero-container">
-    <h2 class="hero-heading">Hello how can we help you today?</h2>
-    <p>Search our knowledge base for answers to common questions</p>
+    <h2 class="hero-heading">{{ dc 'kb_hometitle' }}</h2>
+    <p>{{ dc 'kb_homesubtitle' }}</p>
     <div class="hero-inner">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
         <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
@@ -17,7 +17,7 @@
 <div class="container">
 
   <div class="notification-bar notification-bar-home">
-   <p><i class="fa-regular fa-circle-exclamation"></i>Looking for On-Premise Support? Head over to our Legacy Support Site.</p><a href="https://legacy.support.exclaimer.com/hc/en-gb" class="btn">Legacy Support</a>
+   <p><i class="fa-regular fa-circle-exclamation"></i>{{ dc 'kb_legacysupport' }}</p><a href="https://legacy.support.exclaimer.com/hc/en-gb" class="btn">{{ dc 'kb_legacysupportbtn' }}</a>
   </div>
 
   <section class="section knowledge-base kbhome">
@@ -27,11 +27,11 @@
       <ul class="toc_menu">
         {{#each categories}}
           {{#each sections}}
-          {{#is name 'Legacy UI'}}{{else}}
-          {{#is name 'Frequently Asked Questions'}}{{else}}
-          {{#is name 'Signature Design - videos ??'}}{{else}}
-          {{#is name 'Signature Design - Best Practices'}}{{else}}
-          {{#is name 'Whats new in Exclaimer Cloud'}}{{else}}
+          {{#is name "Legacy UI"}}{{else}}
+          {{#is name "Frequently Asked Questions"}}{{else}}
+          {{#is name "Signature Design - videos ??"}}{{else}}
+          {{#is name "Signature Design - Best Practices"}}{{else}}
+          {{#is name "What's new in Exclaimer Cloud"}}{{else}}
           <li class="toc_menu-item">
             {{#if sections}}
             <input class="toc_submenu-controls" type="checkbox" id="{{name}}" name="accordion">

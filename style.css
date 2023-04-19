@@ -5929,18 +5929,28 @@ button {
   padding: 10px 15px;
 }
 
-button[aria-label="Follow"], button[aria-label="Unfollow"] {
+button[aria-label="Follow"], button[aria-label="Unfollow"],
+button[aria-label="S’abonner"], button[aria-label="Annuler l’abonnement"],
+button[aria-label="Folgen"], button[aria-label="Nicht mehr folgen"],
+button[aria-label="Volgen"], button[aria-label="Ontvolgen"]
+{
   border-radius: 50px;
   padding: 10px 15px;
 }
 
-button[aria-label="Follow"]::before {
+button[aria-label="Follow"]::before,
+button[aria-label="S’abonner"]::before,
+button[aria-label="Folgen"]::before,
+button[aria-label="Volgen"]::before {
   font: var(--fa-font-light);
   content: '\f004';
   margin-right: 10px;
 }
 
-button[aria-label="Unfollow"]::before {
+button[aria-label="Unfollow"]::before,
+button[aria-label="Annuler l’abonnement"]::before,
+button[aria-label="Nicht mehr folgen"]::before,
+button[aria-label="Ontvolgen"]::before {
   font: var(--fa-font-solid);
   content: '\f004';
   margin-right: 10px;
@@ -5987,9 +5997,6 @@ button[aria-label="Unfollow"]::before {
   margin-bottom: 0.335em;
 }
 
-.formSubTitle {
-  display: none;
-}
 
 /** VTE Code **/
 
