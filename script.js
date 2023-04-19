@@ -495,19 +495,63 @@ document.addEventListener('DOMContentLoaded', function() {
     const desc = document.querySelector('label[for=request_description]');
 
     if(window.location.href.indexOf('9490217014813') > 0){  //The numbers are form ID which I get from the form URL
-      formHeader.innerHTML = "Knowledgebase Feedback";
-      formSubTitle.style.display = 'block';
-      if (ccLabel !== null) {
-        ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
+      if(window.location.href.indexOf('/hc/fr/') > 0 ){ //French Language Support
+        formHeader.innerHTML = "Knowledgebase Feedback";
+        formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
+        if (ccLabel !== null) {
+          ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
+        }
+        if (emailLabel !== null) {
+          emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
+        }
+        subjectWords.value += subjectAfter;
+        subject.style.display = 'none';
+        suggested.style.display = 'none';
+        helpURL.style.display = 'none';
+        desc.innerHTML = 'Feedback';
+      } else if(window.location.href.indexOf('/hc/de/') > 0 ){ //German Language Support
+        formHeader.innerHTML = "Knowledgebase Feedback";
+        formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
+        if (ccLabel !== null) {
+          ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
+        }
+        if (emailLabel !== null) {
+          emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
+        }
+        subjectWords.value += subjectAfter;
+        subject.style.display = 'none';
+        suggested.style.display = 'none';
+        helpURL.style.display = 'none';
+        desc.innerHTML = 'Feedback';
+      } else if(window.location.href.indexOf('/hc/nl/') > 0 ){ //Dutch Language Support
+        formHeader.innerHTML = "Knowledgebase Feedback";
+        formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
+        if (ccLabel !== null) {
+          ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
+        }
+        if (emailLabel !== null) {
+          emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
+        }
+        subjectWords.value += subjectAfter;
+        subject.style.display = 'none';
+        suggested.style.display = 'none';
+        helpURL.style.display = 'none';
+        desc.innerHTML = 'Feedback';
+      } else { // All undefined languages
+        formHeader.innerHTML = "Knowledgebase Feedback";
+        formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
+        if (ccLabel !== null) {
+          ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
+        }
+        if (emailLabel !== null) {
+          emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
+        }
+        subjectWords.value += subjectAfter;
+        subject.style.display = 'none';
+        suggested.style.display = 'none';
+        helpURL.style.display = 'none';
+        desc.innerHTML = 'Feedback';
       }
-      if (emailLabel !== null) {
-        emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
-      }
-      subjectWords.value += subjectAfter;
-      subject.style.display = 'none';
-      suggested.style.display = 'none';
-      helpURL.style.display = 'none';
-      desc.innerHTML = 'Feedback';
     }
   }
   checkTicketId();
