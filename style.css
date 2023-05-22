@@ -1233,9 +1233,10 @@ ul {
 
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
+  background-image: url($assets-herobg-png);
   background-position: center bottom;
   background-size: cover;
+  background-color: #9AADFF;
   height: 300px;
   padding: 0 20px;
   text-align: center;
@@ -6037,7 +6038,7 @@ button[aria-label="Ontvolgen"]::before {
   position: relative;
   width: 100%;
   margin: 10px;
-  background-color: #202A50;
+  background-color: #9AADFF;
   border-radius: 10px;
   box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
 }

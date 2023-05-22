@@ -13,14 +13,14 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#202A50"
+          "value": "#9AADFF"
         },
         {
           "identifier": "brand_accent_color",
           "type": "color",
           "description": "brand_accent_color_description",
           "label": "brand_accent_color_label",
-          "value": "#202A50"
+          "value": "#9AADFF"
         },
         {
           "identifier": "brand_text_color",
@@ -34,14 +34,14 @@
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#202A50"
+          "value": "#9AADFF"
         },
         {
           "identifier": "link_color",
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#202A50"
+          "value": "#9AADFF"
         },
         {
           "identifier": "hover_link_color",
