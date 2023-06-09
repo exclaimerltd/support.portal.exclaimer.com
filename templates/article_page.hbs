@@ -94,7 +94,6 @@
           </div>
         {{/if}}
       </aside>
-
       <article id="main-content" class="article">
         <header class="article-header">
           <h1 title="{{article.title}}" class="article-title">
@@ -106,7 +105,6 @@
               </svg>
             {{/if}}
           </h1>
-
           <div class="article-author">
             {{#if settings.show_article_author}}
               <div class="avatar article-avatar">
@@ -135,16 +133,71 @@
               </ul>
             </div>
           </div>
-
           {{#if settings.show_follow_article}}
             <div class="article-subscribe">{{subscribe}}</div>
           {{/if}}
         </header>
-
+        {{#if article.labels}}
+          <div class="pb-container">
+          {{#each article.labels}}
+            {{#is identifier 'pb-campaign-scheduling'}}
+              <!-- pb-campaign-scheduling -->
+              <div class="pb-inner pb-campaign-scheduling"><div class="pb-text">{{dc 'kb_pb-campaign-scheduling'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-custom-feedback'}}
+              <!-- pb-custom-feedback -->
+              <div class="pb-inner pb-custom-feedback"><div class="pb-text">{{dc 'kb_pb-custom-feedback'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-date-range'}}
+              <!-- pb-date-range -->
+              <div class="pb-inner pb-date-range"><div class="pb-text">{{dc 'kb_pb-date-range'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-engagement-dashboard'}}
+              <!-- pb-engagement-dashboard -->
+              <div class="pb-inner pb-engagement-dashboard"><div class="pb-text">{{dc 'kb_pb-engagement-dashboard'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-feedback-agent-dashboard'}}
+              <!-- pb-feedback-agent-dashboard -->
+              <div class="pb-inner pb-feedback-agent-dashboard"><div class="pb-text">{{dc 'kb_pb-feedback-agent-dashboard'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-headline-content'}}
+              <!-- pb-headline-content -->
+              <div class="pb-inner pb-headline-content"><div class="pb-text">{{dc 'kb_pb-headline-content'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-one-click'}}
+              <!-- pb-one-click -->
+              <div class="pb-inner pb-one-click"><div class="pb-text">{{dc 'kb_pb-one-click'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-pro-marketing'}}
+              <!-- pb-pro-marketing -->
+              <div class="pb-inner pb-pro-marketing"><div class="pb-text">{{dc 'kb_pb-pro-marketing'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-pro-marketing-standard'}}
+              <!-- pb-pro-marketing-standard -->
+              <div class="pb-inner pb-pro-marketing-standard"><div class="pb-text">{{dc 'kb_pb-pro-marketing-standard'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-targeting'}}
+              <!-- pb-targeting -->
+              <div class="pb-inner pb-targeting"><div class="pb-text">{{dc 'kb_pb-targeting'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-ten-signatures'}}
+              <!-- pb-ten-signatures -->
+              <div class="pb-inner pb-ten-signatures"><div class="pb-text">{{dc 'kb_pb-ten-signatures'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-usage-dashboard'}}
+              <!-- pb-usage-dashboard -->
+              <div class="pb-inner pb-usage-dashboard"><div class="pb-text">{{dc 'kb_pb-usage-dashboard'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+            {{#is identifier 'pb-user-editable-details'}}
+              <!-- pb-user-editable-details -->
+              <div class="pb-inner pb-user-editable-details"><div class="pb-text">{{dc 'kb_pb-user-editable-details'}}</div><a href="https://www.exclaimer.com/pricing/" target="_blank" class="pb-btn">{{dc 'kb_learnmore'}}</a></div>
+            {{/is}}
+          {{/each}}
+          </div>
+        {{/if}}
         <section class="article-info">
           <div class="article-content">
             <div class="article-body">{{article.body}}</div>
-
             {{#if (compare article.content_tags.length ">" 0)}}
               <section class="content-tags">
                 <p>{{t 'content_tags_label'}}</p>
@@ -159,7 +212,6 @@
                 </ul>
               </section>
             {{/if}}
-
             {{#if attachments}}
               <div class="article-attachments">
                 <ul class="attachments">
@@ -180,7 +232,6 @@
             {{/if}}
           </div>
         </section>
-
         <footer>
           <div class="article-footer">
             {{#if settings.show_article_sharing}}
@@ -206,15 +257,12 @@
                 {{vote 'up' role='radio' class='button article-vote article-vote-up' selected_class="button-primary"}}
                 {{vote 'down' role='radio' class='button article-vote article-vote-down' selected_class="button-primary"}}
               </div>
-
               <div class="downvote-message">
                 <p>{{ dc 'kb_feedback' }}</p>
                 <p><a href="{{page_path 'new_request'}}?ticket_form_id=9490217014813&tf_subject={{title}}&tf_9489978202909=https://support.exclaimer.com/{{url}}" class="feedback-link">{{ dc 'kb_feedbackbtn' }}</a></p>
               </div>
-
             </div>
           {{/with}}
-
           <div class="article-more-questions">
             {{request_callout}}
           </div>
