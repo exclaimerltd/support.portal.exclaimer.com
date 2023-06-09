@@ -61,4 +61,8 @@ for (var i = 0; i < newRedirects.length; i++) {
           window.location.href = 'https://exclaimersupport.zendesk.com/hc/en-gb/articles/' + j["to"]; 
       }
   }
+
+  if (window.location.href.indexOf('https://www.exclaimer.com/support/raise-ticket') > -1) {
+    window.location.href = 'https://support.exclaimer.com/hc/en-gb/requests/new?ticket_form_id=4459467190557';
+  }
 };
