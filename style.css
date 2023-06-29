@@ -6349,3 +6349,17 @@ a.pb-btn::after {
     text-align: center;
   }
 }
+
+
+
+
+/* Additional CSS */
+.subid-subtext {
+  font-size: 0.75rem;
+  color: #606060;
+}
+
+.subid-subtext > a {
+  color: #f27021;
+  text-decoration: underline;
+}

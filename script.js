@@ -493,6 +493,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const suggested = document.querySelector('.suggestion-list');
     const helpURL = document.querySelector('.request_custom_fields_9489978202909');
     const desc = document.querySelector('label[for=request_description]');
+    const subId = document.querySelector('.request_custom_fields_360014356197');
+
+    if(window.location.href.indexOf('4459467190557') > 0){
+      subId.innerHTML += '<span class="subid-subtext">Lets do something here... <a href="https://support.exclaimer.com/hc/en-gb/articles/360018307337">A link to appear here?</a></span>';
+    }
 
     if(window.location.href.indexOf('9490217014813') > 0){  //The numbers are form ID which I get from the form URL
       if(window.location.href.indexOf('/hc/fr/') > 0 ){ //French Language Support
