@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const subId = document.querySelector('.request_custom_fields_360014356197');
 
     if(window.location.href.indexOf('4459467190557') > 0){
-      subId.innerHTML += '<span class="subid-subtext">Lets do something here... <a href="https://support.exclaimer.com/hc/en-gb/articles/360018307337">A link to appear here?</a></span>';
+      subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
     }
 
     if(window.location.href.indexOf('9490217014813') > 0){  //The numbers are form ID which I get from the form URL
