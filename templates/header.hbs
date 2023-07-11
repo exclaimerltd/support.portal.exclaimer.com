@@ -1,5 +1,43 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
+<div class="header-lang-bg">
+  <div class="header-lang-internal">
+    {{#if alternative_locales}}
+      <div class="dropdown language-selector">
+        <button class="dropdown-toggle header-lang-btn" aria-haspopup="true">
+          {{current_locale.name}}
+          {{#is current_locale.name 'English (GB)'}}
+            <img src="{{asset 'gb.png'}}"/>
+          {{/is}}
+          {{#is current_locale.name 'Deutsch'}}
+            <img src="{{asset 'de.png'}}"/>
+          {{/is}}
+          {{#is current_locale.name 'Français'}}
+            <img src="{{asset 'fr.png'}}"/>
+          {{/is}}
+          {{#is current_locale.name 'Nederlands'}}
+            <img src="{{asset 'nl.png'}}"/>
+          {{/is}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
+        </button>
+        <span class="dropdown-menu dropdown-menu-end" role="menu">
+          {{#each alternative_locales}}
+            <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem" class="dropdown-item">
+              {{name}}
+              {{#is name 'English (GB)'}}<img src="{{asset 'gb.png'}}"/>{{/is}}
+              {{#is name 'Deutsch'}}<img src="{{asset 'de.png'}}"/>{{/is}}
+              {{#is name 'Français'}}<img src="{{asset 'fr.png'}}"/>{{/is}}
+              {{#is name 'Nederlands'}}<img src="{{asset 'nl.png'}}"/>{{/is}}
+            </a>
+          {{/each}}
+        </span>
+      </div>
+    {{/if}}
+  </div>
+</div>
+
 <header class="header-color">
   <div class="header header-container">
     <div class="logo">
