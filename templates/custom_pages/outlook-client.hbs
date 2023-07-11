@@ -1,748 +1,147 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>Exclaimer Cloud Signature Update Agent</title>
-	<meta name="robots" content="noindex" />
-	<meta name="description" content="Download and install the Exclaimer Cloud Signature Update Agent">
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
-	</script>
-	<![endif]-->
-	<link
-		href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
-		rel="stylesheet">
-	<script src="https://kit.fontawesome.com/e6b3af0e51.js" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/d1d75e8f54.js" crossorigin="anonymous"></script>
-</head>
-<style>
-	html,
-	body,
-	div,
-	span,
-	applet,
-	object,
-	iframe,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	p,
-	blockquote,
-	pre,
-	a,
-	abbr,
-	acronym,
-	address,
-	big,
-	cite,
-	code,
-	del,
-	dfn,
-	em,
-	img,
-	ins,
-	kbd,
-	q,
-	s,
-	samp,
-	small,
-	strike,
-	strong,
-	sub,
-	sup,
-	tt,
-	var,
-	b,
-	u,
-	i,
-	center,
-	dl,
-	dt,
-	dd,
-	ol,
-	ul,
-	li,
-	fieldset,
-	form,
-	label,
-	legend,
-	table,
-	caption,
-	tbody,
-	tfoot,
-	thead,
-	tr,
-	th,
-	td,
-	article,
-	aside,
-	canvas,
-	details,
-	embed,
-	figure,
-	figcaption,
-	footer,
-	header,
-	hgroup,
-	menu,
-	nav,
-	output,
-	ruby,
-	section,
-	summary,
-	time,
-	mark,
-	audio,
-	video {
-		margin: 0;
-		padding: 0;
-		border: 0;
-		font-size: 100%;
-		font: inherit;
-		vertical-align: baseline;
-	}
-
-	/* HTML5 display-role reset for older browsers */
-	article,
-	aside,
-	details,
-	figcaption,
-	figure,
-	footer,
-	header,
-	hgroup,
-	menu,
-	nav,
-	section {
-		display: block;
-	}
-
-	body {
-		line-height: 1;
-	}
-
-	ol,
-	ul {
-		list-style: none;
-	}
-
-	blockquote,
-	q {
-		quotes: none;
-	}
-
-	blockquote:before,
-	blockquote:after,
-	q:before,
-	q:after {
-		content: '';
-		content: none;
-	}
-
-	table {
-		border-collapse: collapse;
-		border-spacing: 0;
-	}
-
-	/* Reset ends */
-	html {
-		height: 100%;
-		margin: 0;
-		padding: 0;
-		font-family: 'Roboto', 'sans-serif';
-	}
-
-	body {
-		height: 100%;
-		font-size: 13.5px;
-		background-color: #f8f8f8;
-		background-size: 100% 100%;
-		background-repeat: no-repeat;
-		color: #576476;
-		margin: 0;
-		padding: 0;
-	}
-
-	#container {
-		width: 1250px;
-		background-color: #f8f8f8;
-		margin: 0 auto;
-	}
-
-	.topbar {
-		z-index: 1;
-		color: #f37021;
-		background-color: #FFF;
-		padding: 0.2em 0;
-		border-bottom: 1px solid #ccc;
-		overflow: hidden;
-	}
-
-	.titlebar {
-		z-index: 1;
-		background-color: #FFF;
-		padding: 0.2em 0;
-		border-bottom: 1px solid #ccc;
-		overflow: hidden;
-	}
-
-	.topbar>header {
-		padding-left: 1em;
-		width: 90%;
-	}
-
-	h1 {
-		font-size: 1.6666666667em;
-		color: #576476;
-		font-weight: 300;
-		padding: 0.5em;
-	}
-
-	h2 {
-		font-weight: 600;
-		padding: 0.5em 0.5em 0.5em 0;
-		font-size: 13.5px;
-		margin-top: 1em;
-	}
-
-	.main-body {
-		background-color: #f8f8f8;
-		border-top: 0;
-		display: -ms-grid;
-		display: grid;
-	}
-
-	section {
-		padding: 0 1em;
-	}
-
-	.download-area {
-		margin-top: 1em;
-	}
-
-	#description {
-		grid-column: 1 / 4;
-		-ms-grid-column: 1;
-		-ms-grid-column-span: 3;
-		grid-row: 2;
-		-ms-grid-row: 2;
-	}
-
-
-	#title-windows {
-		grid-column: 1;
-		-ms-grid-column: 1;
-		grid-row: 3;
-		-ms-grid-row: 3;
-	}
-
-	#download-windows {
-		grid-column: 1;
-		-ms-grid-column: 1;
-		grid-row: 4;
-		-ms-grid-row: 4;
-	}
-
-	#requirements-windows {
-		grid-column: 1;
-		-ms-grid-column: 1;
-		grid-row: 5;
-		-ms-grid-row: 5;
-	}
-
-	#install-windows {
-		grid-column: 1;
-		-ms-grid-column: 1;
-		grid-row: 6;
-		-ms-grid-row: 6;
-	}
-
-	#title-macos {
-		grid-column: 2;
-		-ms-grid-column: 2;
-		grid-row: 3;
-		-ms-grid-row: 3;
-	}
-
-	#download-macos {
-		grid-column: 2;
-		-ms-grid-column: 2;
-		grid-row: 4;
-		-ms-grid-row: 4;
-	}
-
-	#requirements-macos {
-		grid-column: 2;
-		-ms-grid-column: 2;
-		grid-row: 5;
-		-ms-grid-row: 5;
-	}
-
-	#install-macos {
-		grid-column: 2;
-		-ms-grid-column: 2;
-		grid-row: 6;
-		-ms-grid-row: 6;
-	}
-
-	#title-addin {
-		grid-column: 3;
-		-ms-grid-column: 3;
-		grid-row: 3;
-		-ms-grid-row: 3;
-	}
-
-	#download-addin {
-		grid-column: 3;
-		-ms-grid-column: 3;
-		grid-row: 4;
-		-ms-grid-row: 4;
-	}
-
-	#requirements-addin {
-		grid-column: 3;
-		-ms-grid-column: 3;
-		grid-row: 5;
-		-ms-grid-row: 5;
-	}
-
-	#install-addin {
-		grid-column: 3;
-		-ms-grid-column: 3;
-		grid-row: 6;
-		-ms-grid-row: 6;
-	}
-
-	p {
-		line-height: 1.5em;
-		margin: 0.5em 0 0 0.5em;
-		font-size: 13.5px;
-	}
-
-	p a {
-		color: #f37021;
-	}
-
-	p a:hover {
-		color: #0000EE;
-	}
-
-	.body-list {
-		counter-reset: ex-counter;
-		padding-left: 0.5em;
-	}
-
-	.body-list li,
-	.nested-list li {
-		margin: 1em 0.5em 0.5em 0.5em;
-	}
-
-	.body-list li {
-		margin-left: 3em;
-		position: relative;
-	}
-
-	.body-list li:before {
-		position: absolute;
-		content: counter(ex-counter);
-		counter-increment: ex-counter;
-		padding: 0.3em 0.5em;
-		background-color: #f37021;
-		color: #FFFFFF;
-		font-weight: bold;
-		font-size: 0.9em;
-		margin: 0 1em 0.7em -3em;
-	}
-
-	.outlook-list {
-		padding-left: 1em;
-		list-style-type: none;
-		margin-left: 2.5em;
-	}
-
-	.outlook-list li {
-		background-image: url("./exc-bullet-1.png");
-		background-repeat: no-repeat;
-		padding-left: 2em;
-		margin: 1em 0;
-	}
-
-	.download-area {
-		min-height: 200px;
-	}
-
-	.download-area table {
-		width: 100%;
-		background-color: #FFFFFF;
-		margin: 0.5em;
-	}
-
-	.download-area table td {
-		border: solid 1px #424141;
-		padding: 0.5em;
-	}
-
-	.title-cell {
-		background-color: #424141;
-		text-align: center;
-	}
-
-	.title-cell h2 {
-		font-size: 1.6666666667rem;
-		color: #576476;
-		background: #fff;
-		font-weight: normal;
-		margin-top: 0;
-	}
-
-	.download-cell {
-		display: flex;
-	}
-
-	.download-cell a {
-		display: inline-block;
-		width: 60%;
-		margin: 0.5em auto auto 0.5em;
-		color: #FFFFFF;
-		font-size: 1.1em;
-		font-weight: bold;
-		text-align: center;
-		text-decoration: none;
-		background-color: #f37021;
-		border: 1px solid #f37021;
-		color: #fff;
-		padding-top: .8rem;
-		padding-right: .9333333333rem;
-		padding-bottom: .8rem;
-		padding-left: .9333333333rem;
-		border-top-left-radius: .2rem;
-		border-top-right-radius: .2rem;
-		border-bottom-right-radius: .2rem;
-		border-bottom-left-radius: .2rem;
-		background-clip: padding-box;
-		font-family: "Roboto", sans-serif;
-		font-size: 14px;
-		font-size: .9333333333rem;
-		max-height: 2.8rem;
-		outline: none;
-		white-space: nowrap;
-	}
-
-	.download-cell a:hover {
-		color: #f37021;
-		background-color: #FFFFFF;
-	}
-
-	.download-cell button {
-		display: inline-block;
-		width: 60%;
-		margin: 0.5em auto auto 0.5em;
-		color: #FFFFFF;
-		font-size: 1.1em;
-		font-weight: bold;
-		text-align: center;
-		text-decoration: none;
-		background-color: #f37021;
-		border: 1px solid #f37021;
-		color: #fff;
-		padding-top: .8rem;
-		padding-right: .9333333333rem;
-		padding-bottom: .8rem;
-		padding-left: .9333333333rem;
-		border-top-left-radius: .2rem;
-		border-top-right-radius: .2rem;
-		border-bottom-right-radius: .2rem;
-		border-bottom-left-radius: .2rem;
-		background-clip: padding-box;
-		font-family: "Roboto", sans-serif;
-		font-size: 14px;
-		font-size: .9333333333rem;
-		max-height: 2.8rem;
-		min-width: 3.2rem;
-		outline: none;
-		white-space: nowrap;
-		cursor: pointer;
-	}
-
-	.download-cell button:hover {
-		color: #f37021;
-		background-color: #FFFFFF;
-	}
-
-	.download-link {
-		word-break: break-all;
-		margin-left: 0.5em;
-	}
-
-	.logo {
-		width: 180px;
-		height: 3.5em;
-	}
-
-	.body-col {
-		max-width: 391px;
-		background: white;
-		border: 1px solid #ccc;
-		border-top-left-radius: .2rem;
-		border-top-right-radius: .2rem;
-		border-bottom-right-radius: .2rem;
-		border-bottom-left-radius: .2rem;
-		margin: 0.5rem 1rem 0.5rem 1rem;
-		padding-bottom: 1rem;
-	}
-
-	.body-row {
-		background: white;
-		border: 1px solid #ccc;
-		border-top-left-radius: .2rem;
-		border-top-right-radius: .2rem;
-		border-bottom-right-radius: .2rem;
-		border-bottom-left-radius: .2rem;
-		margin: 0.5rem 1rem 0.5rem 1rem;
-		padding-bottom: 1rem;
-	}
-
-	.body-content {
-		margin: 0 1em 0 1em;
-	}
-
-	.requirements {
-		min-height: 280px;
-	}
-
-	.fa {
-		size: 30px;
-		color: #f37021;
-		margin-right: 10px;
-	}
-
-  header {background-color: #fff;}
-</style>
-
-<body>
-	<div class="titlebar">
-		<h1>Exclaimer Cloud Signatures</h1>
-	</div>
-
-	<div id="container">
-		<div class="body-row">
-			<header>
-				<h1>Welcome</h1>
-			</header>
-			<p class="body-content">If your organisation is subscribed to Exclaimer Cloud - Signatures for Microsoft 365
-				and wishes to use Client-Side signatures, the deployment options are found below.<br>
-				Please select the one suited best to your environment or deployment method and follow the installation
-				instructions.</p>
-		</div>
-		<div class="main-body">
-			<section id="description"></section>
-			<div class="body-col">
-				<header id="title-addin" class="title-col">
-					<h1><i class="fa fa-globe"></i>Outlook Add-In</h1>
-				</header>
-				<section id="download-addin" class="download-area">
-					<h2>Suitable For</h2>
-					<p>Desktop Outlook on Windows and OWA</p>
-					<p>Individual, Group or Full Tenant deployments from the Microsoft 365 admin console.</p>
-					<h2>Version</h2>
-					<p>1.6.200.7</p>
-					<h2>Requirements:</h2>
-					<table>
-						<tr>
-							<td style="width:33%;">Software:</td>
-							<td>
-								<ol>
-									<li>Windows 10 or above</li>
-									<li>Outlook for Microsoft 365*</li>
-									<li>Outlook Web</li>
-									<li>Office for macOS 16.64 (22081401)</li>
-								</ol>
-							</td>
-						</tr>
-						<tr>
-							<td>Permissions (Per User):</td>
-							<td>
-								<ol>
-									<li>No specific permissions</li>
-								</ol>
-							</td>
-						</tr>
-						<tr>
-							<td>Permissions (All Users):</td>
-							<td>
-								<ol>
-									<li>Microsoft 365 Admin</li>
-									<li></li>
-								</ol>
-							</td>
-						</tr>
-					</table>
-					<div class="download-cell" style="padding-bottom:10px">
-						<a aria-role="button" href="https://appsource.microsoft.com/en-us/product/office/WA200004512?embedHost=admin-portal">Install from App Store ></a>
-					</div>
-						<div style="padding-bottom: 17px">
-							* Outlook Click-To-Run version 2108 (build 14326.20258) or later is required
-							</div>
-				</section>
-
-				<section id="install-addin">
-					<h2>Installation</h2>
-					<p>To allow your users to apply signatures using the Outlook Add-in please install the add-in
-						through the Exchange Admin Center.</p>
-					<p>Full installation instructions can be found <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/360020741398">here</a></p>
-					<p>If you are using the older Manifest file, please see the guide <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/6420946508829-Migrate-Exclaimer-Cloud-Outlook-Add-in-from-Manifest-to-App-Store">here</a> on how to migrate to the new App Store release</p>
-				</section>
-			</div>
-			<div class="body-col">
-				<header id="title-windows" class="title-col">
-					<h1><i class="fa fa-windows"></i>Desktop Agent (Windows)</h1>
-				</header>
-				<section id="download-windows" class="download-area">
-					<h2>Suitable For</h2>
-					<p>Desktop Outlook on Windows machines only.</p>
-					<p>Individual or 'All Users' machine deployment via local MSI installation, CMD Script or Group
-						Policy.</p>
-					<h2>Version</h2>
-					<p>1.18.22294.00001</p>
-					<h2>Requirements</h2>
-					<table>
-						<tr>
-							<td style="width:33%;">Software:</td>
-							<td>
-								<ol>
-									<li>Windows 8.1 or above</li>
-									<li>Outlook 2013 or above</li>
-									<li>.NET Framework 4.6.2 or above</li>
-									<li>&nbsp;</li>
-								</ol>
-							</td>
-						</tr>
-						<tr>
-							<td>Permissions (Per User):</td>
-							<td>
-								<ol>
-									<li>Local Installation Rights</li>
-								</ol>
-							</td>
-						</tr>
-						<tr>
-							<td>Permissions (All Users):</td>
-							<td>
-								<ol>
-									<li>Domain Administrator (MSI Only)</li>
-								</ol>
-							</td>
-						</tr>
-					</table>
-					<div class="download-cell" style="padding-bottom:50px">
-						<a aria-role="button" href="https://outlookclient.exclaimer.net/csua/Exclaimer.CloudSignatureAgent.application">Download Click-Once ></a>
-						<a aria-role="button" href="https://outlookclient.exclaimer.net/csua/Exclaimer.CloudSignatureUpdateAgent.Install.msi">Download MSI ></a>
-					</div>
-				</section>
-
-				<section id="install-windows">
-					<header>
-						<h2>Installation</h2>
-					</header>
-					<p>To install the Outlook Signatures Update Agent, please click on the "Download for Windows"
-						button. Once downloaded, the installation will begin. Once the agent is installed, you will be
-						prompted to sign in to Office 365 to grant permissions for the agent. Any signatures assigned to
-						you will then automatically be downloaded for you to use in Outlook.</p>
-					<p>If you are an administrator who would like to install the agent via GPO, then you can download
-						the MSI package for the Outlook Signature Update Agent, using <a
-							href="https://outlookclient.exclaimer.net/csua/Exclaimer.CloudSignatureUpdateAgent.Install.msi">this link</a>. For help installing via GPO please see our KB
-						<a href="https://go.exclaimer.com/209">here</a>
-					</p>
-				</section>
-			</div>
-
-			<div class="body-col">
-				<header id="title-macos" class="title-col">
-					<h1><i class="fa fa-apple"></i>Desktop Agent (macOS)</h1>
-				</header>
-				<section id="download-macos" class="download-area">
-					<h2>Suitable For</h2>
-					<p>Desktop Outlook for Mac or Apple Mail only.</p>
-					<p>Individual deployment via local machine installation, or deployed via Intune.</p>
-					<h2>Version</h2>
-					<p>1.1.0.83</p>
-					<h2>Requirements</h2>
-					<table>
-						<tr>
-							<td style="width:33%;">Software:</td>
-							<td>
-								<ol>
-									<li>macOS 10.13 or above</li>
-									<li>Office for macOS</li>
-									<li>Rosetta 2 (M1/M2 CPUs)</li>
-									<li>&nbsp;</li>
-								</ol>
-							</td>
-						</tr>
-						<tr>
-							<td>Permissions (Per User):</td>
-							<td>
-								<ol>
-									<li>Local Installation Rights</li>
-									<li>Full Disk Access</li>
-								</ol>
-							</td>
-						</tr>
-						<tr>
-							<td>Permissions (All Users):</td>
-							<td>
-								<ol>
-									<li>Microsoft 365 Admin (Intune)</li>
-									<li>Full Disk Access</li>
-								</ol>
-							</td>
-						</tr>
-					</table>
-					<div class="download-cell" style="padding-bottom:50px">
-						<a aria-role="button" href="https://outlookclient.exclaimer.net/csua/Exclaimer%20Signature%20Agent-1.1.0.83.dmg">Download for macOS ></a>
-					</div>
-				</section>
-
-				<section id="install-macos">
-					<header>
-						<h2>Installation</h2>
-					</header>
-					<p>To install the Exclaimer Signature Agent, please click on the "Download for macOS" button. Once
-						downloaded, mount the .dmg file, then run the .pkg installer to install the agent. Once the
-						agent is installed, you will be prompted to sign in to Office 365 to grant permissions for the
-						agent. Any signatures assigned to you will then automatically be downloaded for you to use in
-						Outlook and Apple Mail.</p>
-					<p>If you are an administrator who would like to install the agent across a network, then you can
-						use the .pkg installer with your administration software.</p>
-				</section>
-				<div>
-				</div>
-			</div>
-		</div>
-		<div class="body-row">
-			<header>
-				<h1>Support</h1>
-			</header>
-			<p class="body-content">If you have any problems, then please visit our support website for more
-				information. From there you will be able to contact support if required. <a
-					href="https://support.portal.exclaimer.com/hc/en-gb" title="Visit the Exclaimer support website"
-					target="_exclaimer_support">Visit support now ></a></p>
-		</div>
-		<script>
-			let button = document.getElementById ('copyBtn');
-			function copyClick() {
-				let input = document.getElementById('myText').value;
-				navigator.clipboard.writeText(input);
-				button.innerHTML = "Copied!";
-				setTimeout(replaceText, 3000);
-			}
-			function replaceText(){
-				button.innerHTML = "Copy the Manifest URL >";
-			}
-		</script>
-</body>
-
-</html>
+<div class="cp-header"><h1>Exclaimer Cloud Signatures</h1></div>
+<div class="cp-container">
+  <div class="cp-container-header">
+    <h2>Welcome</h2>
+    <p>If your organisation is subscribed to Exclaimer Cloud - Signatures for Microsoft 365 and wishes to use Client-Side signatures, the deployment options are found below. Please select the one suited best to your environment or deployment method and follow the installation instructions.</p>
+  </div>
+  <div class="cp-container-body">
+    <div class="cp-container-body-item">
+      <h3 class="outlook-addin">Outlook Add In</h3>
+      <h4>Sutiable for</h4>
+      <p>Desktop Outlook on Windows and OWA</p>
+      <p>Individual, Group or Full Tenant deployments from the Microsoft 365 admin console.</p>
+      <h4>Version</h4>
+      <p>1.6.200.7</p>
+      <h4>Requirements</h4>
+      <table>
+        <tr>
+          <td style="width:33%;">Software:</td>
+          <td>
+            <ol>
+              <li>Windows 10 or above</li>
+              <li>Outlook for Microsoft 365*</li>
+              <li>Outlook Web</li>
+              <li>Office for macOS 16.64 (22081401)</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>Permissions (Per User):</td>
+          <td>
+            <ol>
+              <li>No specific permissions</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>Permissions (All Users):</td>
+          <td>
+            <ol>
+              <li>Microsoft 365 Admin</li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <a aria-role="button" class="cp-btn" target="_blank" href="https://appsource.microsoft.com/en-us/product/office/WA200004512?embedHost=admin-portal">Install from App Store ></a>
+      <div class="cp-star">
+        * Outlook Click-To-Run version 2108 (build 14326.20258) or later is required
+      </div>
+      <h4>Installation</h4>
+      <p>To allow your users to apply signatures using the Outlook Add-in please install the add-in through the Exchange Admin Center.</p>
+      <p>Full installation instructions can be found <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/360020741398">here</a></p>
+      <p>If you are using the older Manifest file, please see the guide <a href="https://support.portal.exclaimer.com/hc/en-gb/articles/6420946508829-Migrate-Exclaimer-Cloud-Outlook-Add-in-from-Manifest-to-App-Store">here</a> on how to migrate to the new App Store release</p>
+    </div>
+    <div class="cp-container-body-item">
+      <h3 class="desktopagent-windows">Desktop Agent (Windows)</h3>
+      <h4>Suitable For</h4>
+      <p>Desktop Outlook on Windows machines only.</p>
+      <p>Individual or 'All Users' machine deployment via local MSI installation, CMD Script or Group
+        Policy.</p>
+      <h4>Version</h4>
+      <p>1.18.22294.00001</p>
+      <h4>Requirements</h4>
+      <table>
+        <tr>
+          <td style="width:33%;">Software:</td>
+          <td>
+            <ol>
+              <li>Windows 8.1 or above</li>
+              <li>Outlook 2013 or above</li>
+              <li>.NET Framework 4.6.2 or above</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>Permissions (Per User):</td>
+          <td>
+            <ol>
+              <li>Local Installation Rights</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>Permissions (All Users):</td>
+          <td>
+            <ol>
+              <li>Domain Administrator (MSI Only)</li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <div class="cp-download">
+        <a aria-role="button" class="cp-btn" href="https://outlookclient.exclaimer.net/csua/Exclaimer.CloudSignatureAgent.application">Download Click-Once ></a>
+        <a aria-role="button" class="cp-btn" href="https://outlookclient.exclaimer.net/csua/Exclaimer.CloudSignatureUpdateAgent.Install.msi">Download MSI ></a>
+      </div>
+      <h4>Installation</h4>
+      <p>To install the Outlook Signatures Update Agent, please click on the "Download for Windows" button. Once downloaded, the installation will begin. Once the agent is installed, you will be prompted to sign in to Office 365 to grant permissions for the agent. Any signatures assigned to you will then automatically be downloaded for you to use in Outlook.</p>
+			<p>If you are an administrator who would like to install the agent via GPO, then you can download the MSI package for the Outlook Signature Update Agent, using <a href="https://outlookclient.exclaimer.net/csua/Exclaimer.CloudSignatureUpdateAgent.Install.msi">this link</a>. For help installing via GPO please see our KB <a href="https://go.exclaimer.com/209">here</a></p>
+    </div>
+    <div class="cp-container-body-item">
+      <h3 class="desktopagent-mac">Desktop Agent (macOS)</h3>
+      <h4>Suitable For</h4>
+      <p>Desktop Outlook for Mac or Apple Mail only.</p>
+      <p>Individual deployment via local machine installation, or deployed via Intune.</p>
+      <h4>Version</h4>
+      <p>1.1.0.83</p>
+      <h4>Requirements</h4>
+      <table>
+        <tr>
+          <td style="width:33%;">Software:</td>
+          <td>
+            <ol>
+              <li>macOS 10.13 or above</li>
+              <li>Office for macOS</li>
+              <li>Rosetta 2 (M1/M2 CPUs)</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>Permissions (Per User):</td>
+          <td>
+            <ol>
+              <li>Local Installation Rights</li>
+              <li>Full Disk Access</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>Permissions (All Users):</td>
+          <td>
+            <ol>
+              <li>Microsoft 365 Admin (Intune)</li>
+              <li>Full Disk Access</li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <a aria-role="button" class="cp-btn" href="https://outlookclient.exclaimer.net/csua/Exclaimer%20Signature%20Agent-1.1.0.83.dmg">Download for macOS ></a>
+      <h4>Installation</h4>
+      <p>To install the Exclaimer Signature Agent, please click on the "Download for macOS" button. Once downloaded, mount the .dmg file, then run the .pkg installer to install the agent. Once the agent is installed, you will be prompted to sign in to Office 365 to grant permissions for the agent. Any signatures assigned to you will then automatically be downloaded for you to use in Outlook and Apple Mail.</p>
+      <p>If you are an administrator who would like to install the agent across a network, then you can use the .pkg installer with your administration software.</p>
+    </div>
+  </div>
+  <div class="cp-container-footer">
+    <h3>Support</h3>
+    <p class="body-content">If you have any problems, then please visit our support website for more information. From there you will be able to contact support if required. <a href="https://support.portal.exclaimer.com/hc/en-gb" title="Visit the Exclaimer support website" target="_exclaimer_support">Visit support now ></a></p>
+  </div>
+</div>
