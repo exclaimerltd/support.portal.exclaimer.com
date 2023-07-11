@@ -6362,3 +6362,180 @@ a.pb-btn::after {
 .subid-subtext > a {
   text-decoration: underline;
 }
+
+.header-lang-bg {
+  display: flex;
+  justify-content: center;
+  background-color: $text_color;
+}
+
+.header-lang-internal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  max-width: 1160px;
+  font-size: 0.75em;
+  padding: 10px 0px;
+}
+
+.header-lang-btn {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.header-lang-btn > img {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.lang-title {
+  color: #fff;
+  padding-right: 10px;
+}
+
+.dropdown-menu [role="menuitem"] {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu [role="menuitem"] > img{
+  padding-left: 5px;
+}
+
+
+/** OUTLOOK CLIENT CODE **/
+.cp-container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cp-container-header {
+  margin-bottom: 1em;
+}
+
+.cp-container-body {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  font-size: 0.9em;
+}
+
+.cp-container-body-item {
+  width: 32%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.cp-container-body-item > h4, .cp-container-body-item > h5 {
+  margin: 0;
+}
+
+.cp-container-footer {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.co-container-header h3, .cp-container-footer h3, .cp-container-header p, .cp-container-footer p{ 
+  margin-bottom: 0;
+}
+
+.cp-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+}
+
+.cp-header > h1 {
+  font-size: 1.3em;
+  margin: 0;
+}
+
+.cp-container-body-item > table {
+  margin: 0;
+  border-collapse: collapse;
+  
+}
+
+.cp-container-body-item > table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  font-size: 0.9em;
+}
+
+.cp-container-body-item > table td:first-child {
+  font-weight: bold;
+}
+
+.cp-container-body ol {
+  list-style: disc;
+  padding: 0;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.cp-container-body-item p {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.cp-container-body-item a, .cp-container-footer a {
+  color: #FF7438;
+  text-decoration: underline;
+}
+
+.cp-download {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.cp-btn {
+  display: inline-block;
+  background-color: #FF7438;
+  padding: 10px 15px;
+  color: #fff!important;
+  text-decoration: none!important;
+  border-radius: 20px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  transition: ease all 0.3s;
+}
+
+.cp-btn:hover {
+  background-color: #E56832;
+}
+
+.cp-star {
+  color: #a5a5a5;
+  font-size: 0.75em;
+}
+
+.outlook-addin::before {
+  font: var(--fa-font-solid);
+  content: '\f57d';
+  padding-right: 10px;
+  color: #FF7438;
+}
+
+.desktopagent-windows::before {
+  font: var(--fa-font-brands);
+  content: '\f17a';
+  padding-right: 10px;
+  color: #FF7438;
+}
+
+.desktopagent-mac::before {
+  font: var(--fa-font-brands);
+  content: '\f179';
+  padding-right: 10px;
+  color: #FF7438;
+}
