@@ -1,7 +1,7 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
-<div class="header-lang-bg">
-  <div class="header-lang-internal">
+<div class="top-nav">
+  <div class="top-nav-container">
     {{#if alternative_locales}}
       <div class="dropdown language-selector">
         <button class="dropdown-toggle header-lang-btn" aria-haspopup="true">
@@ -35,35 +35,15 @@
         </span>
       </div>
     {{/if}}
-  </div>
-</div>
 
-<header class="header-color">
-  <div class="header header-container">
-    <div class="logo">
-      {{#link 'help_center'}}
-        <img src="{{asset 'logo.png'}}" alt="{{t 'home_page' name=help_center.name}}" />
-        {{!-- {{#if settings.show_brand_name}}
-          <span aria-hidden="true">{{help_center.name}}</span>
-        {{/if}} --}}
-      {{/link}}
-    </div>
-    <div class="nav-wrapper-desktop">
-      <nav class="user-nav" id="user-nav">
-        <ul class="user-nav-list">
-          <li><a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557" class="btn" aria-label="raiseticket">{{t 'submit_a_request'}}</a></li>
-          <li><a href="{{page_path 'help_center'}}/sections/9982628913437" class="btn" aria-label="whatsNew">{{ dc 'kb_whatsnew' }}</a></li>
-          <li><a href="{{page_path 'help_center'}}/sections/9128956898077" class="btn" aria-label="faq">{{ dc 'kb_faq' }}</a></li>
-          {{!-- <li>{{link 'community'}}</li> --}}
-          {{#unless signed_in}}
-            <li>
-              {{#link "sign_in" class="sign-in"}}
-                {{t 'sign_in'}}
-              {{/link}}
-            </li>
-          {{/unless}}
-        </ul>
-      </nav>
+    <div class="user-menu">
+      <a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557" class="btn" aria-label="raiseticket">{{t 'submit_a_request'}}</a>
+      {{#unless signed_in}}
+        {{#link "sign_in" class="sign-in"}}
+          <i class="fa-thin fa-circle-user"></i>
+          {{t 'sign_in'}}
+        {{/link}}
+      {{/unless}}
       {{#if signed_in}}
         <div class="user-info dropdown">
           <button class="dropdown-toggle" aria-haspopup="true">
@@ -86,6 +66,28 @@
           </div>
         </div>
       {{/if}}
+    </div>
+  </div>
+</div>
+<header class="header-color">
+  <div class="header header-container">
+    <div class="logo">
+      {{#link 'help_center'}}
+        <img src="{{asset 'logo.png'}}" alt="{{t 'home_page' name=help_center.name}}" />
+        {{!-- {{#if settings.show_brand_name}}
+          <span aria-hidden="true">{{help_center.name}}</span>
+        {{/if}} --}}
+      {{/link}}
+    </div>
+    <div class="nav-wrapper-desktop">
+      <nav class="user-nav" id="user-nav">
+        <ul class="user-nav-list">
+          <li><a href="{{page_path 'help_center'}}/sections/9982628913437" class="btn" aria-label="whatsNew">{{ dc 'kb_whatsnew' }}</a></li>
+          <li><a href="{{page_path 'help_center'}}/sections/9128956898077" class="btn" aria-label="faq">{{ dc 'kb_faq' }}</a></li>
+          {{!-- <li><a href="{{page_path 'help_center'}}" class="btn" aria-label="videoLib">{{ dc 'kb_videoLib' }}</a></li> --}}
+          {{!-- <li>{{link 'community'}}</li> --}}
+        </ul>
+      </nav>
     </div>
     <div class="nav-wrapper-mobile">
       <button class="menu-button-mobile" aria-controls="user-nav-mobile" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">

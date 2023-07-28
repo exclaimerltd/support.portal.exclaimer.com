@@ -971,12 +971,12 @@ ul {
 }
 
 .user-info > button:hover, .user-info > button:focus {
-  color: $link_color;
+  color: #fff;
   background-color: transparent;
 }
 
 .user-info > button::after {
-  color: $link_color;
+  color: #fff;
   padding-right: 15px;
 }
 
@@ -5579,7 +5579,6 @@ a[aria-label="faq"] {
   border: 1px solid #1B2037;
   border-radius: 30px;
   padding: 10px 15px;
-  margin-right: 10px;
   color: #1B2037!important;
 }
 
@@ -5618,15 +5617,35 @@ a:hover[aria-label="whatsNew"] {
   color: #fff!important;
 }
 
-a[aria-label="raiseticket"] {
+a[aria-label="videoLib"] {
   display: flex;
   align-items: center;
   border: 1px solid #1B2037;
   border-radius: 30px;
   padding: 10px 15px;
-  margin-right: 10px;
+  margin-left: 10px;
   transition: all ease 0.3s;
   color: #1B2037!important;
+}
+
+a[aria-label="videoLib"]::before {
+  font: var(--fa-font-solid);
+  content: '\f03d';
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+a:hover[aria-label="videoLib"] {
+  background-color: #1B2037!important;
+  color: #fff!important;
+}
+
+a[aria-label="raiseticket"] {
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  transition: all ease 0.3s;
+  color: #fff!important;
 }
 
 a[aria-label="raiseticket"]::before {
@@ -5644,30 +5663,22 @@ a:hover[aria-label="raiseticket"] {
 .sign-in {
   display: flex;
   align-items: center;
-  border: 1px solid #1B2037;
   border-radius: 30px;
-  padding: 10px 15px!important;
-  background-color: #1B2037;
   color: #fff!important;
+  margin-left: 20px;
 }
 
-.sign-in::before {
-  content: "\f2bd";
-  font: var(--fa-font-solid);
+.sign-in > i {
   margin-right: 10px;
+  font-size: 20px;
 }
 
 .sign-in:hover {
-  background-color: #1B2037!important;
   color: #fff!important;
 }
 
 .user-info {
-  border: 1px solid #1B2037;
-  border-radius: 30px;
-  padding: 10px 15px;
-  background-color: #1B2037;
-  color: #fff;
+  padding-left: 20px;
 }
 
 .user-info > button {
@@ -6364,15 +6375,15 @@ a.pb-btn::after {
   text-decoration: underline;
 }
 
-.header-lang-bg {
+.top-nav {
   display: flex;
   justify-content: center;
   background-color: $text_color;
 }
 
-.header-lang-internal {
+.top-nav-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 1160px;
@@ -6593,3 +6604,10 @@ a.see-all-articles {
 a.see-all-articles:hover {
   color: #FF7438;
 } 
+
+
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
