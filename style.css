@@ -6017,6 +6017,24 @@ button[aria-label="Ontvolgen"]::before {
   text-align: center;
 }
 
+.button-primary-downvote {
+  background-color: #CC3333!important;
+  border-color: #CC3333!important;
+}
+
+.button-primary-upvote {
+  background-color: #B17657!important;
+  border-color: #B17657!important;
+}
+
+.downvote {
+  color: #CC3333!important;
+}
+
+.upvote {
+  color: #B17657!important;
+}
+
 .feedback-link, .feedback-link:hover {
   text-decoration: underline;
 }
