@@ -6002,8 +6002,15 @@ button[aria-label="Ontvolgen"]::before {
   margin-right: 10px;
 }
 
-/*** Downvote Message ***/
+/*** vote buttons Message ***/
 .downvote-message {
+  display: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.upvote-message {
   display: none;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -6388,7 +6395,7 @@ a.pb-btn::after {
   width: 100%;
   max-width: 1160px;
   font-size: 0.75em;
-  padding: 10px 0px;
+  padding: 10px 20px;
 }
 
 .header-lang-btn {
