@@ -494,6 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const helpURL = document.querySelector('.request_custom_fields_9489978202909');
     const desc = document.querySelector('label[for=request_description]');
     const subId = document.querySelector('.request_custom_fields_360014356197');
+    const feedbackRating = document.querySelector('.request_custom_fields_12662580289181');
 
     if(window.location.href.indexOf('4459467190557') > 0){
       subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
@@ -514,6 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
         suggested.style.display = 'none';
         helpURL.style.display = 'none';
         desc.innerHTML = 'Feedback';
+        feedbackRating.style.display = 'none';
       } else if(window.location.href.indexOf('/hc/de/') > 0 ){ //German Language Support
         formHeader.innerHTML = "Knowledgebase Feedback";
         formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
@@ -528,6 +530,7 @@ document.addEventListener('DOMContentLoaded', function() {
         suggested.style.display = 'none';
         helpURL.style.display = 'none';
         desc.innerHTML = 'Feedback';
+        feedbackRating.style.display = 'none';
       } else if(window.location.href.indexOf('/hc/nl/') > 0 ){ //Dutch Language Support
         formHeader.innerHTML = "Knowledgebase Feedback";
         formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
@@ -542,6 +545,7 @@ document.addEventListener('DOMContentLoaded', function() {
         suggested.style.display = 'none';
         helpURL.style.display = 'none';
         desc.innerHTML = 'Feedback';
+        feedbackRating.style.display = 'none';
       } else { // All undefined languages
         formHeader.innerHTML = "Knowledgebase Feedback";
         formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
@@ -556,6 +560,7 @@ document.addEventListener('DOMContentLoaded', function() {
         suggested.style.display = 'none';
         helpURL.style.display = 'none';
         desc.innerHTML = 'Feedback';
+        feedbackRating.style.display = 'none';
       }
     }
   }
@@ -565,17 +570,25 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector(".article-votes-controls")) {
     const voteButtons = document.querySelectorAll(".article-vote");
-    const voteMessage = document.querySelector(".downvote-message");
+    const voteDownMessage = document.querySelector(".downvote-message");
+    const voteUpMessage = document.querySelector(".upvote-message");
 
     voteButtons.forEach((button) => {
       button.addEventListener("click", () => {
         let isDownButton = button.matches(".article-vote-down");
+        let isUpButton = button.matches(".article-vote-up");
         let isPressed = button.matches(".button-primary");
 
         if (isDownButton && !isPressed) {
-          voteMessage.style.display = "block";
+          voteDownMessage.style.display = "block";
         } else {
-          voteMessage.style.display = "none";
+          voteDownMessage.style.display = "none";
+        }
+
+        if (isUpButton && !isPressed) {
+          voteUpMessage.style.display = "block";
+        } else {
+          voteUpMessage.style.display = "none";
         }
       });
     });
