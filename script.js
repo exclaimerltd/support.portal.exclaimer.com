@@ -565,6 +565,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   checkTicketId();
+
+  window.hcm = {};
+    function hcmanager(account_key, dataset_id, domain, script_url) {
+      window.hcm._accountKey = account_key;
+      window.hcm._datasetId = dataset_id;
+      window.hcm._domain = domain;
+      var script = document.createElement("script");
+      script.type = "application/javascript";
+      script.src = script_url;
+      var first = document.getElementsByTagName('script')[0];
+      first.parentNode.insertBefore(script, first);
+    }
+    hcmanager('6a32338629b822f4e60c0c5a04ecc8e1', '65004597e443f4029f0dd736', 'https://hcmanager.swifteq.com', 'https://scripts.swifteq.com/hc_events.js');
 });
 
 document.addEventListener("DOMContentLoaded", () => {
