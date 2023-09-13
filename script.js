@@ -494,12 +494,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const helpURL = document.querySelector('.request_custom_fields_9489978202909');
     const desc = document.querySelector('label[for=request_description]');
     const subId = document.querySelector('.request_custom_fields_360014356197');
+    const subIdInput = document.getElementById('request_custom_fields_360014356197');
     const feedbackRating = document.querySelector('.request_custom_fields_12666327935133');
+    const featureField = document.querySelector('#request_custom_fields_4915458094877');
 
     if(window.location.href.indexOf('4459467190557') > 0){
       subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
     }
 
+    featureField.onchange = function(){
+      if (featureField.value == 'feature_portal___login') {
+        document.getElementById('request_custom_fields_360014356197').value = "N/A";
+        subId.style.display = 'none';
+      } else {
+        document.getElementById('request_custom_fields_360014356197').value = "";
+        subId.style.display = 'block';
+      }
+    }
+    
     if(window.location.href.indexOf('9490217014813') > 0){  //The numbers are form ID which I get from the form URL
       if(window.location.href.indexOf('/hc/fr/') > 0 ){ //French Language Support
         formHeader.innerHTML = "Knowledgebase Feedback";
