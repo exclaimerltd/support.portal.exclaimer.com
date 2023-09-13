@@ -494,12 +494,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const helpURL = document.querySelector('.request_custom_fields_9489978202909');
     const desc = document.querySelector('label[for=request_description]');
     const subId = document.querySelector('.request_custom_fields_360014356197');
+    const subIdInput = document.getElementById('request_custom_fields_360014356197');
     const feedbackRating = document.querySelector('.request_custom_fields_12666327935133');
+    const featureField = document.querySelector('#request_custom_fields_4915458094877');
 
     if(window.location.href.indexOf('4459467190557') > 0){
       subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
     }
 
+    featureField.onchange = function(){
+      if (featureField.value == 'feature_portal___login') {
+        document.getElementById('request_custom_fields_360014356197').value = "N/A";
+        subId.style.display = 'none';
+      } else {
+        document.getElementById('request_custom_fields_360014356197').value = "";
+        subId.style.display = 'block';
+      }
+    }
+    
     if(window.location.href.indexOf('9490217014813') > 0){  //The numbers are form ID which I get from the form URL
       if(window.location.href.indexOf('/hc/fr/') > 0 ){ //French Language Support
         formHeader.innerHTML = "Knowledgebase Feedback";
@@ -565,6 +577,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   checkTicketId();
+
+  window.hcm = {};
+    function hcmanager(account_key, dataset_id, domain, script_url) {
+      window.hcm._accountKey = account_key;
+      window.hcm._datasetId = dataset_id;
+      window.hcm._domain = domain;
+      var script = document.createElement("script");
+      script.type = "application/javascript";
+      script.src = script_url;
+      var first = document.getElementsByTagName('script')[0];
+      first.parentNode.insertBefore(script, first);
+    }
+    hcmanager('6a32338629b822f4e60c0c5a04ecc8e1', '65004597e443f4029f0dd736', 'https://hcmanager.swifteq.com', 'https://scripts.swifteq.com/hc_events.js');
 });
 
 document.addEventListener("DOMContentLoaded", () => {
