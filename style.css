@@ -6413,7 +6413,7 @@ a.pb-btn::after {
   width: 100%;
   max-width: 1160px;
   font-size: 0.75em;
-  padding: 10px 20px;
+  padding: 10px 0px;
 }
 
 .header-lang-btn {
@@ -6635,4 +6635,22 @@ a.see-all-articles:hover {
 .user-menu {
   display: flex;
   align-items: center;
+}
+
+
+.recent-activity-item > h3 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.recent-activity-item-parent {
+  font-size: 0.9em;
+  font-weight: normal;
+  font-family: primaryFont;
+}
+
+.recent-activity-item-link {
+  font-size: 1.1em;
+  font-weight: 600;
+  font-family: headingFont;
 }

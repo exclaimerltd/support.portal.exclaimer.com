@@ -1,7 +1,7 @@
 {
   "name": "ExclaimerV2",
   "author": "Exclaimer/Zendesk",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "api_version": 2,
   "default_locale": "en-us",
   "settings": [
