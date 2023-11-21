@@ -579,6 +579,20 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   checkTicketId();
 
+  function checkFAQ() {
+    let faqItem = document.querySelectorAll('.section-topic-link');
+    const faq = ' - Frequently Asked Questions';
+
+    if(window.location.href.indexOf('9128956898077') > 0){
+      for(let i = 0; i < faqItem.length; i++) {
+        if(faqItem[i].innerHTML.includes(faq)){
+          faqItem[i].innerHTML = faqItem[i].innerHTML.replace(faq, '');
+        }
+      }
+    }
+  }
+  checkFAQ();
+
   window.hcm = {};
     function hcmanager(account_key, dataset_id, domain, script_url) {
       window.hcm._accountKey = account_key;
