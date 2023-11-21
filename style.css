@@ -5303,7 +5303,7 @@ html[dir="rtl"] .notification-left-aligned {
 
 .toc_submenu-label::after {
   content: "\f107";
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   font-size: 16px;
   position: absolute;
   right: 0;
@@ -5321,7 +5321,7 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .toc_submenu-controls:checked ~ .toc_submenu-label::after {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: "\f106";
   font-size: 16px;
 }
@@ -5412,7 +5412,7 @@ a:hover {
 }
 .notify--info::before{
   margin-right: 5px;
-  font-family: "Font Awesome 5 Pro"; 
+  font-family: "Font Awesome 6 Pro"; 
   font-weight: 900;
   content: "\f05a";
 }
@@ -5424,7 +5424,7 @@ a:hover {
 }
 .notify--success::before{
   margin-right: 5px;
-  font-family: "Font Awesome 5 Pro"; 
+  font-family: "Font Awesome 6 Pro"; 
   font-weight: 900;
   content: "\f058";
 }
@@ -5436,7 +5436,7 @@ a:hover {
 }
 .notify--warning::before{
   margin-right: 5px;
-  font-family: "Font Awesome 5 Pro"; 
+  font-family: "Font Awesome 6 Pro"; 
   font-weight: 900;
   content: "\f071";
 }
@@ -5448,7 +5448,7 @@ a:hover {
 }
 .notify--danger::before{
   margin-right: 5px;
-  font-family: "Font Awesome 5 Pro"; 
+  font-family: "Font Awesome 6 Pro"; 
   font-weight: 900;
   content: "\f00d";
 }
@@ -5462,7 +5462,7 @@ a:hover {
 }
 .notify--code-block::before{
   margin-right: 5px;
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 6 Pro";
   font-style: normal;
   font-weight: 900;
   content: "\f121";
@@ -5477,7 +5477,7 @@ a:hover {
 }
 .notify--error-code::before{
   margin-right: 5px;
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 6 Pro";
   font-style: normal;
   font-weight: 900;
   content: "\f121";
@@ -5492,7 +5492,7 @@ a:hover {
 }
 .notify--error.code::before{
   margin-right: 5px;
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 6 Pro";
   font-style: normal;
   font-weight: 900;
   content: "\f121";
@@ -5606,7 +5606,7 @@ a[aria-label="whatsNew"] {
 }
 
 a[aria-label="whatsNew"]::before {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: '\f890';
   margin-right: 10px;
   font-size: 15px;
@@ -5629,7 +5629,7 @@ a[aria-label="videoLib"] {
 }
 
 a[aria-label="videoLib"]::before {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: '\f03d';
   margin-right: 10px;
   font-size: 15px;
@@ -5649,8 +5649,8 @@ a[aria-label="raiseticket"] {
 }
 
 a[aria-label="raiseticket"]::before {
-  font: var(--fa-font-solid);
-  content: '\f4a4';
+  font: var(--fa-font-regular);
+  content: '\f4b6';
   margin-right: 10px;
   font-size: 15px;
 }
@@ -5876,7 +5876,7 @@ a:hover[aria-label="raiseticket"] {
 }
 
 .section-question-title::before {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: "\f107";
   font-size: 15px;
   padding-right: 10px;
@@ -5980,7 +5980,7 @@ button[aria-label="Unfollow"]::before,
 button[aria-label="Annuler l’abonnement"]::before,
 button[aria-label="Nicht mehr folgen"]::before,
 button[aria-label="Ontvolgen"]::before {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: '\f004';
   margin-right: 10px;
 }
@@ -5991,13 +5991,13 @@ button[aria-label="Ontvolgen"]::before {
 }
 
 .article-vote-up::before {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: "\f164";
   margin-right: 10px;
 }
 
 .article-vote-down::before {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: "\f165";
   margin-right: 10px;
 }
@@ -6117,7 +6117,7 @@ button[aria-label="Ontvolgen"]::before {
 }
 
 .vte-accord-question::before {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: "\f106";
   margin-right: 20px;
 }
@@ -6223,7 +6223,7 @@ a.pb-btn {
 }
 
 a.pb-btn::after {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: '\f105';
   padding-left: 10px;
 }
@@ -6413,7 +6413,7 @@ a.pb-btn::after {
   width: 100%;
   max-width: 1160px;
   font-size: 0.75em;
-  padding: 10px 20px;
+  padding: 10px 0px;
 }
 
 .header-lang-btn {
@@ -6557,7 +6557,7 @@ a.pb-btn::after {
 }
 
 .outlook-addin::before {
-  font: var(--fa-font-solid);
+  font: var(--fa-font-regular);
   content: '\f57d';
   padding-right: 10px;
   color: #FF7438;
@@ -6635,4 +6635,22 @@ a.see-all-articles:hover {
 .user-menu {
   display: flex;
   align-items: center;
+}
+
+
+.recent-activity-item > h3 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.recent-activity-item-parent {
+  font-size: 0.9em;
+  font-weight: normal;
+  font-family: primaryFont;
+}
+
+.recent-activity-item-link {
+  font-size: 1.1em;
+  font-weight: 600;
+  font-family: headingFont;
 }

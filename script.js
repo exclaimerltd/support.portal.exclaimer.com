@@ -497,18 +497,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const subIdInput = document.getElementById('request_custom_fields_360014356197');
     const feedbackRating = document.querySelector('.request_custom_fields_12666327935133');
     const featureField = document.querySelector('#request_custom_fields_4915458094877');
+    const prodId = document.querySelector('.request_custom_fields_360018036431');
 
     if(window.location.href.indexOf('4459467190557') > 0){
       subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
-    }
-
-    featureField.onchange = function(){
-      if (featureField.value == 'feature_portal___login') {
-        document.getElementById('request_custom_fields_360014356197').value = "N/A";
-        subId.style.display = 'none';
-      } else {
-        document.getElementById('request_custom_fields_360014356197').value = "";
-        subId.style.display = 'block';
+      prodId.style.display = 'none';
+      featureField.onchange = function(){
+        if (featureField.value == 'feature_portal___login') {
+          document.getElementById('request_custom_fields_360014356197').value = "N/A";
+          subId.style.display = 'none';
+        } else {
+          document.getElementById('request_custom_fields_360014356197').value = "";
+          subId.style.display = 'block';
+        }
       }
     }
     
