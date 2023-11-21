@@ -10,6 +10,22 @@
       {{search scoped=settings.scoped_kb_search submit=false}}
     </div>
   </nav>
+  {{#is section.id 14953980230813}}
+    <header class="page-header">
+      <h1>{{section.name}}</h1>
+      {{#if settings.show_follow_section}}
+        <div class="section-subscribe follow-btn">{{subscribe}}</div>
+      {{/if}}
+      {{#if section.description}}
+        <p class="page-header-description">{{section.description}}</p>
+      {{/if}}
+    </header>
+    {{#if section.articles}}
+      {{#each section.articles}}
+        <a href="{{url}}" class="video-lib-section">{{title}}</a>
+      {{/each}}
+    {{/if}}
+  {{else}}
   {{#is section.id 9128956898077}}
     <div id="faq">
       <div class="section-selector">
@@ -115,6 +131,7 @@
       </section>
     </div>
     {{/is}}
+  {{/is}}
   {{/is}}
   
 </div>
