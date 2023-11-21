@@ -5623,7 +5623,7 @@ a[aria-label="videoLib"] {
   border: 1px solid #1B2037;
   border-radius: 30px;
   padding: 10px 15px;
-  margin-left: 10px;
+  margin-right: 10px;
   transition: all ease 0.3s;
   color: #1B2037!important;
 }
@@ -6653,4 +6653,56 @@ a.see-all-articles:hover {
   font-size: 1.1em;
   font-weight: 600;
   font-family: headingFont;
+}
+
+
+.video-lib {
+  display: flex;
+  flex-flow: wrap;
+  width: 100%;
+}
+
+.video-lib-section {
+  text-decoration: none;
+}
+
+.video-lib-section:hover {
+    color: #f27021
+}
+
+.video-lib-section::before {
+  content: "\f03d";
+  font-weight: 600;
+  font-family: "Font Awesome 6 Pro";
+  padding-right: 20px;
+}
+
+.video {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  padding: 1%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.video > h4 {
+  margin-bottom: 0;
+  font-size: 1.2em;
+}
+
+.video > .linkback {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  text-decoration: underline;
+}
+
+.video > .linkback::before {
+  content: "Article: ";
+  text-decoration: none;
+}
+
+.wistia_responsive_wrapper {
+  border-radius: 5px;
+  overflow: hidden;
 }
