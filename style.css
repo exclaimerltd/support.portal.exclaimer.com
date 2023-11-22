@@ -794,7 +794,7 @@ ul {
   text-decoration: underline;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .nav-wrapper-mobile {
     display: none;
   }
@@ -5644,6 +5644,7 @@ a[aria-label="raiseticket"] {
   display: flex;
   align-items: center;
   border-radius: 30px;
+  margin-left: 20px;
   transition: all ease 0.3s;
   color: #fff!important;
 }
@@ -5651,7 +5652,7 @@ a[aria-label="raiseticket"] {
 a[aria-label="raiseticket"]::before {
   font: var(--fa-font-regular);
   content: '\f4b6';
-  margin-right: 10px;
+  margin-right: 10px;`
   font-size: 15px;
 }
 
@@ -6413,7 +6414,7 @@ a.pb-btn::after {
   width: 100%;
   max-width: 1160px;
   font-size: 0.75em;
-  padding: 10px 0px;
+  padding: 10px 20px;
 }
 
 .header-lang-btn {
@@ -6705,4 +6706,115 @@ a.see-all-articles:hover {
 .wistia_responsive_wrapper {
   border-radius: 5px;
   overflow: hidden;
+}
+
+.dropdown-toggle > span {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-toggle > span > span {
+  margin-bottom: -3px;
+  padding-right: 5px;
+}
+
+/** Service Status **/
+a.c-service-status-icon {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 999px;
+  margin-left: 10px;
+  text-wrap: nowrap;
+  min-width: 30px;
+  width: 30px;
+  height: 30px;
+  padding-left: 7px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+a.c-service-status-icon::before {
+  font: var(--fa-font-regular);
+  content: '\f5f8';
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+a.c-service-status-icon--none {
+  background-color: #778C65;
+  color: white;
+}
+a.c-service-status-icon--none::before {
+  color: white;
+}
+
+a.c-service-status-icon--minor{
+  background-color: #9AADFF;
+  color: #1B2037;
+  
+}
+a.c-service-status-icon--minor::before {
+  color: #1B2037;
+}
+
+a.c-service-status-icon--major{
+  background-color: #E68E00;
+  color: #1B2037;
+}
+a.c-service-status-icon--major::before {
+  color: #1B2037;
+}
+
+a.c-service-status-icon--critical{
+  background-color: #AC1826;
+  color: white;
+}
+a.c-service-status-icon--critical::before {
+  color: white;
+}
+
+a.c-service-status-icon--maintenance{
+  background-color: #AFD3C4;
+  color: #1B2037;
+}
+a.c-service-status-icon--maintenance::before {
+  color: #1B2037;
+}
+
+.user-info {
+  display: none;
+}
+
+@media screen and (min-width: 1025px) {
+  a.c-service-status-icon {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    border-radius: 999px;
+    padding: 8px 12px;
+    padding-bottom: 5px;
+    margin-left: 20px;
+    width: auto!important;
+  }
+  .user-info {
+    display: block;
+  }
+  .top-nav-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.nav-wrapper-mobile {
+  background-color: #1B2037;
+  border-color: #1B2037;
+  border-radius: 10px;
+}
+.nav-wrapper-mobile .menu-button-mobile {
+  border-color: #1B2037;
+  padding-left: 10px;
+  padding-right: 3px;
 }

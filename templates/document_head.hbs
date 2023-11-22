@@ -21,3 +21,18 @@
 <script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPWCWR28YG"></script>
+
+<script src="https://cdn.statuspage.io/se-v2.js"></script>
+<script>
+    var sp = new StatusPage.page({ page: 'xhh3t32ngbpr' });
+    sp.status(
+    {
+      success: statusPageCallback
+    });
+
+    function statusPageCallback(data)
+    {
+      var status = document.getElementById('service-status');
+      status.classList.add('c-service-status-icon--' + data.status.indicator);
+    }
+</script>
