@@ -581,13 +581,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function checkFAQ() {
     let faqItem = document.querySelectorAll('.section-topic-link');
+    let faqTitle = document.querySelectorAll('.section-article-title');
     const faq = ' - Frequently Asked Questions';
 
-    if(window.location.href.indexOf('9128956898077') > 0){
-      for(let i = 0; i < faqItem.length; i++) {
-        if(faqItem[i].innerHTML.includes(faq)){
-          faqItem[i].innerHTML = faqItem[i].innerHTML.replace(faq, '');
-        }
+    for(let i = 0; i < faqItem.length; i++) {
+      if(faqItem[i].innerHTML.includes(faq)){
+        faqItem[i].innerHTML = faqItem[i].innerHTML.replace(faq, '');
+      }
+    }
+
+    for(let i = 0; i < faqTitle.length; i++) {
+      if(faqTitle[i].innerHTML.includes(faq)){
+        faqTitle[i].innerHTML = faqTitle[i].innerHTML.replace(faq, '');
       }
     }
   }
