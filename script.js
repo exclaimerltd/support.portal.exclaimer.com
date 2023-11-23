@@ -481,7 +481,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });  
 
-  // Form ID 9490217014813 - KB Feedback
   function checkTicketId(){
     const formHeader = document.querySelector('.formHeader');
     const formSubTitle = document.querySelector('.formSubTitle');
@@ -492,13 +491,48 @@ document.addEventListener('DOMContentLoaded', function() {
     var subjectAfter = " - [Article Feedback]";
     const suggested = document.querySelector('.suggestion-list');
     const helpURL = document.querySelector('.request_custom_fields_9489978202909');
+    const helpURLTitle = document.querySelector('label[for=request_custom_fields_9489978202909]');
     const desc = document.querySelector('label[for=request_description]');
     const subId = document.querySelector('.request_custom_fields_360014356197');
     const subIdInput = document.getElementById('request_custom_fields_360014356197');
     const feedbackRating = document.querySelector('.request_custom_fields_12666327935133');
     const featureField = document.querySelector('#request_custom_fields_4915458094877');
     const prodId = document.querySelector('.request_custom_fields_360018036431');
+    const formDropDown = document.querySelector('.request_ticket_form_id');
 
+    function formEditor(title, description, emailLabelText, feedback){
+      formHeader.style.display = 'block';
+      formHeader.innerHTML = title;
+      formSubTitle.innerHTML = description;
+      if (ccLabel !== null) {
+          ccLabel.innerHTML = emailLabelText
+      }
+      if (emailLabel !== null) {
+          emailLabel.innerHTML = emailLabelText
+      }
+      desc.innerHTML = feedback;
+      subjectWords.value += subjectAfter;
+      subject.style.display = 'none';
+      suggested.style.display = 'none';
+      helpURL.style.display = 'none';
+      feedbackRating.style.display = 'none';
+    }
+
+    function formEditorSmall(title, description, emailLabelText, feedback){
+      formHeader.style.display = 'block';
+      formHeader.innerHTML = title;
+      formSubTitle.innerHTML = description;
+      if (ccLabel !== null) {
+        ccLabel.innerHTML = emailLabelText;
+      }
+      if (emailLabel !== null) {
+        emailLabel.innerHTML = emailLabelText;
+      }
+      desc.innerHTML = feedback;
+      suggested.style.display = 'none';
+      subject.style.display = 'none';
+    }
+  
     if(window.location.href.indexOf('4459467190557') > 0){
       subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
       prodId.style.display = 'none';
@@ -513,67 +547,171 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    if(window.location.href.indexOf('9490217014813') > 0){  //The numbers are form ID which I get from the form URL
-      if(window.location.href.indexOf('/hc/fr/') > 0 ){ //French Language Support
-        formHeader.innerHTML = "Knowledgebase Feedback";
-        formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
-        if (ccLabel !== null) {
-          ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
+    if(window.location.href.indexOf('9490217014813') > 0){
+      if(window.location.href.indexOf('&tf_subject=') > 0){
+        if(window.location.href.indexOf('/hc/bg/') > 0 ){
+          //Bulgarian Language Support
+          formEditor(
+            'Обратна връзка за базата данни',
+            'Благодарим ви, че отделихте време, за да предоставите обратна връзка относно този статия в базата данни. Вашият отзив ще бъде прегледан от нашите технически автори, за да помогне за подобряване на базата данни.',
+            'Искаме да знаем кой сте. Моля, предоставете вашия имейл адрес?',
+            'Обратна връзка'
+          );
+        } else if(window.location.href.indexOf('/hc/de/') > 0 ){
+          //German Language Support
+          formEditor(
+            'Wissensdatenbank-Feedback',
+            'Wir danken Ihnen, dass Sie sich die Zeit genommen haben, Feedback zu diesem Artikel in der Wissensdatenbank zu geben. Ihr Feedback wird von unseren technischen Autoren überprüft, um die Wissensdatenbank zu verbessern.',
+            'Wir würden gerne wissen, wer Sie sind. Bitte geben Sie Ihre E-Mail-Adresse an?',
+            'Feedback'
+          );
+        } else if(window.location.href.indexOf('/hc/es/') > 0 ){
+          //Spanish Language Support
+          formEditor(
+            'Comentarios sobre la Base de Conocimientos',
+            'Agradecemos que se tome el tiempo para proporcionar comentarios sobre este artículo de la base de conocimientos. Sus comentarios serán revisados por nuestros Autores Técnicos para ayudar a mejorar la base de conocimientos.',
+            'Nos encantaría saber quién es usted. ¿Podría proporcionar su dirección de correo electrónico?',
+            'Comentarios'
+         );
+        } else if(window.location.href.indexOf('/hc/fr/') > 0 ){
+          //French Language Support
+          formEditor(
+            'Feedback de la Base de Connaissances',
+            'Nous vous remercions de prendre le temps de fournir des commentaires sur cet article de la base de connaissances. Vos commentaires seront examinés par nos auteurs techniques pour aider à améliorer la base de connaissances.',
+            'Nous aimerions savoir qui vous êtes. Veuillez fournir votre adresse e-mail?',
+            'Commentaires'
+          );
+        } else if(window.location.href.indexOf('/hc/it/') > 0 ){
+          //Italian Language Support
+          formEditor(
+            'Feedback sulla Knowledge Base',
+            'Apprezziamo che tu abbia dedicato del tempo per fornire feedback su questo articolo della knowledge base. Il tuo feedback sarà esaminato dai nostri autori tecnici per migliorare la knowledge base.',
+            'Ci piacerebbe sapere chi sei. Per favore, fornisci il tuo indirizzo email?',
+            'Feedback'
+          );
+        } else if(window.location.href.indexOf('/hc/nl/') > 0 ){
+          //Dutch Language Support
+          formEditor(
+            'Feedback Kennisbank',
+            'We waarderen het dat je de tijd neemt om feedback te geven op dit artikel in de kennisbank. Jouw feedback wordt beoordeeld door onze technische auteurs om de kennisbank te verbeteren.',
+            'We willen graag weten wie je bent. Geef alsjeblieft je e-mailadres op?',
+            'Feedback'
+          );
+        } else if(window.location.href.indexOf('/hc/pl/') > 0 ){
+          //Polish Language Support 
+          formEditor(
+            'Opinie na temat Bazy Wiedzy',
+            'Doceniamy, że poświęcasz czas, aby dostarczyć opinii na temat tego artykułu w bazie wiedzy. Twoja opinia zostanie przeanalizowana przez naszych autorów technicznych, aby pomóc w poprawie bazy wiedzy.',
+            'Chcielibyśmy wiedzieć, kim jesteś. Podaj swój adres e-mail?',
+            'Opinie'
+          );
+        } else if(window.location.href.indexOf('/hc/pt/') > 0 ){
+          //Portugese Language Support
+          formEditor(
+            'Feedback da Base de Conhecimento',
+            'Agradecemos por dedicar um tempo para fornecer feedback. Seu feedback será revisado pelos nossos autores técnicos para ajudar a melhorar a base de conhecimento.',
+            'Gostaríamos de saber quem você é. Por favor, forneça seu endereço de e-mail?',
+            'Feedback'
+          );
+        } else if(window.location.href.indexOf('/hc/ru/') > 0 ){
+          //Russian Language Support
+          formEditor(
+            'Обратная связь по базе знаний',
+            'Мы благодарим вас за то, что уделили время, чтобы предоставить обратную связь по этой статье в базе знаний. Ваш отзыв будет рассмотрен нашими техническими авторами для улучшения базы знаний.',
+            'Нам было бы интересно узнать, кто вы. Пожалуйста, предоставьте свой адрес электронной почты?',
+            'Обратная связь'
+          );
+        } else {
+          // All undefined languages
+          formEditor(
+            'Knowledgebase Feedback',
+            'We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.',
+            'We\'d love to know who you are. Please provide your email address?',
+            'Feedback'
+          );
         }
-        if (emailLabel !== null) {
-          emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
+      } else {
+        if(window.location.href.indexOf('/hc/bg/') > 0 ){
+          //Bulgarian Language Support
+          formEditorSmall(
+            'Обратна връзка за базата данни',
+            'Благодарим ви, че отделихте време, за да предоставите обратна връзка. Вашият отзив ще бъде прегледан от нашите технически автори, за да помогне за подобряване на базата данни.',
+            'Искаме да знаем кой сте. Моля, предоставете вашия имейл адрес?',
+            'Обратна връзка'
+          );
+        } else if(window.location.href.indexOf('/hc/de/') > 0 ){
+          //German Language Support
+          formEditorSmall(
+            'Wissensdatenbank-Feedback',
+            'Wir danken Ihnen, dass Sie sich die Zeit genommen haben, Feedback zu geben. Ihr Feedback wird von unseren technischen Autoren überprüft, um die Wissensdatenbank zu verbessern.',
+            'Wir würden gerne wissen, wer Sie sind. Bitte geben Sie Ihre E-Mail-Adresse an?',
+            'Feedback'
+          );
+        } else if(window.location.href.indexOf('/hc/es/') > 0 ){
+          //Spanish Language Support
+          formEditorSmall(
+            'Comentarios sobre la Base de Conocimientos',
+            'Agradecemos que se tome el tiempo para proporcionar comentarios. Sus comentarios serán revisados por nuestros Autores Técnicos para ayudar a mejorar la base de conocimientos.',
+            'Nos encantaría saber quién es usted. ¿Podría proporcionar su dirección de correo electrónico?',
+            'Comentarios'
+          );
+        } else if(window.location.href.indexOf('/hc/fr/') > 0 ){
+          //French Language Support
+          formEditorSmall(
+            'Feedback de la Base de Connaissances',
+            'Nous vous remercions de prendre le temps de fournir des commentaires. Vos commentaires seront examinés par nos auteurs techniques pour aider à améliorer la base de connaissances.',
+            'Nous aimerions savoir qui vous êtes. Veuillez fournir votre adresse e-mail?',
+            'Commentaires'
+          );
+        } else if(window.location.href.indexOf('/hc/it/') > 0 ){
+          //Italian Language Support
+          formEditorSmall(
+            'Feedback sulla Knowledge Base',
+            'Apprezziamo che tu abbia dedicato del tempo per fornire feedback. Il tuo feedback sarà esaminato dai nostri autori tecnici per migliorare la knowledge base.',
+            'Ci piacerebbe sapere chi sei. Per favore, fornisci il tuo indirizzo email?',
+            'Feedback'
+          );
+        } else if(window.location.href.indexOf('/hc/nl/') > 0 ){
+          //Dutch Language Support
+          formEditorSmall(
+            'Feedback Kennisbank',
+            'We waarderen het dat je de tijd neemt om feedback te geven. Jouw feedback wordt beoordeeld door onze technische auteurs om de kennisbank te verbeteren.',
+            'We willen graag weten wie je bent. Geef alsjeblieft je e-mailadres op?',
+            'Feedback'
+          );
+        } else if(window.location.href.indexOf('/hc/pl/') > 0 ){
+          //Polish Language Support
+          formEditorSmall(
+            'Opinie na temat Bazy Wiedzy',
+            'Doceniamy, że poświęcasz czas, aby dostarczyć opinii. Twoja opinia zostanie przeanalizowana przez naszych autorów technicznych, aby pomóc w poprawie bazy wiedzy.',
+            'Chcielibyśmy wiedzieć, kim jesteś. Podaj swój adres e-mail?',
+            'Opinie'
+          );
+        } else if(window.location.href.indexOf('/hc/pt/') > 0 ){
+          //Portugese Language Support
+          formEditorSmall(
+            'Feedback da Base de Conhecimento',
+            'Agradecemos por dedicar um tempo para fornecer feedback. Seu feedback será revisado pelos nossos autores técnicos para ajudar a melhorar a base de conhecimento.',
+            'Gostaríamos de saber quem você é. Por favor, forneça seu endereço de e-mail?',
+            'Feedback'
+          );
+        } else if(window.location.href.indexOf('/hc/ru/') > 0 ){
+          //Russian Language Support
+          formEditorSmall(
+            'Обратная связь по базе знаний',
+            'Мы благодарим вас за то, что уделили время, чтобы предоставить обратную связь. Ваш отзыв будет рассмотрен нашими техническими авторами для улучшения базы знаний.',
+            'Нам было бы интересно узнать, кто вы. Пожалуйста, предоставьте свой адрес электронной почты?',
+            'Обратная связь'
+          );
+        } else {
+          // All undefined languages
+          formEditorSmall(
+            'Knowledgebase Feedback',
+            'We appreciate you taking the time to provide feedback. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.',
+            'We\'d love to know who you are. Please provide your email address?',
+            'Feedback'
+          )
         }
-        subjectWords.value += subjectAfter;
-        subject.style.display = 'none';
-        suggested.style.display = 'none';
-        helpURL.style.display = 'none';
-        desc.innerHTML = 'Feedback';
-        feedbackRating.style.display = 'none';
-      } else if(window.location.href.indexOf('/hc/de/') > 0 ){ //German Language Support
-        formHeader.innerHTML = "Knowledgebase Feedback";
-        formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
-        if (ccLabel !== null) {
-          ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
-        }
-        if (emailLabel !== null) {
-          emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
-        }
-        subjectWords.value += subjectAfter;
-        subject.style.display = 'none';
-        suggested.style.display = 'none';
-        helpURL.style.display = 'none';
-        desc.innerHTML = 'Feedback';
-        feedbackRating.style.display = 'none';
-      } else if(window.location.href.indexOf('/hc/nl/') > 0 ){ //Dutch Language Support
-        formHeader.innerHTML = "Knowledgebase Feedback";
-        formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
-        if (ccLabel !== null) {
-          ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
-        }
-        if (emailLabel !== null) {
-          emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
-        }
-        subjectWords.value += subjectAfter;
-        subject.style.display = 'none';
-        suggested.style.display = 'none';
-        helpURL.style.display = 'none';
-        desc.innerHTML = 'Feedback';
-        feedbackRating.style.display = 'none';
-      } else { // All undefined languages
-        formHeader.innerHTML = "Knowledgebase Feedback";
-        formSubTitle.innerHTML = "We appreciate you taking the time to provide feedback on this knowledgebase article. Your feedback will be reviewed by our Technical Authors to help improve the knowledgebase.";
-        if (ccLabel !== null) {
-          ccLabel.innerHTML = "We'd love to know who you are. Please provide your email address?"
-        }
-        if (emailLabel !== null) {
-          emailLabel.innerHTML = "We'd love to know who you are. Please provide your email address"
-        }
-        subjectWords.value += subjectAfter;
-        subject.style.display = 'none';
-        suggested.style.display = 'none';
-        helpURL.style.display = 'none';
-        desc.innerHTML = 'Feedback';
-        feedbackRating.style.display = 'none';
       }
     }
   }
