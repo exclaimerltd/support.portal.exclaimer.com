@@ -34,17 +34,21 @@
           {{#is name "What's new in Exclaimer Cloud"}}{{else}}
           <li class="toc_menu-item">
             {{#if sections}}
-            <input class="toc_submenu-controls" type="checkbox" id="{{name}}" name="accordion">
-            <label class="toc_submenu-label" for="{{name}}">
-              <a href="{{url}}" class="toc_link">{{name}}</a>
-            </label>
-            <ul class="toc_submenu">
-              {{#each sections}}
-              <li class="toc_submenu-item"><a href="{{url}}" class="toc_link">{{name}}</a></li>
-              {{/each}}
-            </ul>
+              <input class="toc_submenu-controls" type="checkbox" id="{{name}}" name="accordion">
+              <label class="toc_submenu-label" for="{{name}}">
+                <a href="{{url}}" class="toc_link">{{name}}</a>
+              </label>
+              <ul class="toc_submenu">
+                {{#each sections}}
+                  <li class="toc_submenu-item"><a href="{{url}}" class="toc_link">{{name}}</a></li>
+                {{/each}}
+              </ul>
+            {{else}}
+            {{#is name "Videos"}}
+              <a href="{{page_path 'help_center'}}/articles/14954091296029" class="toc_link">{{name}}</a>
             {{else}}
               <a href="{{url}}" class="toc_link">{{name}}</a>
+            {{/is}}
             {{/if}}
           </li>
           {{/is}}

@@ -6663,6 +6663,30 @@ a.see-all-articles:hover {
   width: 100%;
 }
 
+.video-library-btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
+  margin-bottom: 1.5em;
+}
+
+.btn-video {
+  border: 1px solid #1B2037;
+  background-color: white;
+  color: #1B2037;
+  margin: 0.5em;
+  cursor: pointer;
+  transition: ease all 0.3s;
+}
+
+.btn-video:hover{
+  border-color:#1B2037;
+  background-color: #1B2037;
+  color: white;
+}
+
 .video-lib-section {
   text-decoration: none;
 }
@@ -6679,12 +6703,16 @@ a.see-all-articles:hover {
 }
 
 .video {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 33%;
   padding: 1%;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.video-show {
+  display: flex;
 }
 
 .video > h4 {
@@ -6817,4 +6845,14 @@ a.c-service-status-icon--maintenance::before {
   border-color: #1B2037;
   padding-left: 10px;
   padding-right: 3px;
+}
+
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+}
+
+.lang-selector > img {
+  padding-right: 5px;
 }
