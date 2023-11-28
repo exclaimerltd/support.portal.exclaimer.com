@@ -5,35 +5,33 @@
     {{#if alternative_locales}}
       <div class="dropdown language-selector">
         <button class="dropdown-toggle header-lang-btn" aria-haspopup="true">
-          {{current_locale.name}}
-          {{#is current_locale.name 'English (GB)'}}<img src="{{asset 'gb.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Deutsch'}}<img src="{{asset 'de.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Français'}}<img src="{{asset 'fr.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Nederlands'}}<img src="{{asset 'nl.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Italiano'}}<img src="{{asset 'it.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Polski'}}<img src="{{asset 'pl.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Português'}}<img src="{{asset 'pt.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Español'}}<img src="{{asset 'es.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Български'}}<img src="{{asset 'bg.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Русский'}}<img src="{{asset 'ru.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'English (GB)'}}English (UK) <img src="{{asset 'gb.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Deutsch'}}Deutsch <img src="{{asset 'de.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Français'}}Français <img src="{{asset 'fr.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Nederlands'}}Nederlands <img src="{{asset 'nl.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Italiano'}}Italiano <img src="{{asset 'it.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Polski'}}Polski <img src="{{asset 'pl.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Português'}}Português <img src="{{asset 'pt.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Español'}}Español <img src="{{asset 'es.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Български'}}Български <img src="{{asset 'bg.png'}}" height="12px"/>{{/is}}
+          {{#is current_locale.name 'Русский'}}Русский <img src="{{asset 'ru.png'}}" height="12px"/>{{/is}}
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
             <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
           </svg>
         </button>
         <span class="dropdown-menu dropdown-menu-end" role="menu">
           {{#each alternative_locales}}
-            <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem" class="dropdown-item">
-              {{name}}
-              {{#is name 'English (GB)'}}<img src="{{asset 'gb.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Deutsch'}}<img src="{{asset 'de.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Français'}}<img src="{{asset 'fr.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Nederlands'}}<img src="{{asset 'nl.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Italiano'}}<img src="{{asset 'it.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Polski'}}<img src="{{asset 'pl.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Português'}}<img src="{{asset 'pt.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Español'}}<img src="{{asset 'es.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Български'}}<img src="{{asset 'bg.png'}}" height="12px"/>{{/is}}
-              {{#is name 'Русский'}}<img src="{{asset 'ru.png'}}" height="12px"/>{{/is}}
+            <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem" class="dropdown-item lang-selector">
+              {{#is name 'English (GB)'}}<img src="{{asset 'gb.png'}}" height="12px"/> English (UK){{/is}}
+              {{#is name 'Deutsch'}}<img src="{{asset 'de.png'}}" height="12px"/> Deutsch{{/is}}
+              {{#is name 'Français'}}<img src="{{asset 'fr.png'}}" height="12px"/> Français{{/is}}
+              {{#is name 'Nederlands'}}<img src="{{asset 'nl.png'}}" height="12px"/> Nederlands{{/is}}
+              {{#is name 'Italiano'}}<img src="{{asset 'it.png'}}" height="12px"/> Italiano{{/is}}
+              {{#is name 'Polski'}}<img src="{{asset 'pl.png'}}" height="12px"/> Polski{{/is}}
+              {{#is name 'Português'}}<img src="{{asset 'pt.png'}}" height="12px"/> Português{{/is}}
+              {{#is name 'Español'}}<img src="{{asset 'es.png'}}" height="12px"/> Español{{/is}}
+              {{#is name 'Български'}}<img src="{{asset 'bg.png'}}" height="12px"/> Български{{/is}}
+              {{#is name 'Русский'}}<img src="{{asset 'ru.png'}}" height="12px"/> Русский{{/is}}
             </a>
           {{/each}}
         </span>
@@ -88,7 +86,7 @@
     <div class="nav-wrapper-desktop">
       <nav class="user-nav" id="user-nav">
         <ul class="user-nav-list">
-          <li><a href="{{page_path 'help_center'}}/sections/14953980230813" class="btn" aria-label="videoLib">{{ dc 'kb_videoLib' }}</a></li>
+          <li><a href="{{page_path 'help_center'}}/articles/14954091296029" class="btn" aria-label="videoLib">{{ dc 'kb_videoLib' }}</a></li>
           <li><a href="{{page_path 'help_center'}}/sections/9982628913437" class="btn" aria-label="whatsNew">{{ dc 'kb_whatsnew' }}</a></li>
           <li><a href="{{page_path 'help_center'}}/sections/9128956898077" class="btn" aria-label="faq">{{ dc 'kb_faq' }}</a></li>
           {{!-- <li>{{link 'community'}}</li> --}}

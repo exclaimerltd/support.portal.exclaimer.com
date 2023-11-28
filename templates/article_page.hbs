@@ -12,6 +12,17 @@
   </nav>
   {{#is section.id 14953980230813}}
     {{#if section.articles}}
+      <div id="buttons" class="video-library-btns">
+        <button class="btn btn-video" onclick="filterVideos('video-all')">All Videos</button>
+        <button class="btn btn-video" onclick="filterVideos('video-onboarding')">Onboarding &amp; Setup</button>
+        <button class="btn btn-video" onclick="filterVideos('video-sig-app')">Signature Application</button>
+        <button class="btn btn-video" onclick="filterVideos('video-sig-design')">Signature Design</button>
+        <button class="btn btn-video" onclick="filterVideos('video-billing')">Billing &amp; Subscription</button>
+        <button class="btn btn-video" onclick="filterVideos('video-user-access')">User Access &amp; Permissions</button>
+        <button class="btn btn-video" onclick="filterVideos('video-device-deployment')">Device Deployment (Client Side)</button>
+        <button class="btn btn-video" onclick="filterVideos('video-user-data')">User data &amp; Syncrhonization</button>
+        <button class="btn btn-video" onclick="filterVideos('video-technical')">Technical Support</button>
+      </div>
       {{article.body}}
     {{/if}}
   {{else}}
