@@ -39,7 +39,7 @@
     {{/if}}
 
     <div class="user-menu">
-      <a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557" class="btn" aria-label="raiseticket">{{t 'submit_a_request'}}</a>
+      <a href="{{page_path 'help_center'}}/requests/new" class="btn" aria-label="raiseticket">{{t 'submit_a_request'}}</a>
       {{#unless signed_in}}
         {{#link "sign_in" class="sign-in"}}
           <i class="fa-thin fa-circle-user"></i>

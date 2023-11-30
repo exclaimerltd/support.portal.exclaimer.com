@@ -62,7 +62,3 @@ for (var i = 0; i < newRedirects.length; i++) {
       }
   }
 };
-
-if (window.location.href.includes("hc/en-gb/requests/new") && !window.location.search.includes("ticket_form_id")) {
-  window.location.href = 'https://support.exclaimer.com/hc/en-gb/requests/new?ticket_form_id=4459467190557';
-};

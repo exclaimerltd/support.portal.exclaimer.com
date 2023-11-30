@@ -6044,9 +6044,9 @@ button[aria-label="Ontvolgen"]::before {
   color: #F27021;
 }
 
-.request_ticket_form_id {
+/* .request_ticket_form_id {
   display: none;
-}
+} */
 
 .formHeader {
   margin-bottom: 0.335em;
