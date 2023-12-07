@@ -6856,3 +6856,135 @@ a.c-service-status-icon--maintenance::before {
 .lang-selector > img {
   padding-right: 5px;
 }
+
+
+
+/* Video Library New Styles 2023 */
+/* Filter */
+.video-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
+  width: 100%;
+  margin: 40px 0;
+}
+
+.btn-filter {
+  border: 1px solid #1B2037;
+  border-radius: 999px;
+  background-color: transparent;
+  padding: 10px 15px;
+  margin: 0.5%;
+  cursor: pointer;
+  transition: ease all 0.3s;
+}
+
+.btn-filter:hover {
+  background-color: #1B2037;
+  color: #EEE8E2;
+}
+
+/* Library */
+.video-library {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.videos {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: wrap;
+  width: 100%;
+  color: #1B2037;
+}
+
+.video {
+  position: relative;
+  display: none;
+  width: 32%;
+  background-color: #EEE8E2;
+  border-radius: 10px;
+  margin: 0.5%;
+  padding: 0;
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.25);
+}
+
+.video h4 {
+  margin: 0;
+}
+
+.video-show {
+  display: block;
+}
+
+.video .wistia_responsive_padding{
+  border-radius: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  overflow: hidden;
+}
+
+.video .wistia_responsive_wrapper {
+  border-radius: 0;
+}
+
+.video-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  margin: 0 20px;
+}
+
+.video-meta h4 {
+  font-size: 15px;
+  font-weight: 400;
+  padding-right: 30px;
+}
+
+.btn-copy {
+  border: 1px solid #1B2037;
+  background-color: transparent;
+  border-radius: 999px;
+  padding: 5px 10px;
+  text-wrap: nowrap;
+  transition: ease all 0.3s;
+  cursor: pointer;
+}
+
+.btn-copy:hover {
+  background-color: #1B2037;
+  color: #EEE8E2;
+}
+
+.btn-copied {
+  background-color: #778C65;
+  border-color: #778C65;
+  color: #EEE8E2;
+}
+
+.pin {
+  width: auto;
+  position: relative;
+  top: -110px;
+  right: -280px;
+  font-size: 0.65em;
+  background-color: #FF7438;
+  padding: 0.5em 0.75em;
+  border-radius: 999px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.pin[aria-promoted="true"] {
+  display: inline-block;
+}
+
+.pin[aria-promoted="false"] {
+  display: none;
+}
