@@ -481,6 +481,70 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });  
 
+
+  //Video Library Script
+  const projectID = "veamapxp3x" // Project ID - Change if we change projects.
+  const apiURL = `https://api.wistia.com/v1/projects/${projectID}.json`; // Wistia Project URL DO NOT CHANGE
+  const apiKey = "b37b20eee833f6ff6b9eab66b17bf05e6044535d7510cb4e997dd510d845f929"; // Read only - DO NOT CHANGE
+
+  async function getApi(url) {
+      const response = await fetch(url, {headers: {Authorization: `Bearer ${apiKey}`}});
+      var data = await response.json();
+      if (response.ok) { // Check if the response is successful
+          show(data);
+      } else {
+          console.error('Error fetching API data');
+      }
+  }
+
+  getApi(apiURL);
+
+  function show(data) {
+      let sections = Object.groupBy(data.medias, x => x.section);
+
+      for (let section of Object.keys(sections)) {
+          if (section === "Test Videos" || section === "Macro videos" || section == "undefined"){ 
+              // Do nothing
+          } else {
+              document.querySelector('#videoFilter').innerHTML += `<button onClick="filterVideos('videos-${section.replace(/\s+/g, '-').toLowerCase()}')" class="btn-filter">${section}</button>`;
+          }
+      }
+
+      for (let media of data.medias) {
+          if (media.section == "Test Videos" || media.section == "Macro videos") {
+              // Do Nothing as we are hiding these categories.
+          } else if (media.section == "undefined"){
+              // Do nothing as we will want to show the videos but it doesnt matter if they are defined or not.
+          } else {
+              // Set the mediaURL
+              let mediaURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${media.hashed_id}&wvideo=${media.hashed_id}`;
+              
+              // Create the video script.
+              let mediaScript = document.createElement('script');
+              mediaScript.setAttribute('src', `https://fast.wistia.com/embed/medias/${media.hashed_id}.jsonp`);
+
+              // Get the Media's Sections and remove & replace spaces with hyphens. Then set to lowercase. This is to generate the "videos" classname.
+              let mediaSections = media && media.section ? media.section.replace(/\s+/g, '-').toLowerCase() : 'default';
+
+              // Create the Video with Title and section class name.
+              document.querySelector('#videos').innerHTML += `
+              <div class="video videos-${mediaSections} video-show">
+                  <div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+                      <div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+                          <span class="wistia_embed wistia_async_${media.hashed_id} popover=true videoFoam=true" style="display: inline-block; height: 100%; position: relative; width: 100%;">&nbsp;</span>
+                      </div>
+                  </div>
+                  <div class="video-meta">
+                      <h4>${media.name}</h4>
+                      <button name="copyURLButton" onclick="copyURL(this, '${mediaURL}')" class="btn-copy">Copy URL</button>
+                  </div>
+                  <div class="pin pin-promoted" aria-promoted="false">Promoted</div>
+              </div>
+              `;
+              document.getElementById('videos').appendChild(mediaScript);
+          }
+      }
+  }
   function checkTicketId(){
     const formHeader = document.querySelector('.formHeader');
     const formSubTitle = document.querySelector('.formSubTitle');
