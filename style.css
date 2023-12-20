@@ -6988,3 +6988,20 @@ a.c-service-status-icon--maintenance::before {
 .pin[aria-promoted="false"] {
   display: none;
 }
+
+.votes {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: centers;
+}
+
+.votes p {
+  margin: 0;
+  padding: 0;
+}
+
+.votes img {
+  margin-top: 1em;
+}
