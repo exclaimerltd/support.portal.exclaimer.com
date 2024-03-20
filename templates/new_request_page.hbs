@@ -1,26 +1,22 @@
 <div class="container-divider"></div>
 <div class="container">
-  <div class="notification-bar">
-   <p><i class="fa-regular fa-circle-exclamation"></i>{{ dc 'kb_raiseonprem' }}</p><a href="https://legacy.support.exclaimer.com/hc/en-gb/requests/new" class="btn">{{ t 'submit_a_request' }}</a>
-  </div>
   <nav class="sub-nav">
     {{breadcrumbs}}
     <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
         <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
         <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
       </svg>
       {{search submit=false}}
     </div>
   </nav>
-  <h1 class="formHeader">
+
+  <h1>
     {{t 'submit_a_request'}}
     <span class="follow-up-hint">
       {{follow_up}}
     </span>
   </h1>
-
-  <p class="formSubTitle"></p>
 
   <div id="main-content" class="form">
     {{request_form wysiwyg=true}}

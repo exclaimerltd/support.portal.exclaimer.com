@@ -1,147 +1,103 @@
+<noscript>
+  <span class="noscript-icon"></span>
+  <h1>Whoops!</h1>
+  <span>It looks like you are not using Javascript. Our Knowledge Base uses Javascript, to continue, please enable it and then refresh the page.</span>
+</noscript>
+
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
-
-<div class="top-nav">
-  <div class="top-nav-container">
-    {{#if alternative_locales}}
-      <div class="dropdown language-selector">
-        <button class="dropdown-toggle header-lang-btn" aria-haspopup="true">
-          {{#is current_locale.name 'English (GB)'}}English (UK) <img src="{{asset 'gb.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Deutsch'}}Deutsch <img src="{{asset 'de.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Français'}}Français <img src="{{asset 'fr.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Nederlands'}}Nederlands <img src="{{asset 'nl.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Italiano'}}Italiano <img src="{{asset 'it.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Polski'}}Polski <img src="{{asset 'pl.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Português'}}Português <img src="{{asset 'pt.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Español'}}Español <img src="{{asset 'es.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Български'}}Български <img src="{{asset 'bg.png'}}" height="12px"/>{{/is}}
-          {{#is current_locale.name 'Русский'}}Русский <img src="{{asset 'ru.png'}}" height="12px"/>{{/is}}
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-          </svg>
-        </button>
-        <span class="dropdown-menu dropdown-menu-end" role="menu">
-          {{#each alternative_locales}}
-            <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem" class="dropdown-item lang-selector">
-              {{#is name 'English (GB)'}}<img src="{{asset 'gb.png'}}" height="12px"/> English (UK){{/is}}
-              {{#is name 'Deutsch'}}<img src="{{asset 'de.png'}}" height="12px"/> Deutsch{{/is}}
-              {{#is name 'Français'}}<img src="{{asset 'fr.png'}}" height="12px"/> Français{{/is}}
-              {{#is name 'Nederlands'}}<img src="{{asset 'nl.png'}}" height="12px"/> Nederlands{{/is}}
-              {{#is name 'Italiano'}}<img src="{{asset 'it.png'}}" height="12px"/> Italiano{{/is}}
-              {{#is name 'Polski'}}<img src="{{asset 'pl.png'}}" height="12px"/> Polski{{/is}}
-              {{#is name 'Português'}}<img src="{{asset 'pt.png'}}" height="12px"/> Português{{/is}}
-              {{#is name 'Español'}}<img src="{{asset 'es.png'}}" height="12px"/> Español{{/is}}
-              {{#is name 'Български'}}<img src="{{asset 'bg.png'}}" height="12px"/> Български{{/is}}
-              {{#is name 'Русский'}}<img src="{{asset 'ru.png'}}" height="12px"/> Русский{{/is}}
-            </a>
-          {{/each}}
-        </span>
-      </div>
-    {{/if}}
-
-    <div class="user-menu">
-      <a href="{{page_path 'help_center'}}/requests/new" class="btn" aria-label="raiseticket">{{t 'submit_a_request'}}</a>
-      {{#unless signed_in}}
-        {{#link "sign_in" class="sign-in"}}
-          <i class="fa-thin fa-circle-user"></i>
-          {{t 'sign_in'}}
-        {{/link}}
-      {{/unless}}
-      {{#if signed_in}}
-        <div class="user-info dropdown">
-          <button class="dropdown-toggle" aria-haspopup="true">
-            {{user_avatar class="user-avatar"}}
-            <span>
-              {{user_name}}
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-              </svg>
-            </span>
-          </button>
-          <div class="dropdown-menu" role="menu">
-            {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
-            {{link "requests" role="menuitem"}}
-            {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
-            {{contact_details role="menuitem"}}
-            {{change_password role="menuitem"}}
-            <div class="separator" role="separator"></div>
-            {{link "sign_out" role="menuitem"}}
-          </div>
-        </div>
-      {{/if}}
-      <a href="https://status.exclaimer.com" target="_blank" id="service-status" class="c-service-status-icon js-service-status">{{dc 'kb_servicestatus'}}</a>
-
-    </div>
-  </div>
-</div>
-<header class="header-color">
-  <div class="header header-container">
+<header class="header">
+  <div class="container container-header">
     <div class="logo">
-      {{#link 'help_center'}}
-        <img src="{{asset 'logo.png'}}" alt="{{t 'home_page' name=help_center.name}}" />
-        {{!-- {{#if settings.show_brand_name}}
-          <span aria-hidden="true">{{help_center.name}}</span>
-        {{/if}} --}}
+      {{#link 'help_center' class="logo-img"}}
+        <img src="{{asset 'logo.svg'}}" alt="{{t 'home_page' name=help_center.name}}" />
       {{/link}}
+        <div class="site-selector dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true">
+          {{#is help_center.name 'Exclaimer Cloud'}}
+            <span class="site-selector-text">Cloud</span>
+          {{else}}{{/is}}
+        </button>
+        <div class="dropdown-menu" role="menu">
+          <a href="" role="menuitem">Exclaimer Cloud</a>
+          <a href="" role="menuitem">Legacy Products</a>
+          <a href="" role="menuitem">API Users</a>
+          <a href="" role="menuitem">Customer Thermometer</a>
+        </div>
+      </div>
     </div>
-    <div class="nav-wrapper-desktop">
-      <nav class="user-nav" id="user-nav">
-        <ul class="user-nav-list">
-          <li><a href="{{page_path 'help_center'}}/p/video-library" class="btn" aria-label="videoLib">{{ dc 'kb_videoLib' }}</a></li>
-          <li><a href="{{page_path 'help_center'}}/sections/9982628913437" class="btn" aria-label="whatsNew">{{ dc 'kb_whatsnew' }}</a></li>
-          <li><a href="{{page_path 'help_center'}}/sections/9128956898077" class="btn" aria-label="faq">{{ dc 'kb_faq' }}</a></li>
-          {{!-- <li>{{link 'community'}}</li> --}}
-        </ul>
-      </nav>
-    </div>
-    <div class="nav-wrapper-mobile">
-      <button class="menu-button-mobile" aria-controls="user-nav-mobile" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
+
+    <div class="nav-wrapper">
+      <nav class="header-nav">
         {{#if signed_in}}
-          {{user_avatar class="user-avatar"}}
-        {{/if}}
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
-          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
-        </svg>
-      </button>
-      <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
-        <ul class="menu-list-mobile-items">
-          {{#if signed_in}}
-            <li class="user-avatar-item item">
-              {{#my_profile role="menuitem" class="my-profile"}}
-                {{user_avatar class="menu-profile-avatar"}}
-                <div class="menu-profile-name">
-                  <div>{{user_name}}</div>
-                  <div class="my-profile-tooltip">{{t 'profile'}}</div>
-                </div>
-              {{/my_profile}}
-            </li>
-            <li class="nav-divider"></li>
-            <li class="item">{{link "requests" role="menuitem"}}</li>
-            <li class="item">{{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}</li>
-            <li class="item">{{contact_details role="menuitem"}}</li>
-            <li class="item">{{change_password role="menuitem" class='change-password'}}</li>
-            <li class="nav-divider"></li>
-          {{else}}
-            <li class="item">
-              {{#link "sign_in" role="menuitem"}}
-                {{t 'sign_in'}}
-              {{/link}}
-            </li>
-            <li class="nav-divider"></li>
-          {{/if}}
-          <li><a href="{{page_path 'help_center'}}/requests/new?ticket_form_id=4459467190557">{{t 'submit_a_request'}}</a></li>
-            <li class="nav-divider"></li>
-          <li class="item">{{link 'community' role="menuitem"}}</li>
-          <li><a href="{{page_path 'help_center'}}/sections/9982628913437" class="btn">{{ dc 'whats_new' }}</a></li>
-          <li><a href="{{page_path 'help_center'}}/sections/9128956898077" class="btn">{{ dc 'faq' }}</a></li>
-          <li class="nav-divider"></li>
-          {{#if signed_in}}
-            <li class="item">
+          <div class="user-info dropdown">
+            <button class="dropdown-toggle" aria-haspopup="true">
+              {{user_avatar class="user-avatar"}}
+              {{user_name}}
+            </button>
+            <div class="dropdown-menu" role="menu">
+              {{link "my_activities" role="menuitem"}}
+              {{my_profile role="menuitem"}}
+              {{change_password role="menuitem"}}
               {{link "sign_out" role="menuitem"}}
-            </li>
-          {{/if}}
-          </li>
-        </ul>
+            </div>
+          </div>
+        {{else}}
+          {{#link "sign_in" class="sign-in"}}
+            <span>{{dc 'kb_login'}}</span>
+          {{/link}}
+        {{/if}}
+        <a href="{{page_path 'help_center'}}/requests/new" class="raiseticket"><span>{{t 'submit_a_request'}}</span></a>
+        <a href="https://status.exclaimer.com" target="_blank" id="service-status" class="c-service-status-icon js-service-status"><span>{{dc 'kb_servicestatus'}}</span></a>
+        {{#if alternative_locales}}
+          <div class="dropdown language-selector">
+            <button class="dropdown-toggle header-lang-btn" aria-haspopup="true">
+              {{#is current_locale.name 'English (GB)'}}<span class="locale-text">En</span><img src="{{asset 'gb.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Deutsch'}}<span class="locale-text">De</span><img src="{{asset 'de.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Nederlands'}}<span class="locale-text">Nl</span><img src="{{asset 'nl.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Français'}}<span class="locale-text">Fr</span><img src="{{asset 'fr.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Español'}}<span class="locale-text">Es</span><img src="{{asset 'es.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Italiano'}}<span class="locale-text">It</span><img src="{{asset 'it.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Polski'}}<span class="locale-text">Pl</span><img src="{{asset 'pl.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Português'}}<span class="locale-text">Pt</span><img src="{{asset 'pt.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Български'}}<span class="locale-text">Bg</span><img src="{{asset 'bg.png'}}" class="locale-flag"/>{{/is}}
+              {{#is current_locale.name 'Русский'}}<span class="locale-text">Ru</span><img src="{{asset 'ru.png'}}" class="locale-flag"/>{{/is}}
+            </button>
+            <span class="dropdown-menu dropdown-menu-end" role="menu">
+              {{#each alternative_locales}}
+                <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem" class="dropdown-item lang-selector">
+                  {{#is name 'English (GB)'}}<span class="locale-option"><img src="{{asset 'gb.png'}}" height="12px"/> English (UK)</span>{{/is}}
+                  {{#is name 'Deutsch'}}<span class="locale-option"><img src="{{asset 'de.png'}}" height="12px"/> Deutsch</span>{{/is}}
+                  {{#is name 'Nederlands'}}<span class="locale-option"><img src="{{asset 'nl.png'}}" height="12px"/> Nederlands</span>{{/is}}
+                  {{#is name 'Français'}}<span class="locale-option"><img src="{{asset 'fr.png'}}" height="12px"/> Français</span>{{/is}}
+                  {{#is name 'Español'}}<span class="locale-option"><img src="{{asset 'es.png'}}" height="12px"/> Español</span>{{/is}}
+                  {{#is name 'Italiano'}}<span class="locale-option"><img src="{{asset 'it.png'}}" height="12px"/> Italiano</span>{{/is}}
+                  {{#is name 'Polski'}}<span class="locale-option"><img src="{{asset 'pl.png'}}" height="12px"/> Polski</span>{{/is}}
+                  {{#is name 'Português'}}<span class="locale-option"><img src="{{asset 'pt.png'}}" height="12px"/> Português</span>{{/is}}
+                  {{#is name 'Български'}}<span class="locale-option"><img src="{{asset 'bg.png'}}" height="12px"/> Български</span>{{/is}}
+                  {{#is name 'Русский'}}<span class="locale-option"><img src="{{asset 'ru.png'}}" height="12px"/> Русский</span>{{/is}}
+                </a>
+              {{/each}}
+            </span>
+          </div>
+        {{/if}}
       </nav>
     </div>
   </div>
 </header>
+
+<section id="main-content" class="section hero">
+  <div class="hero-inner">
+    <h2>{{dc 'kb_search-title'}}</h2>
+    {{search submit=false instant=settings.instant_search class='search search-full search-home'}}
+  </div>
+  <div class="category-selector">
+    <span>{{dc 'kb_search-subtitle'}}</span>
+    <div class="category-selector categories-container">
+      <div class="category-selector categories" id="categorySelector"></div>
+      <div class="dropdown">
+        <button id="moreBtn" class="dropdown-toggle category-btn category-btn-select" aria-haspopup="true">{{dc 'kb_more-btn'}}</button>
+        <div class="dropdown-menu category-menu" role="menu" id="categorySelectorMenu"></div>
+      </div>
+    </div>
+  </div>
+</section>

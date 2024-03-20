@@ -1,9 +1,47 @@
-<div class="container-divider"></div>
+<section id="main-content" class="section hero">
+  <div class="hero-inner">
+    <h2>Hello, how can we help you today?</h2>
+    {{search submit=false instant=settings.instant_search class='search search-full search-home'}}
+  </div>
+  <div class="category-selector">
+    <span>Or select a category below</span>
+    <div class="category-selector categories">
+      <a href="{{page_path 'help_center'}}/sections/16131806820765-Getting-Started" class="category-btn">Getting Started</a>
+      <a href="{{page_path 'help_center'}}/sections/16131785917981-Signature-Design" class="category-btn">Signature Design</a>
+      <a href="{{page_path 'help_center'}}/sections/16131775614493-User-Manual" class="category-btn">User Manual</a>
+      <a href="{{page_path 'help_center'}}/sections/14256646698525-FAQ" class="category-btn">FAQ</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle category-btn category-btn-select" aria-haspopup="true">More..</button>
+        <div class="dropdown-menu category-menu" role="menu">
+          <a href="{{page_path 'help_center'}}/sections/16131806820765-Getting-Started" class="" role="menuitem">Solutions</a>
+          <a href="{{page_path 'help_center'}}/sections/16131806820765-Getting-Started" class="" role="menuitem">What's new</a>
+          <a href="{{page_path 'help_center'}}/sections/16131806820765-Getting-Started" class="" role="menuitem">Videos</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-selector categories-mobile">
+      <div class="dropdown">
+        <button class="dropdown-toggle category-btn category-btn-select" aria-haspopup="true">Select a Category</button>
+        <div class="dropdown-menu category-menu" role="menu">
+          <a href="{{page_path 'help_center'}}/sections/16131806820765-Getting-Started" class="" role="menuitem">Getting Started</a>
+          <a href="{{page_path 'help_center'}}/sections/16131785917981-Signature-Design" class="" role="menuitem">Signature Design</a>
+          <a href="{{page_path 'help_center'}}/sections/16131775614493-User-Manual" class="" role="menuitem">User Manual</a>
+          <a href="{{page_path 'help_center'}}/sections/14256646698525-FAQ" class="" role="menuitem">FAQ</a>
+          <a href="{{page_path 'help_center'}}/sections/16131806820765-Getting-Started" class="" role="menuitem">Solutions</a>
+          <a href="{{page_path 'help_center'}}/sections/16131806820765-Getting-Started" class="" role="menuitem">What's new</a>
+          <a href="{{page_path 'help_center'}}/sections/16131806820765-Getting-Started" class="" role="menuitem">Videos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
     <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
         <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
         <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
       </svg>

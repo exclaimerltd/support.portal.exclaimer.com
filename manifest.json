@@ -1,9 +1,9 @@
 {
-  "name": "ExclaimerV2",
-  "author": "Exclaimer/Zendesk",
-  "version": "2.5.3",
+  "name": "ExclaimerV3",
+  "author": "Exclaimer",
+  "version": "3.0.0",
   "api_version": 2,
-  "default_locale": "en-us",
+  "default_locale": "en-gb",
   "settings": [
     {
       "label": "colors_group_label",
@@ -13,14 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#1B2037"
-        },
-        {
-          "identifier": "brand_accent_color",
-          "type": "color",
-          "description": "brand_accent_color_description",
-          "label": "brand_accent_color_label",
-          "value": "#9AADFF"
+          "value": "#0072EF"
         },
         {
           "identifier": "brand_text_color",
@@ -34,28 +27,21 @@
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#1B2037"
+          "value": "#333333"
         },
         {
           "identifier": "link_color",
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#1B2037"
-        },
-        {
-          "identifier": "hover_link_color",
-          "type": "color",
-          "description": "hover_link_color_description",
-          "label": "hover_link_color_label",
-          "value": "#FF7438"
+          "value": "#1F73B7"
         },
         {
           "identifier": "visited_link_color",
           "type": "color",
           "description": "visited_link_color_description",
           "label": "visited_link_color_label",
-          "value": "#202A50"
+          "value": "#4B61C3"
         },
         {
           "identifier": "background_color",
@@ -94,7 +80,7 @@
             },
             {
               "label": "Century Gothic",
-              "value": "'Century Gothic', sans-serif"
+              "value": "'Century Gothic', AppleGothic, sans-serif"
             },
             {
               "label": "Copperplate Light",
@@ -106,7 +92,7 @@
             },
             {
               "label": "Futura",
-              "value": "Futura, 'Century Gothic', sans-serif"
+              "value": "Futura, 'Century Gothic', AppleGothic, sans-serif"
             },
             {
               "label": "Garamond",
@@ -167,7 +153,7 @@
             },
             {
               "label": "Century Gothic",
-              "value": "'Century Gothic', sans-serif"
+              "value": "'Century Gothic', AppleGothic, sans-serif"
             },
             {
               "label": "Copperplate Light",
@@ -179,7 +165,7 @@
             },
             {
               "label": "Futura",
-              "value": "Futura, 'Century Gothic', sans-serif"
+              "value": "Futura, 'Century Gothic', AppleGothic, sans-serif"
             },
             {
               "label": "Garamond",
@@ -231,7 +217,7 @@
           "type": "checkbox",
           "description": "show_brand_name_description",
           "label": "show_brand_name_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "favicon",
@@ -396,18 +382,6 @@
           "description": "follow_topic_description",
           "label": "follow_topic_label",
           "value": true
-        }
-      ]
-    },
-    {
-      "label": "request_list_group_label",
-      "variables": [
-        {
-          "identifier": "request_list_beta",
-          "type": "checkbox",
-          "description": "request_list_beta_description",
-          "label": "request_list_beta_label",
-          "value": false
         }
       ]
     }
