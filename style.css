@@ -5533,7 +5533,7 @@ a:hover {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  position:relative;
+  position: relative!important;
 }
 
 .article-accordion::after {
