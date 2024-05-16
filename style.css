@@ -686,6 +686,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 98;
 }
 
 .logo img {
@@ -5554,6 +5555,8 @@ header {
 }
 
 .header-color {
+  position: relative;
+  z-index: 100;
   display: flex;
   align-items: center;
   background-color: #EEE8E2;
@@ -6403,9 +6406,11 @@ a.pb-btn::after {
 }
 
 .top-nav {
+  position: relative;
   display: flex;
   justify-content: center;
   background-color: $text_color;
+  z-index: 100;
 }
 
 .top-nav-container {
@@ -7005,4 +7010,47 @@ a.c-service-status-icon--maintenance::before {
 
 .votes img {
   margin-top: 1em;
+}
+
+
+.stonly-frame {
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loader {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  overflow: hidden;
+  transition: ease all 0.3s;
+  visibility: hidden;
+  z-index: 99;
+}
+
+.loader.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #1B2037;
+  background: white;
+  visibility: visible;
+}
+
+@-webkit-keyframes rotating {
+  from{
+      -webkit-transform: rotate(0deg);
+  }
+  to{
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+.loader .spinner {
+  font-size: 3rem;
+  -webkit-animation: rotating 2s linear infinite;
 }

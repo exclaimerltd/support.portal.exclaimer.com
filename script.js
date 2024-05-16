@@ -596,6 +596,8 @@ document.addEventListener('DOMContentLoaded', function() {
       suggested.style.display = 'none';
       subject.style.display = 'none';
     }
+
+    
   
     if(window.location.href.indexOf('4459467190557') > 0){
       subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
@@ -798,6 +800,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }
+
   checkFAQ();
 
   window.hcm = {};

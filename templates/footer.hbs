@@ -25,6 +25,14 @@
 </footer>
 
 <script>
+    if(window.location.href.indexOf('/p/getting-started') > 0){
+      const loader = document.getElementById('loader');
+      function hideLoader() {
+        loader.classList.remove('active');
+      }
+      setTimeout(hideLoader, 3000);
+    }
+
   var acc = document.getElementsByClassName("article-accordion");
   var i;
 
