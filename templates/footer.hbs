@@ -4,40 +4,35 @@
 
     <div class="footer-language-selector">
       {{#if alternative_locales}}
-        <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true">
-            {{current_locale.name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </button>
-          <span class="dropdown-menu dropdown-menu-end" role="menu">
-            {{#each alternative_locales}}
-              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                {{name}}
-              </a>
-            {{/each}}
-          </span>
-        </div>
+      <div class="dropdown language-selector">
+        <button class="dropdown-toggle" aria-haspopup="true">
+          {{current_locale.name}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12"
+            class="dropdown-chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
+          </svg>
+        </button>
+        <span class="dropdown-menu dropdown-menu-end" role="menu">
+          {{#each alternative_locales}}
+          <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+            {{name}}
+          </a>
+          {{/each}}
+        </span>
+      </div>
       {{/if}}
     </div>
   </div>
 </footer>
 
 <script>
-    if(window.location.href.indexOf('/p/getting-started') > 0){
-      const loader = document.getElementById('loader');
-      function hideLoader() {
-        loader.classList.remove('active');
-      }
-      setTimeout(hideLoader, 3000);
-    }
+
 
   var acc = document.getElementsByClassName("article-accordion");
   var i;
 
   for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
+    acc[i].addEventListener("click", function () {
       this.classList.toggle("active");
       var panel = this.nextElementSibling;
       if (panel.style.maxHeight) {
@@ -50,10 +45,10 @@
 
   var sectionSelector = document.getElementsByClassName("section-question-title");
   for (var j = 0; j < sectionSelector.length; j++) {
-    sectionSelector[j].addEventListener("click", function(){
+    sectionSelector[j].addEventListener("click", function () {
       this.classList.toggle("section-question-title-active");
       var sectionBody = this.nextElementSibling;
-      if (sectionBody.style.maxHeight){
+      if (sectionBody.style.maxHeight) {
         sectionBody.style.maxHeight = null;
       } else {
         sectionBody.style.maxHeight = sectionBody.scrollHeight + "px";
@@ -83,18 +78,18 @@
 
     // Return to defaults
     setTimeout(function () {
-        button.innerText = "Copy URL";
-        button.classList.remove("btn-copied");
+      button.innerText = "Copy URL";
+      button.classList.remove("btn-copied");
     }, 2000);
-}
+  }
 
-filterVideos("video-all");
-  
+  filterVideos("video-all");
+
   function filterVideos(c) {
     let x, i, y, btn;
     x = document.getElementsByClassName("video");
     btn = document.getElementsByClassName("btn-filter");
-    if (c == "video-all") c= "";
+    if (c == "video-all") c = "";
     for (i = 0; i < x.length; i++) {
       removeClass(x[i], "video-show");
       if (x[i].className.indexOf(c) > -1) {

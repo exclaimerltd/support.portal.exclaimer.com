@@ -6410,7 +6410,7 @@ a.pb-btn::after {
   display: flex;
   justify-content: center;
   background-color: $text_color;
-  z-index: 100;
+  z-index: 101;
 }
 
 .top-nav-container {
@@ -7028,7 +7028,7 @@ a.c-service-status-icon--maintenance::before {
   overflow: hidden;
   transition: ease all 0.3s;
   visibility: hidden;
-  z-index: 99;
+  z-index: 2;
 }
 
 .loader.active {
