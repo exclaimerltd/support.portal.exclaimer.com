@@ -1,7 +1,8 @@
 <noscript>
   <span class="noscript-icon"></span>
   <h1>Whoops!</h1>
-  <span>It looks like you are not using Javascript. Our Knowledge Base uses Javascript, to continue, please enable it and then refresh the page.</span>
+  <span>It looks like you are not using Javascript. Our Knowledge Base uses Javascript, to continue, please enable it
+    and then refresh the page.</span>
 </noscript>
 
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
@@ -9,12 +10,12 @@
   <div class="container container-header">
     <div class="logo">
       {{#link 'help_center' class="logo-img"}}
-        <img src="{{asset 'logo.svg'}}" alt="{{t 'home_page' name=help_center.name}}" />
+      <img src="{{asset 'logo.svg'}}" alt="{{t 'home_page' name=help_center.name}}" />
       {{/link}}
-        <div class="site-selector dropdown">
+      <div class="site-selector dropdown">
         <button class="dropdown-toggle" aria-haspopup="true">
           {{#is help_center.name 'Exclaimer Cloud'}}
-            <span class="site-selector-text">Cloud</span>
+          <span class="site-selector-text">Cloud</span>
           {{else}}{{/is}}
         </button>
         <div class="dropdown-menu" role="menu">
@@ -29,56 +30,77 @@
     <div class="nav-wrapper">
       <nav class="header-nav">
         {{#if signed_in}}
-          <div class="user-info dropdown">
-            <button class="dropdown-toggle" aria-haspopup="true">
-              {{user_avatar class="user-avatar"}}
-              {{user_name}}
-            </button>
-            <div class="dropdown-menu" role="menu">
-              {{link "my_activities" role="menuitem"}}
-              {{my_profile role="menuitem"}}
-              {{change_password role="menuitem"}}
-              {{link "sign_out" role="menuitem"}}
-            </div>
+        <div class="user-info dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true">
+            {{user_avatar class="user-avatar"}}
+            {{user_name}}
+          </button>
+          <div class="dropdown-menu" role="menu">
+            {{link "my_activities" role="menuitem"}}
+            {{my_profile role="menuitem"}}
+            {{change_password role="menuitem"}}
+            {{link "sign_out" role="menuitem"}}
           </div>
+        </div>
         {{else}}
-          {{#link "sign_in" class="sign-in"}}
-            <span>{{dc 'kb_login'}}</span>
-          {{/link}}
+        {{#link "sign_in" class="sign-in"}}
+        <span>{{dc 'kb_login'}}</span>
+        {{/link}}
         {{/if}}
         <a href="{{page_path 'help_center'}}/requests/new" class="raiseticket"><span>{{t 'submit_a_request'}}</span></a>
-        <a href="https://status.exclaimer.com" target="_blank" id="service-status" class="c-service-status-icon js-service-status"><span>{{dc 'kb_servicestatus'}}</span></a>
+        <a href="https://status.exclaimer.com" target="_blank" id="service-status"
+          class="c-service-status-icon js-service-status"><span>{{dc 'kb_servicestatus'}}</span></a>
         {{#if alternative_locales}}
-          <div class="dropdown language-selector">
-            <button class="dropdown-toggle header-lang-btn" aria-haspopup="true">
-              {{#is current_locale.name 'English (GB)'}}<span class="locale-text">En</span><img src="{{asset 'gb.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Deutsch'}}<span class="locale-text">De</span><img src="{{asset 'de.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Nederlands'}}<span class="locale-text">Nl</span><img src="{{asset 'nl.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Français'}}<span class="locale-text">Fr</span><img src="{{asset 'fr.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Español'}}<span class="locale-text">Es</span><img src="{{asset 'es.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Italiano'}}<span class="locale-text">It</span><img src="{{asset 'it.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Polski'}}<span class="locale-text">Pl</span><img src="{{asset 'pl.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Português'}}<span class="locale-text">Pt</span><img src="{{asset 'pt.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Български'}}<span class="locale-text">Bg</span><img src="{{asset 'bg.png'}}" class="locale-flag"/>{{/is}}
-              {{#is current_locale.name 'Русский'}}<span class="locale-text">Ru</span><img src="{{asset 'ru.png'}}" class="locale-flag"/>{{/is}}
-            </button>
-            <span class="dropdown-menu dropdown-menu-end" role="menu">
-              {{#each alternative_locales}}
-                <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem" class="dropdown-item lang-selector">
-                  {{#is name 'English (GB)'}}<span class="locale-option"><img src="{{asset 'gb.png'}}" height="12px"/> English (UK)</span>{{/is}}
-                  {{#is name 'Deutsch'}}<span class="locale-option"><img src="{{asset 'de.png'}}" height="12px"/> Deutsch</span>{{/is}}
-                  {{#is name 'Nederlands'}}<span class="locale-option"><img src="{{asset 'nl.png'}}" height="12px"/> Nederlands</span>{{/is}}
-                  {{#is name 'Français'}}<span class="locale-option"><img src="{{asset 'fr.png'}}" height="12px"/> Français</span>{{/is}}
-                  {{#is name 'Español'}}<span class="locale-option"><img src="{{asset 'es.png'}}" height="12px"/> Español</span>{{/is}}
-                  {{#is name 'Italiano'}}<span class="locale-option"><img src="{{asset 'it.png'}}" height="12px"/> Italiano</span>{{/is}}
-                  {{#is name 'Polski'}}<span class="locale-option"><img src="{{asset 'pl.png'}}" height="12px"/> Polski</span>{{/is}}
-                  {{#is name 'Português'}}<span class="locale-option"><img src="{{asset 'pt.png'}}" height="12px"/> Português</span>{{/is}}
-                  {{#is name 'Български'}}<span class="locale-option"><img src="{{asset 'bg.png'}}" height="12px"/> Български</span>{{/is}}
-                  {{#is name 'Русский'}}<span class="locale-option"><img src="{{asset 'ru.png'}}" height="12px"/> Русский</span>{{/is}}
-                </a>
-              {{/each}}
-            </span>
-          </div>
+        <div class="dropdown language-selector">
+          <button class="dropdown-toggle header-lang-btn" aria-haspopup="true">
+            {{#is current_locale.name 'English (GB)'}}<span class="locale-text">En</span><img src="{{asset 'gb.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Deutsch'}}<span class="locale-text">De</span><img src="{{asset 'de.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Nederlands'}}<span class="locale-text">Nl</span><img src="{{asset 'nl.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Français'}}<span class="locale-text">Fr</span><img src="{{asset 'fr.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Español'}}<span class="locale-text">Es</span><img src="{{asset 'es.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Italiano'}}<span class="locale-text">It</span><img src="{{asset 'it.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Polski'}}<span class="locale-text">Pl</span><img src="{{asset 'pl.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Português'}}<span class="locale-text">Pt</span><img src="{{asset 'pt.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Български'}}<span class="locale-text">Bg</span><img src="{{asset 'bg.png'}}"
+              class="locale-flag" />{{/is}}
+            {{#is current_locale.name 'Русский'}}<span class="locale-text">Ru</span><img src="{{asset 'ru.png'}}"
+              class="locale-flag" />{{/is}}
+          </button>
+          <span class="dropdown-menu dropdown-menu-end" role="menu">
+            {{#each alternative_locales}}
+            <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem" class="dropdown-item lang-selector">
+              {{#is name 'English (GB)'}}<span class="locale-option"><img src="{{asset 'gb.png'}}" height="12px" />
+                English (UK)</span>{{/is}}
+              {{#is name 'Deutsch'}}<span class="locale-option"><img src="{{asset 'de.png'}}" height="12px" />
+                Deutsch</span>{{/is}}
+              {{#is name 'Nederlands'}}<span class="locale-option"><img src="{{asset 'nl.png'}}" height="12px" />
+                Nederlands</span>{{/is}}
+              {{#is name 'Français'}}<span class="locale-option"><img src="{{asset 'fr.png'}}" height="12px" />
+                Français</span>{{/is}}
+              {{#is name 'Español'}}<span class="locale-option"><img src="{{asset 'es.png'}}" height="12px" />
+                Español</span>{{/is}}
+              {{#is name 'Italiano'}}<span class="locale-option"><img src="{{asset 'it.png'}}" height="12px" />
+                Italiano</span>{{/is}}
+              {{#is name 'Polski'}}<span class="locale-option"><img src="{{asset 'pl.png'}}" height="12px" />
+                Polski</span>{{/is}}
+              {{#is name 'Português'}}<span class="locale-option"><img src="{{asset 'pt.png'}}" height="12px" />
+                Português</span>{{/is}}
+              {{#is name 'Български'}}<span class="locale-option"><img src="{{asset 'bg.png'}}" height="12px" />
+                Български</span>{{/is}}
+              {{#is name 'Русский'}}<span class="locale-option"><img src="{{asset 'ru.png'}}" height="12px" />
+                Русский</span>{{/is}}
+            </a>
+            {{/each}}
+          </span>
+        </div>
         {{/if}}
       </nav>
     </div>
@@ -95,8 +117,11 @@
     <div class="category-selector categories-container">
       <div class="category-selector categories" id="categorySelector"></div>
       <div class="dropdown">
-        <button id="moreBtn" class="dropdown-toggle category-btn category-btn-select" aria-haspopup="true">{{dc 'kb_more-btn'}}</button>
-        <div class="dropdown-menu category-menu" role="menu" id="categorySelectorMenu"></div>
+        <button id="moreBtn" class="dropdown-toggle category-btn category-btn-select" aria-haspopup="true">{{dc
+          'kb_more-btn'}}</button>
+        <div class="dropdown-menu category-menu" role="menu" id="categorySelectorMenu">
+          <a href="{{help_center.url}}/p/videos" class="" role="menuitem">Videos</a>
+        </div>
       </div>
     </div>
   </div>

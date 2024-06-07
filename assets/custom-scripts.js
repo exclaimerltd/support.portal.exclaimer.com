@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const gettingStarted = 16131806820765;
-    const signatureDesign = 16131785917981;
-    const userManual = 16131775614493;
-    const faq = 14256646698525;
+window.addEventListener('DOMContentLoaded', function () {
+    const gettingStarted = 19062778574749;
+    const signatureDesign = 19062765519261;
+    const userManual = 19062773129757;
+    const faq = 19063263017373;
     relevantIds = [gettingStarted, signatureDesign, userManual, faq];
 
     const categorySelector = document.getElementById('categorySelector');
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function wistiaUrl(sectionNames) {
-        const projectID = "veamapxp3x";
+        const projectID = "6jgzokt1l2";
         const promoVideos = document.querySelector('#promoVideoSection');
         let sectionMatch = false;
         let wistiaAPI = `https://api.wistia.com/v1/medias?project_id=${projectID}&tags=kbpromoted`
@@ -133,13 +133,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function showVideos(videoData) {
-
         if(videoData.length > 0) {
             const promoTitle = document.createElement("h2");
+            const userHREF = window.location.href;
             promoTitle.innerHTML = "Promoted Videos";
             promoVideoSection.insertBefore(promoTitle, promoVideos);
             for (let k = 0; k < videoData.length; k++){
+
                 video = videoData[k];
+                if(video.section === 'English' && userHREF.includes('/hc/de') ) {
+                    console.log('Do Nothing!');
+                }
                 const videosURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
                 promoVideos.innerHTML += `
                     <a href="${videosURL}" target="_blank" class="video-link">

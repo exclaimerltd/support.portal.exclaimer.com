@@ -8,15 +8,29 @@
 <!-- Service Status -->
 <script src="https://cdn.statuspage.io/se-v2.js"></script>
 <script>
-    var sp = new StatusPage.page({ page: 'xhh3t32ngbpr' });
-    sp.status(
+  var sp = new StatusPage.page({ page: 'xhh3t32ngbpr' });
+  sp.status(
     {
       success: statusPageCallback
     });
 
-    function statusPageCallback(data)
-    {
-      var status = document.getElementById('service-status');
-      status.classList.add('c-service-status-icon--' + data.status.indicator);
-    }
+  function statusPageCallback(data) {
+    var status = document.getElementById('service-status');
+    status.classList.add('c-service-status-icon--' + data.status.indicator);
+  }
+</script>
+
+<!-- Stonly Widget -->
+<script>window.STONLY_WID = "22eeda74-0c54-11ee-a0af-0a52ff1ec764";</script>
+<script>
+  !function (s, t, o, n, l, y, w, g, d, e) {
+    s.StonlyWidget || ((d = s.StonlyWidget = function () {
+      d._api ? d._api.apply(d, arguments) : d.queue.push(arguments)
+    }).scriptPath = n, d.apiPath = l, d.sPath = y, d.queue = [],
+      (g = t.createElement(o)).async = !0, (e = new XMLHttpRequest).open("GET", n + "version?v=" + Date.now(), !0),
+      e.onreadystatechange = function () {
+        4 === e.readyState && (g.src = n + "stonly-widget.js?v=" +
+          (200 === e.status ? e.responseText : Date.now()), (w = t.getElementsByTagName(o)[0]).parentNode.insertBefore(g, w))
+      }, e.send())
+  }(window, document, "script", "https://stonly.com/js/widget/v2/");
 </script>
