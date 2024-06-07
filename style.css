@@ -7054,3 +7054,8 @@ a.c-service-status-icon--maintenance::before {
   font-size: 3rem;
   -webkit-animation: rotating 2s linear infinite;
 }
+
+/* Reuqest Details changes */
+.request-details:last-child dt:first-child, .request-details:last-child dd:first-of-type {
+  display: none
+}
