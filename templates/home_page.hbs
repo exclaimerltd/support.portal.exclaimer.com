@@ -7,33 +7,36 @@
     </div>
 
     {{#if promoted_articles}}
-    <div class="promo-articles">
-      {{#each promoted_articles}}
+    <div class="promoted-articles">
+      <h2>Promoted Articles</h2>
+      <div class="promo-articles">
+        {{#each promoted_articles}}
         <div class="promo-article-item">
           <a href="{{url}}">
-            <span>{{title}}</span>
-            <span class="promo-article-btn">View Article</span>
+            <span class="promo-article-title">{{title}}</span>
+            <span class="promo-article-btn">Read More</span>
           </a>
         </div>
-      {{/each}}
+        {{/each}}
+      </div>
     </div>
     {{/if}}
   </section>
-{{!-- 
+  {{!--
   {{#if help_center.community_enabled}}
-    <section class="section home-section community">
-      <h2>{{t 'community'}}</h2>
-      {{#link 'community' class='community-link'}}
-        {{t 'join_conversation'}}
-      {{/link}}
+  <section class="section home-section community">
+    <h2>{{t 'community'}}</h2>
+    {{#link 'community' class='community-link'}}
+    {{t 'join_conversation'}}
+    {{/link}}
 
-      <div class="community-image"></div>
-    </section>
+    <div class="community-image"></div>
+  </section>
   {{/if}}
 
   <section class="section home-section activity">
     {{#if settings.show_recent_activity}}
-      {{recent_activity}}
+    {{recent_activity}}
     {{/if}}
   </section> --}}
 </div>

@@ -3,7 +3,10 @@ window.addEventListener('DOMContentLoaded', function () {
     const signatureDesign = 19062765519261;
     const userManual = 19062773129757;
     const faq = 19063263017373;
-    relevantIds = [gettingStarted, signatureDesign, userManual, faq];
+    const whatsNew = 19063407470749;
+    const solutions = 19063411904925;
+    mainCategories = [gettingStarted, signatureDesign, userManual, faq];
+    subCategories = [whatsNew, solutions];
 
     const categorySelector = document.getElementById('categorySelector');
     const categorySelectorMenu = document.getElementById('categorySelectorMenu');
@@ -83,13 +86,15 @@ window.addEventListener('DOMContentLoaded', function () {
             sectionNames.push({ id: sectionId, name: sectionName});
 
             // Check to see if the section name matches the list, if so add it as a seperate button. Else. Add it to the drop down.
-            if(relevantIds.includes(sectionId)) {
+            if(mainCategories.includes(sectionId)) {
                 categorySelector.innerHTML += `<a id="${sectionId}" href="${section.html_url}" class="category-btn">${section.name}</a>`;
-            } else {
+            } else if(subCategories.includes(sectionId)){
                 categorySelectorMenu.innerHTML += `<a id="${sectionId}" href="${section.html_url}" class="" role="menuitem">${section.name}</a>`;
+            } else {
+                // Do Nothing!
             }
             // Check to see if the user is on a particular section, if show change the button state.
-            if(userHREF.includes(sectionId)) {
+            if(userHREF.includes(sectionId) && mainCategories.includes(sectionId)) {
                 const categorySelectBtn = document.getElementById(`${sectionId}`);
                 categorySelectBtn.classList.toggle('active');
                 if(![gettingStarted, signatureDesign, userManual, faq].includes(sectionId)) {
@@ -102,7 +107,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     async function wistiaUrl(sectionNames) {
-        const projectID = "6jgzokt1l2";
+        const projectID = "veamapxp3x";
         const promoVideos = document.querySelector('#promoVideoSection');
         let sectionMatch = false;
         let wistiaAPI = `https://api.wistia.com/v1/medias?project_id=${projectID}&tags=kbpromoted`
@@ -116,7 +121,6 @@ window.addEventListener('DOMContentLoaded', function () {
                     wistiaAPI += `&tags=kb${sectionName}`;
                     getVideos(wistiaAPI);
                 }
-
                 // Set sectionMatch to true, to stop the code from running, break below.
                 sectionMatch = true; 
                 break;
@@ -168,16 +172,53 @@ window.addEventListener('DOMContentLoaded', function () {
         $('.owl-carousel').owlCarousel({
             items: 3,
             loop: true,
-            autoplay: autoPlayEnabled,
+            autoplay: true,
             autoplayTimeout: 5000,
             autoplayHoverPause: true,
-            dots: true,
+            dots: false,
             nav: true,
             center: true,
-            slideBy: 3
+            slideBy: 3,
+            margin: 10,
+            responsiveClass: true,
+            responsive:{
+                0: {
+                    items: 1,
+                    nav: false,
+                    center: true,
+                    dots: true
+                },
+                600: {
+                    items: 3
+                }
+            }
         });
-  
-        document.querySelector('[aria-label="Previous"]').innerHTML = '';
         document.querySelector('[aria-label="Next"]').innerHTML = '';
+        document.querySelector('[aria-label="Previous"]').innerHTML = '';
+    }
+
+    // Setting the "[See all articles]" button if there should be more than 5 articles in a section. 
+    // This is done as Zendesk does not have this by default and needs manually adding in.
+    let articles = document.querySelectorAll('.sections-articles');
+    let articleList = [...articles];
+    let showMore = document.querySelectorAll('.sections-showmore');
+
+    // Loop through articleList and apply the showmore button.
+    for (let i = 0; i < articleList.length; i++) {
+        if (articleList[i].childElementCount > 5) {
+            if (showMore[i]) {
+                showMore[i].style.display = "flex";
+            }
+        }
+    }
+
+    // Setting active state on breadcrumbs
+    let breadcrumbs = document.querySelector('.breadcrumbs');
+    let crumb = breadcrumbs.querySelectorAll('li');
+    for (let i = 0; i < crumb.length; i++) {
+        let crumbFinal = crumb[i].innerText.replace(/\s+/g, "-");
+        if(userHREF.includes(crumbFinal)) {
+            crumb[i].classList.add('breadcrumb-active');
+        }
     }
 });
