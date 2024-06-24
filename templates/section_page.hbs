@@ -11,39 +11,26 @@
       <p class="page-header-description">{{section.description}}</p>
       {{/if}}
     </header>
+
     {{#if section.sections}}
     <ul class="sections">
-      {{#if section.articles}}
-      <li class="sections-item">
-        <span class="sections-item-title">{{section.name}}</span>
-        <ul class="sections-articles">
-          {{#each section.articles}}
-          <li class="sections-articles-item">
-            <a href="{{url}}">{{title}}</a>
-          </li>
-          {{/each}}
-        </ul>
-      </li>
-      {{/if}}
       {{#each section.sections}}
       <li class="sections-item">
         <a href="{{url}}" class="sections-item-title">{{name}}</a>
-        {{#if articles}}
-        <ul class="sections-articles">
-          {{#each articles}}
-          <li class="sections-articles-item">
-            <a href="{{url}}" title="{{title}}">{{title}}</a>
-            {{#if internal}}<span class="sections-articles-item-internal"></span>{{/if}}
-          </li>
-          {{/each}}
-          <a class="sections-showmore" href="{{url}}" title="{{name}}">[See all articles]</a>
-        </ul>
-        {{/if}}
+      </li>
+      {{/each}}
+
+    </ul>
+    {{else}}
+    <ul class="sections-articles-list">
+      {{#each section.articles}}
+      <li class="sections-articles-item articles-item">
+        <a href="{{url}}" title="{{title}}">{{title}}</a>
+        {{#if internal}}<span class="sections-articles-item-internal"></span>{{/if}}
       </li>
       {{/each}}
     </ul>
     {{/if}}
-
 
   </div>
 </div>

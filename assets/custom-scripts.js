@@ -1,12 +1,13 @@
 window.addEventListener('DOMContentLoaded', function () {
-    const gettingStarted = 19062778574749;
-    const signatureDesign = 19062765519261;
-    const userManual = 19062773129757;
-    const faq = 19063263017373;
-    const whatsNew = 19063407470749;
-    const solutions = 19063411904925;
-    mainCategories = [gettingStarted, signatureDesign, userManual, faq];
-    subCategories = [whatsNew, solutions];
+    const userManual = 19642017708829;
+    const gettingStarted = 19642677829021;
+    const signatureDesign = 19642654652189;
+    const faq = 19642684333725;
+    const whatsNew = 19642671264669;
+    const solutions = 19642671983773;
+
+    mainCategory = [gettingStarted, signatureDesign, userManual, faq];
+    subCategory = [whatsNew, solutions];
 
     const categorySelector = document.getElementById('categorySelector');
     const categorySelectorMenu = document.getElementById('categorySelectorMenu');
@@ -32,12 +33,12 @@ window.addEventListener('DOMContentLoaded', function () {
     getLocale(localeAPI);
 
     // Get Sections based on the users LocaleAPI call.
-    async function getSections(sectionURL) {
+    async function getCategories(categoriesURL) {
         try {
-            const response = await fetch(sectionURL);
-            const sectionData = await response.json();
+            const response = await fetch(categoriesURL);
+            const categoryData = await response.json();
             if(response.ok) {
-                sections(sectionData);
+                categories(categoryData);
             } else {
                 console.error('Error: Cannot get locale data');
             }
@@ -54,8 +55,8 @@ window.addEventListener('DOMContentLoaded', function () {
             const localeHREF = `/hc/${locale}`;
             if(userHREF.includes(localeHREF)) {
                 // Assign the locale to the sections API URL.
-                const sectionsAPI = `/api/v2/help_center/${locale}/sections.json`;
-                getSections(sectionsAPI);
+                const categoriesAPI = `/api/v2/help_center/${locale}/categories.json`;
+                getCategories(categoriesAPI);
             }
         }
     }
@@ -73,37 +74,36 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    async function sections(sectionData) {
-        const sections = sectionData.sections;
-        let sectionNames = [];
+    async function categories(categoryData) {
+        const categories = categoryData.categories;
+        let categoryNames = [];
+        for(let c = 0; c < categories.length; c++) {
+            const category = categories[c];
+            const categoryId = category.id;
+            const categoryName = category.name;
+            const categoryURL = category.html_url;
 
-        for(let j = 0; j < sections.length; j++) {
-            const section = sections[j];
-            const sectionId = section.id;
-            const sectionName = section.name;
+            categoryNames.push({ id: categoryId, name: categoryName});
 
-            // Assign section.name to the sectionNames array ready for use later.
-            sectionNames.push({ id: sectionId, name: sectionName});
-
-            // Check to see if the section name matches the list, if so add it as a seperate button. Else. Add it to the drop down.
-            if(mainCategories.includes(sectionId)) {
-                categorySelector.innerHTML += `<a id="${sectionId}" href="${section.html_url}" class="category-btn">${section.name}</a>`;
-            } else if(subCategories.includes(sectionId)){
-                categorySelectorMenu.innerHTML += `<a id="${sectionId}" href="${section.html_url}" class="" role="menuitem">${section.name}</a>`;
+            if(mainCategory.includes(categoryId)) {
+                categorySelector.innerHTML += `<a id="${categoryId}" href="${categoryURL}" class="category-btn">${categoryName}</a>`;
+            } else if(subCategory.includes(categoryId)){
+                categorySelectorMenu.innerHTML += `<a id="${categoryId}" href="${categoryURL}" class="" role="menuitem">${categoryName}</a>`;
             } else {
                 // Do Nothing!
             }
             // Check to see if the user is on a particular section, if show change the button state.
-            if(userHREF.includes(sectionId) && mainCategories.includes(sectionId)) {
-                const categorySelectBtn = document.getElementById(`${sectionId}`);
+            if(userHREF.includes(categoryId) && mainCategory.includes(categoryId)) {
+                const categorySelectBtn = document.getElementById(`${categoryId}`);
                 categorySelectBtn.classList.toggle('active');
-                if(![gettingStarted, signatureDesign, userManual, faq].includes(sectionId)) {
-                    moreBtn.innerHTML = section.name;
+                if(![gettingStarted, signatureDesign, userManual, faq].includes(categoryId)) {
+                    moreBtn.innerHTML = categoryName;
                     moreBtn.classList.toggle('active');
                 }
             }
+
         }
-        wistiaUrl(sectionNames);
+        wistiaUrl(categoryNames);
     }
 
     async function wistiaUrl(sectionNames) {
@@ -195,21 +195,6 @@ window.addEventListener('DOMContentLoaded', function () {
         });
         document.querySelector('[aria-label="Next"]').innerHTML = '';
         document.querySelector('[aria-label="Previous"]').innerHTML = '';
-    }
-
-    // Setting the "[See all articles]" button if there should be more than 5 articles in a section. 
-    // This is done as Zendesk does not have this by default and needs manually adding in.
-    let articles = document.querySelectorAll('.sections-articles');
-    let articleList = [...articles];
-    let showMore = document.querySelectorAll('.sections-showmore');
-
-    // Loop through articleList and apply the showmore button.
-    for (let i = 0; i < articleList.length; i++) {
-        if (articleList[i].childElementCount > 5) {
-            if (showMore[i]) {
-                showMore[i].style.display = "flex";
-            }
-        }
     }
 
     // Setting active state on breadcrumbs
