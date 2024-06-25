@@ -1,16 +1,16 @@
 window.addEventListener('DOMContentLoaded', function () {
-    const userManual = 19642017708829;
-    const gettingStarted = 19642677829021;
-    const signatureDesign = 19642654652189;
-    const faq = 19642684333725;
-    const whatsNew = 19642671264669;
-    const solutions = 19642671983773;
+    const userManual = 19062773129757;
+    const gettingStarted = 19062778574749;
+    const signatureDesign = 19062765519261;
+    const faq = 19063263017373;
+    const whatsNew = 19063407470749;
+    const solutions = 19063411904925;
 
-    mainCategory = [gettingStarted, signatureDesign, userManual, faq];
-    subCategory = [whatsNew, solutions];
+    mainsection = [gettingStarted, signatureDesign, userManual, faq];
+    subsection = [whatsNew, solutions];
 
-    const categorySelector = document.getElementById('categorySelector');
-    const categorySelectorMenu = document.getElementById('categorySelectorMenu');
+    const sectionSelector = document.getElementById('categorySelector');
+    const sectionSelectorMenu = document.getElementById('categorySelectorMenu');
     const promoVideoSection = document.getElementById('promoVideoSection');
     const promoVideos = document.getElementById('promoVideos');
     const userHREF = window.location.href;
@@ -33,12 +33,12 @@ window.addEventListener('DOMContentLoaded', function () {
     getLocale(localeAPI);
 
     // Get Sections based on the users LocaleAPI call.
-    async function getCategories(categoriesURL) {
+    async function getSections(sectionUrl) {
         try {
-            const response = await fetch(categoriesURL);
-            const categoryData = await response.json();
+            const response = await fetch(sectionUrl);
+            const sectionData = await response.json();
             if(response.ok) {
-                categories(categoryData);
+                sections(sectionData);
             } else {
                 console.error('Error: Cannot get locale data');
             }
@@ -55,8 +55,8 @@ window.addEventListener('DOMContentLoaded', function () {
             const localeHREF = `/hc/${locale}`;
             if(userHREF.includes(localeHREF)) {
                 // Assign the locale to the sections API URL.
-                const categoriesAPI = `/api/v2/help_center/${locale}/categories.json`;
-                getCategories(categoriesAPI);
+                const sectionAPI = `/api/v2/help_center/${locale}/sections.json`;
+                getSections(sectionAPI);
             }
         }
     }
@@ -74,36 +74,33 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    async function categories(categoryData) {
-        const categories = categoryData.categories;
-        let categoryNames = [];
-        for(let c = 0; c < categories.length; c++) {
-            const category = categories[c];
-            const categoryId = category.id;
-            const categoryName = category.name;
-            const categoryURL = category.html_url;
+    async function sections(sectionData) {
+        const sections = sectionData.sections;
+        let sectionNames = [];
+        for(let c = 0; c < sections.length; c++) {
+            const section = sections[c];
+            const sectionId = section.id;
+            const sectionName = section.name;
+            const sectionURL = section.html_url;
 
-            categoryNames.push({ id: categoryId, name: categoryName});
+            sectionNames.push({ id: sectionId, name: sectionName});
 
-            if(mainCategory.includes(categoryId)) {
-                categorySelector.innerHTML += `<a id="${categoryId}" href="${categoryURL}" class="category-btn">${categoryName}</a>`;
-            } else if(subCategory.includes(categoryId)){
-                categorySelectorMenu.innerHTML += `<a id="${categoryId}" href="${categoryURL}" class="" role="menuitem">${categoryName}</a>`;
+            if(mainsection.includes(sectionId)) {
+                sectionSelector.innerHTML += `<a id="${sectionId}" href="${sectionURL}" class="category-btn">${sectionName}</a>`;
+            } else if(subsection.includes(sectionId)){
+                sectionSelectorMenu.innerHTML += `<a id="${sectionId}" href="${sectionURL}" class="" role="menuitem">${sectionName}</a>`;
             } else {
                 // Do Nothing!
             }
             // Check to see if the user is on a particular section, if show change the button state.
-            if(userHREF.includes(categoryId) && mainCategory.includes(categoryId)) {
-                const categorySelectBtn = document.getElementById(`${categoryId}`);
-                categorySelectBtn.classList.toggle('active');
-                if(![gettingStarted, signatureDesign, userManual, faq].includes(categoryId)) {
-                    moreBtn.innerHTML = categoryName;
-                    moreBtn.classList.toggle('active');
-                }
+            if(userHREF.includes(sectionId) && mainsection.includes(sectionId)) {
+                const sectionSelectBtn = document.getElementById(`${sectionId}`);
+                const moreBtn = document.getElementById('moreBtn');
+                sectionSelectBtn.classList.toggle('active');
             }
 
         }
-        wistiaUrl(categoryNames);
+        wistiaUrl(sectionNames);
     }
 
     async function wistiaUrl(sectionNames) {
@@ -199,11 +196,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Setting active state on breadcrumbs
     let breadcrumbs = document.querySelector('.breadcrumbs');
-    let crumb = breadcrumbs.querySelectorAll('li');
-    for (let i = 0; i < crumb.length; i++) {
-        let crumbFinal = crumb[i].innerText.replace(/\s+/g, "-");
-        if(userHREF.includes(crumbFinal)) {
-            crumb[i].classList.add('breadcrumb-active');
+    if (breadcrumbs) {
+        let crumb = breadcrumbs.querySelectorAll('li');
+        for (let i = 0; i < crumb.length; i++) {
+            let crumbFinal = crumb[i].innerText.replace(/[\s']/g, "-");
+            if(userHREF.includes(crumbFinal)) {
+                crumb[i].classList.add('breadcrumb-active');
+            }
         }
     }
+
 });

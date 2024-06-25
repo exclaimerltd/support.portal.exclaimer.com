@@ -15,18 +15,17 @@
     {{#if category.sections}}
     <ul class="categories">
       {{#each category.sections}}
-      <li class="category-item">
+      <li id="{{id}}" class="category-item">
         <a href="{{url}}" class="category-item-title">{{name}}</a>
         {{#if sections}}
-        <ul class="">
+        <ul class="sections">
           {{#each sections}}
-          <li class="">
+          <li id="{{id}}" class="section-item">
             <a href="{{url}}" title="{{name}}">{{name}}</a>
           </li>
           {{/each}}
         </ul>
         {{/if}}
-
       </li>
       {{/each}}
     </ul>

@@ -3,7 +3,7 @@
     <div class="owl-carousel owl-theme" id="promoVideos"></div>
   </div>
 
-  <div class="section-container">
+  <div class="category-container">
     <header class="sections-header">
       <h1>{{section.name}}</h1>
       {{breadcrumbs}}
@@ -12,22 +12,10 @@
       {{/if}}
     </header>
 
-    {{#if section.sections}}
-    <ul class="sections">
+    {{#if section}}
+    <ul class="categories">
       {{#each section.sections}}
-      <li class="sections-item">
-        <a href="{{url}}" class="sections-item-title">{{name}}</a>
-      </li>
-      {{/each}}
-
-    </ul>
-    {{else}}
-    <ul class="sections-articles-list">
-      {{#each section.articles}}
-      <li class="sections-articles-item articles-item">
-        <a href="{{url}}" title="{{title}}">{{title}}</a>
-        {{#if internal}}<span class="sections-articles-item-internal"></span>{{/if}}
-      </li>
+      <li id="{{id}}" class="category-item"><a href="{{url}}" title="{{name}}">{{name}}</a></li>
       {{/each}}
     </ul>
     {{/if}}
