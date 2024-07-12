@@ -1,13 +1,13 @@
 window.addEventListener('DOMContentLoaded', function () {
-    const userManual = 19062773129757;
-    const gettingStarted = 19062778574749;
-    const signatureDesign = 19062765519261;
-    const faq = 19063263017373;
-    const whatsNew = 19063407470749;
-    const solutions = 19063411904925;
+    const userManual = 19833048021661;
+    const gettingStarted = 19833038595229;
+    const signatureDesign = 19833370899485;
+    const faq = 19833343268637;
+    const whatsNew = 19833372166941;
+    const solutions = 19833368940189;
 
-    mainsection = [gettingStarted, signatureDesign, userManual, faq];
-    subsection = [whatsNew, solutions];
+    const mainsection = [gettingStarted, signatureDesign, userManual];
+    const subsection = [faq, whatsNew, solutions];
 
     const sectionSelector = document.getElementById('categorySelector');
     const sectionSelectorMenu = document.getElementById('categorySelectorMenu');
@@ -15,53 +15,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const promoVideos = document.getElementById('promoVideos');
     const userHREF = window.location.href;
     const localeAPI = '/api/v2/locales';
+    let breadcrumbs = document.querySelector('.breadcrumbs');
 
-    // Get Locales to check which language the user is viewing the HC in.
-    async function getLocale(localeURL) {
-        try {
-            const response = await fetch(localeURL);
-            const localeData = await response.json();
-            if(response.ok) {
-                locales(localeData);
-            } else {
-                console.error('Error: Cannot get locale data');
-            }
-        } catch {
-            console.error('Error: ', error.message);
-        }
-    }
-    getLocale(localeAPI);
-
-    // Get Sections based on the users LocaleAPI call.
-    async function getSections(sectionUrl) {
-        try {
-            const response = await fetch(sectionUrl);
-            const sectionData = await response.json();
-            if(response.ok) {
-                sections(sectionData);
-            } else {
-                console.error('Error: Cannot get locale data');
-            }
-        } catch {
-            console.error('Error: ', error.message);
-        }
-    }
-
-    // Show the data from Locale API, then create a variable to check against later.
-    async function locales(localeData) {
-        const locales = localeData.locales;
-        for(let i = 0; i < locales.length; i++) {
-            const locale = locales[i].locale;
-            const localeHREF = `/hc/${locale}`;
-            if(userHREF.includes(localeHREF)) {
-                // Assign the locale to the sections API URL.
-                const sectionAPI = `/api/v2/help_center/${locale}/sections.json`;
-                getSections(sectionAPI);
-            }
-        }
-    }
-
-    // 
+    // Get videos
     async function getVideos(wistiaApi) {
         try {
             const wistiaAPIKey = "b37b20eee833f6ff6b9eab66b17bf05e6044535d7510cb4e997dd510d845f929";
@@ -74,52 +30,173 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    async function sections(sectionData) {
-        const sections = sectionData.sections;
-        let sectionNames = [];
-        for(let c = 0; c < sections.length; c++) {
-            const section = sections[c];
-            const sectionId = section.id;
-            const sectionName = section.name;
-            const sectionURL = section.html_url;
-
-            sectionNames.push({ id: sectionId, name: sectionName});
-
-            if(mainsection.includes(sectionId)) {
-                sectionSelector.innerHTML += `<a id="${sectionId}" href="${sectionURL}" class="category-btn">${sectionName}</a>`;
-            } else if(subsection.includes(sectionId)){
-                sectionSelectorMenu.innerHTML += `<a id="${sectionId}" href="${sectionURL}" class="" role="menuitem">${sectionName}</a>`;
+    // Get Locales to check which language the user is viewing the HC in.
+    async function getLocale(localeURL) {
+        try {
+            const response = await fetch(localeURL);
+            const localeData = await response.json();
+            if (response.ok) {
+                processLocales(localeData);
             } else {
-                // Do Nothing!
+                console.error('Error: Cannot get locale data');
             }
-            // Check to see if the user is on a particular section, if show change the button state.
-            if(userHREF.includes(sectionId) && mainsection.includes(sectionId)) {
-                const sectionSelectBtn = document.getElementById(`${sectionId}`);
-                const moreBtn = document.getElementById('moreBtn');
-                sectionSelectBtn.classList.toggle('active');
-            }
-
+        } catch (error) {
+            console.error('Error:', error.message);
         }
-        wistiaUrl(sectionNames);
+    }
+    getLocale(localeAPI);
+
+    // Fetch categories based on the user's locale.
+    async function fetchCategories(categoryURL) {
+        try {
+            const response = await fetch(categoryURL);
+            const categoryData = await response.json();
+
+            if (response.ok) {
+                categories(categoryData);
+            } else {
+                console.error('Error: Cannot get locale data');
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     }
 
-    async function wistiaUrl(sectionNames) {
+    // Fetch sections based on the user's locale.
+    async function fetchSections(sectionURL) {
+        try {
+            const response = await fetch(sectionURL);
+            const sectionData = await response.json();
+
+            if (response.ok) {
+                const sectionDetails = await sections(sectionData);
+                const articleAPI = `/api/v2/help_center/${getLocaleFromURL()}/articles.json`;
+                fetchArticles(articleAPI, sectionDetails);
+            } else {
+                console.error('Error: Cannot get section data');
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    }
+
+    // Fetch articles based on the user's locale.
+    async function fetchArticles(articleURL, sectionDetails) {
+        try {
+            const response = await fetch(articleURL);
+            const articleData = await response.json();
+
+            if (response.ok) {
+                articles(articleData, sectionDetails);
+            } else {
+                console.error('Error: Cannot get article data');
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    }
+
+    async function processLocales(localeData) {
+        const { locales } = localeData;
+    
+        locales.forEach(({ locale }) => {
+            const localeHREF = `/hc/${locale}`;
+    
+            if (userHREF.includes(localeHREF)) {
+                // Construct the categories API URL for the locale. And then fetch them
+                const categoryAPI = `/api/v2/help_center/${locale}/categories.json`;
+                fetchCategories(categoryAPI);
+
+                // Construct the sections API URL for the locale. And then fetch them
+                const sectionAPI = `/api/v2/help_center/${locale}/sections.json`;
+                fetchSections(sectionAPI);
+            }
+        });
+    }
+
+    // Categories Work
+    async function categories(categoryData) {
+        const categories = categoryData.categories;
+        let categoryNames = [];
+        for (let c = 0; c < categories.length; c++) {
+            const category = categories[c];
+            const categoryID = category.id;
+            const categoryName = category.name;
+            const sectionURL = category.html_url;
+
+            categoryNames.push({ id: categoryID, name: categoryName });
+
+            if (mainsection.includes(categoryID)) {
+                sectionSelector.innerHTML += `<a id="${categoryID}" href="${sectionURL}" class="category-btn">${categoryName}</a>`;
+            } else if (subsection.includes(categoryID)) {
+                sectionSelectorMenu.innerHTML += `<a id="${categoryID}" href="${sectionURL}" class="" role="menuitem">${categoryName}</a>`;
+            }
+
+            // Check to see if the user is on a particular section, if so change the button state.
+            if (userHREF.includes(categoryID) && mainsection.includes(categoryID)) {
+                const sectionSelectBtn = document.getElementById(`${categoryID}`);
+                sectionSelectBtn.classList.toggle('active');
+            } else if (userHREF.includes('/p/videos')) {
+                const videoSelectBtn = document.getElementById('videoSection');
+                console.log(videoSelectBtn);
+                videoSelectBtn.classList.add('active');
+            } else if (userHREF.includes(categoryID) && subsection.includes(categoryID)) {
+                const moreBtn = document.getElementById('moreBtn');
+                moreBtn.classList.toggle('active');
+                moreBtn.innerHTML = categoryName;
+            }
+        }
+        wistiaUrl(categoryNames);
+    }
+    
+    async function sections(sectionData) {
+        let sectionDetails = [];
+        for (let section of sectionData.sections) {
+            let detail = { sectionName: section.name, sectionId: section.id };
+            sectionDetails.push(detail);
+        }
+        return sectionDetails;
+    }
+
+    async function articles(articleData, sectionDetails) {
+        // Loop through all details within sectionDetails
+        for(let details of sectionDetails){
+            // Loop through all articles in articleData
+            for(let article of articleData.articles){
+                // Checking to see if the userHREF matches the sectionId
+                if(userHREF.includes(details.sectionId) || article.section_id === details.sectionId){
+                    // Check for breadcrumbs
+                    if (breadcrumbs) {
+                        let crumbs = breadcrumbs.querySelectorAll('li');
+                        let sectionName = details.sectionName;
+                        // Loop through all crumbs and apply the required styles.
+                        for (let crumb of crumbs) {
+                            if(crumb.title === sectionName) {
+                                crumb.classList.add('breadcrumb-active')
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    async function wistiaUrl(categoryNames) {
         const projectID = "veamapxp3x";
         const promoVideos = document.querySelector('#promoVideoSection');
         let sectionMatch = false;
         let wistiaAPI = `https://api.wistia.com/v1/medias?project_id=${projectID}&tags=kbpromoted`
-
-        for(let j = 0; j < sectionNames.length; j++) {
+        for (let j = 0; j < categoryNames.length; j++) {
             // Checking to see if users HREF contains the section ID
-            if(userHREF.includes(sectionNames[j].id)) {
-                const sectionName = sectionNames[j].name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            if (userHREF.includes(categoryNames[j].id.toString())) {
+                const categoryName = categoryNames[j].name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
                 // Checking to see if #promoVideos is available in the DOM. if it is, we will display the required code.
-                if(promoVideos){
-                    wistiaAPI += `&tags=kb${sectionName}`;
+                if (promoVideos) {
+                    wistiaAPI += `&tags=kb${categoryName}`;
                     getVideos(wistiaAPI);
                 }
                 // Set sectionMatch to true, to stop the code from running, break below.
-                sectionMatch = true; 
+                sectionMatch = true;
                 break;
             }
         }
@@ -127,24 +204,19 @@ window.addEventListener('DOMContentLoaded', function () {
         // If the sectionMatch remains false, this means that the user is not on a section that matches, so we will try to display the "PromotedVideos"
         if (!sectionMatch) {
             // Checking to see if #promoVideos is available in the DOM. if it is, we will display the required code.
-            if(promoVideos){
+            if (promoVideos) {
                 getVideos(wistiaAPI);
             }
         }
     }
 
     async function showVideos(videoData) {
-        if(videoData.length > 0) {
+        if (videoData.length > 0) {
             const promoTitle = document.createElement("h2");
-            const userHREF = window.location.href;
             promoTitle.innerHTML = "Promoted Videos";
             promoVideoSection.insertBefore(promoTitle, promoVideos);
-            for (let k = 0; k < videoData.length; k++){
-
-                video = videoData[k];
-                if(video.section === 'English' && userHREF.includes('/hc/de') ) {
-                    console.log('Do Nothing!');
-                }
+            for (let k = 0; k < videoData.length; k++) {
+                const video = videoData[k];
                 const videosURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
                 promoVideos.innerHTML += `
                     <a href="${videosURL}" target="_blank" class="video-link">
@@ -178,7 +250,7 @@ window.addEventListener('DOMContentLoaded', function () {
             slideBy: 3,
             margin: 10,
             responsiveClass: true,
-            responsive:{
+            responsive: {
                 0: {
                     items: 1,
                     nav: false,
@@ -194,16 +266,33 @@ window.addEventListener('DOMContentLoaded', function () {
         document.querySelector('[aria-label="Previous"]').innerHTML = '';
     }
 
-    // Setting active state on breadcrumbs
-    let breadcrumbs = document.querySelector('.breadcrumbs');
-    if (breadcrumbs) {
-        let crumb = breadcrumbs.querySelectorAll('li');
-        for (let i = 0; i < crumb.length; i++) {
-            let crumbFinal = crumb[i].innerText.replace(/[\s']/g, "-");
-            if(userHREF.includes(crumbFinal)) {
-                crumb[i].classList.add('breadcrumb-active');
-            }
-        }
+    function getLocaleFromURL() {
+        const urlSegments = userHREF.split('/');
+        return urlSegments[urlSegments.indexOf('hc') + 1];
     }
 
+
+    // Accordians
+    var accordions = document.querySelectorAll(".article-accordion");
+
+    accordions.forEach(function(accordion) {
+        accordion.addEventListener("click", function() {
+            // Toggle active class for styling
+            this.classList.toggle("active");
+
+            // Toggle the display property of the panel with transition
+            var panel = this.nextElementSibling;
+            var panelPadding = 18;
+
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                panel.style.paddingTop = "0";
+                panel.style.paddingBottom = "0";
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 18 + "px";
+                panel.style.paddingTop = panelPadding + "px";
+                panel.style.paddingBottom = panelPadding + "px";
+            }
+        });
+    });
 });

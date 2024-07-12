@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="promoted-videos" id="promoVideoSection">
+  {{!-- <div class="promoted-videos" id="promoVideoSection">
     <div class="owl-carousel owl-theme" id="promoVideos"></div>
-  </div>
+  </div> --}}
 
-  <div class="category-container">
-    <header class="sections-header">
+  <div class="section-container">
+    <header class="section-header">
       <h1>{{section.name}}</h1>
       {{breadcrumbs}}
       {{#if section.description}}
@@ -13,11 +13,48 @@
     </header>
 
     {{#if section}}
-    <ul class="categories">
+    <ul class="sections">
       {{#each section.sections}}
-      <li id="{{id}}" class="category-item"><a href="{{url}}" title="{{name}}">{{name}}</a></li>
+      <li id="{{id}}" class="section-item">
+        <a href="{{url}}" title="{{name}}" class="section-item-title">{{name}}</a>
+        {{#if articles}}
+        <ul>
+          {{#each articles}}
+          <li class="section-item-link"><a href="{{url}}" title="{{title}}">{{title}}</a></li>
+          {{/each}}
+          {{#if more_articles}}
+          <li class="section-item-seemore">
+            <a href="{{url}}" title="{{name}}">[See all articles]</a>
+          </li>
+          {{/if}}
+        </ul>
+        {{/if}}
+      </li>
       {{/each}}
     </ul>
+    {{/if}}
+    {{#if section.sections}}
+    <h2>Articles</h2>
+    {{#if section.articles}}
+    <ul class="section-articles">
+      {{#each section.articles}}
+      <li id="{{id}}" class="section-articles-item">
+        <a href="{{url}}" title="{{title}}" class="section-articles-item-link">{{title}}</a>
+      </li>
+      {{/each}}
+    </ul>
+    {{/if}}
+
+    {{else}}
+    {{#if section.articles}}
+    <ul class="article-list">
+      {{#each section.articles}}
+      <li id="{{id}}" class="article-list-item">
+        <a href="{{url}}" title="{{title}}" class="article-list-item-link">{{title}}</a>
+      </li>
+      {{/each}}
+    </ul>
+    {{/if}}
     {{/if}}
 
   </div>
