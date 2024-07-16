@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const whatsNew = 19833372166941;
     const solutions = 19833368940189;
 
-    const mainsection = [gettingStarted, signatureDesign, userManual];
+    const mainsection = [signatureDesign, userManual];
     const subsection = [faq, whatsNew, solutions];
 
     const sectionSelector = document.getElementById('categorySelector');
@@ -295,4 +295,11 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    if(userHREF.includes("/p/getting-started")) {
+        let loader = document.getElementById('loader');
+        this.setTimeout(() => {
+            loader.style.display = "none"
+        }, 3000);
+    }
 });
