@@ -140,6 +140,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 const videoSelectBtn = document.getElementById('videoSection');
                 console.log(videoSelectBtn);
                 videoSelectBtn.classList.add('active');
+            } else if (userHREF.includes('/p/getting-started')) {
+                const gettingStartedBtn = document.getElementById('gettingStarted');
+                console.log(gettingStartedBtn);
+                gettingStartedBtn.classList.add('active');
             } else if (userHREF.includes(categoryID) && subsection.includes(categoryID)) {
                 const moreBtn = document.getElementById('moreBtn');
                 moreBtn.classList.toggle('active');
@@ -278,7 +282,7 @@ window.addEventListener('DOMContentLoaded', function () {
     accordions.forEach(function(accordion) {
         accordion.addEventListener("click", function() {
             // Toggle active class for styling
-            this.classList.toggle("active");
+            this.classList.toggle("active");``
 
             // Toggle the display property of the panel with transition
             var panel = this.nextElementSibling;
@@ -295,6 +299,11 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
+    if(window.location.href.indexOf('/p/getting-started') > 0){
+        const loader = document.getElementById('loader');
+        document.getElementById('ston-e37mX3j3pG').onload = function() {
+            loader.classList.remove('active');
+        }
+    }
     
 });
