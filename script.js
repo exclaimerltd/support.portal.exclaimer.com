@@ -782,13 +782,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   checkTicketId();
-  if(window.location.href.indexOf('/p/getting-started') > 0){
-    const loader = document.getElementById('loader');
-    function hideLoader() {
-      loader.classList.remove('active');
-    }
-    setTimeout(hideLoader, 3000);
-  }
+  
   function checkFAQ() {
     let faqItem = document.querySelectorAll('.section-topic-link');
     let faqTitle = document.querySelectorAll('.section-article-title');
