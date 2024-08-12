@@ -5758,6 +5758,10 @@ span[aria-label="Previous"]::after {
   width: 100%;
 }
 
+.article-list-article {
+  margin-top: 32px;
+}
+
 .article-list[aria-label="FAQ"] {
   display: flex;
   align-items: center;

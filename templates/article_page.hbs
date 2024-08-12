@@ -13,6 +13,17 @@
         {{/if}}
       </h1>
       {{breadcrumbs}}
+      {{#is section.id 20747472485789}}
+      {{#if section}}
+      <ul class="article-list article-list-article" aria-label="FAQ">
+        {{#each section.articles}}
+        <li id="{{id}}" class="article-list-item" aria-label="FAQ">
+          <a href="{{url}}" title="{{title}}" class="article-list-item-link">{{title}}</a>
+        </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+      {{/is}}
       <div class="article-meta">
         <div class="article-author">
           {{#if settings.show_article_author}}
