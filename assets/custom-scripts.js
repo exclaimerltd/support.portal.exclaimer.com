@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const solutions = 19833368940189;
 
     const mainsection = [signatureDesign, userManual];
-    const subsection = [faq, whatsNew, solutions];
+    const subsection = [whatsNew, solutions];
 
     const sectionSelector = document.getElementById('categorySelector');
     const sectionSelectorMenu = document.getElementById('categorySelectorMenu');
@@ -138,11 +138,9 @@ window.addEventListener('DOMContentLoaded', function () {
                 sectionSelectBtn.classList.toggle('active');
             } else if (userHREF.includes('/p/videos')) {
                 const videoSelectBtn = document.getElementById('videoSection');
-                console.log(videoSelectBtn);
                 videoSelectBtn.classList.add('active');
             } else if (userHREF.includes('/p/getting-started')) {
                 const gettingStartedBtn = document.getElementById('gettingStarted');
-                console.log(gettingStartedBtn);
                 gettingStartedBtn.classList.add('active');
             } else if (userHREF.includes(categoryID) && subsection.includes(categoryID)) {
                 const moreBtn = document.getElementById('moreBtn');
@@ -181,6 +179,15 @@ window.addEventListener('DOMContentLoaded', function () {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    if(breadcrumbs) {
+        let crumbs = breadcrumbs.getElementsByTagName('li');
+        for(let crumb of crumbs) {
+            if(crumb.title === "Frequently Asked Questions") {
+                crumb.style.display = 'none'
             }
         }
     }
@@ -299,11 +306,43 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    var faqAccordions = document.querySelectorAll(".section-question-title");
+
+    faqAccordions.forEach(function(faqAccordion) {
+        faqAccordion.addEventListener("click", function() {
+            // Toggle active class for styling
+            this.classList.toggle("active");``
+
+            // Toggle the display property of the panel with transition
+            var panel = this.nextElementSibling;
+            var panelPadding = 18;
+
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                panel.style.paddingTop = "0";
+                panel.style.paddingBottom = "0";
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + panelPadding + panelPadding + "px";
+                panel.style.paddingTop = panelPadding + "px";
+                panel.style.paddingBottom = panelPadding + "px";
+            }
+        });
+    });
+    
     if(window.location.href.indexOf('/p/getting-started') > 0){
         const loader = document.getElementById('loader');
         document.getElementById('ston-e37mX3j3pG').onload = function() {
             loader.classList.remove('active');
         }
     }
-    
+
+    if(window.location.href.indexOf('/sections/20747472485789')) {
+        const articleTitle = document.querySelectorAll('.article-list-item-link');
+        articleTitle.forEach(article => {
+            article.textContent = article.textContent.replace(' (FAQ)', '');
+            article.title = article.title.replace(' (FAQ)', '')
+        })
+    }
+
 });

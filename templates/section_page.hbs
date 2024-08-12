@@ -11,10 +11,10 @@
       <p class="page-header-description">{{section.description}}</p>
       {{/if}}
     </header>
-
     {{#if section}}
     <ul class="sections">
       {{#each section.sections}}
+
       <li id="{{id}}" class="section-item">
         <a href="{{url}}" title="{{name}}" class="section-item-title">{{name}}</a>
         {{#if articles}}
@@ -33,6 +33,7 @@
       {{/each}}
     </ul>
     {{/if}}
+
     {{#if section.sections}}
     <h2>Articles</h2>
     {{#if section.articles}}
@@ -46,6 +47,15 @@
     {{/if}}
 
     {{else}}
+    {{#is section.id 20747472485789}}
+    <ul class="article-list" aria-label="FAQ">
+      {{#each section.articles}}
+      <li id="{{id}}" class="article-list-item" aria-label="FAQ">
+        <a href="{{url}}" title="{{title}}" class="article-list-item-link">{{title}}</a>
+      </li>
+      {{/each}}
+    </ul>
+    {{else}}
     {{#if section.articles}}
     <ul class="article-list">
       {{#each section.articles}}
@@ -55,7 +65,7 @@
       {{/each}}
     </ul>
     {{/if}}
+    {{/is}}
     {{/if}}
-
   </div>
 </div>
