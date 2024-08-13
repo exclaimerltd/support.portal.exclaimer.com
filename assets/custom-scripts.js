@@ -194,14 +194,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
     async function wistiaUrl(categoryNames) {
         const projectID = "veamapxp3x";
-        const promoVideos = document.querySelector('#promoVideoSection');
         let sectionMatch = false;
         let wistiaAPI;
+        let promoVideos;
         
         if(userHREF.includes('/p/videos')) {
-            wistiaAPI = `https://api.wistia.com/v1/medias?project_id=${projectID}`;
+            wistiaAPI = `https://api.wistia.com/v1/projects/${projectID}`;
             getVideos(wistiaAPI);
         } else {
+            promoVideos = document.querySelector('#promoVideoSection');
             wistiaAPI = `https://api.wistia.com/v1/medias?project_id=${projectID}&tags=kbpromoted`
         }
 
@@ -257,10 +258,7 @@ window.addEventListener('DOMContentLoaded', function () {
     async function videoLibrary(videoData) {
         let videoLibrary = document.getElementById('videoLibrary');
         let videoCategories = document.getElementById('videoCategories');
-
-        if(videoData.length > 0){
-            console.log(videoData)
-        }
+        console.log(videoData)
     }
 
     function initOwlCarousel(videoData) {
