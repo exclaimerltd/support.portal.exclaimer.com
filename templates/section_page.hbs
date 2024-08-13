@@ -5,8 +5,14 @@
 
   <div class="section-container">
     <header class="section-header">
-      <h1>{{section.name}}</h1>
-      {{breadcrumbs}}
+      <h1>
+        {{#is section.id 20847774218397}}
+        Frequently Asked Questions
+        {{else}}
+        {{section.name}}
+        {{/is}}
+      </h1>
+
       {{#if section.description}}
       <p class="page-header-description">{{section.description}}</p>
       {{/if}}
@@ -47,7 +53,7 @@
     {{/if}}
 
     {{else}}
-    {{#is section.id 20747472485789}}
+    {{#is section.id 20847774218397}}
     <ul class="article-list" aria-label="FAQ">
       {{#each section.articles}}
       <li id="{{id}}" class="article-list-item" aria-label="FAQ">

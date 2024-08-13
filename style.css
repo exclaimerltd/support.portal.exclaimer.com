@@ -5766,7 +5766,7 @@ span[aria-label="Previous"]::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .article-list-item {
@@ -5774,6 +5774,16 @@ span[aria-label="Previous"]::after {
   padding-bottom: 15px;
 }
 
+.article-list-item[aria-label="FAQ"].active .article-list-item-link {
+  background-color: #1B2037;
+  color: #FFF;
+}
+
+.article-list-item[aria-label="FAQ"].active .article-list-item-link:hover {
+  background-color: #9AADFF;
+  border-color: #9AADFF;
+  color: #1B2037;
+}
 
 .article-list-item::before {
   content: '\f1ea';
@@ -6239,4 +6249,28 @@ background-color: lighten(#FF7438, 10%);
     stroke-dasharray: 90, 150;
     stroke-dashoffset: -124;
   }
+}
+
+/*MS* Video Library */
+.video-categories {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.video-categories-item button{
+  border: 1px solid #1B2037;
+  border-radius: 999px;
+  padding: 10px 15px;
+  color: #1B2037;
+  transition: ease all 0.3s;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.video-categories-item button:hover {
+  background-color: #1B2037;
+  color: white;
 }

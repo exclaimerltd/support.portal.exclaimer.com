@@ -1,10 +1,9 @@
 window.addEventListener('DOMContentLoaded', function () {
-    const userManual = 19833048021661;
-    const gettingStarted = 19833038595229;
-    const signatureDesign = 19833370899485;
-    const faq = 19833343268637;
-    const whatsNew = 19833372166941;
-    const solutions = 19833368940189;
+    const userManual = 20847594125597;
+    const signatureDesign = 20847627249437;
+    const whatsNew = 20847670662813;
+    const solutions = 20847671135773;
+    const faq = 20847774218397;
 
     const mainsection = [signatureDesign, userManual];
     const subsection = [whatsNew, solutions];
@@ -23,7 +22,13 @@ window.addEventListener('DOMContentLoaded', function () {
             const wistiaAPIKey = "b37b20eee833f6ff6b9eab66b17bf05e6044535d7510cb4e997dd510d845f929";
             const response = await fetch(wistiaApi, { headers: { Authorization: `Bearer ${wistiaAPIKey}` } });
             const videoData = await response.json();
-            if (response.ok) showVideos(videoData);
+            if (response.ok) {
+                if(userHREF.includes('/p/videos')) {
+                    videoLibrary(videoData);
+                } else {
+                    showVideos(videoData); 
+                }
+            }
             else console.error('Error fetching API data');
         } catch (error) {
             console.error('Error:', error.message);
@@ -142,6 +147,10 @@ window.addEventListener('DOMContentLoaded', function () {
             } else if (userHREF.includes('/p/getting-started')) {
                 const gettingStartedBtn = document.getElementById('gettingStarted');
                 gettingStartedBtn.classList.add('active');
+            } else if (userHREF.includes(`/sections/${faq}`)) {
+                const moreBtn = document.getElementById('moreBtn');
+                moreBtn.classList.add('active');
+                moreBtn.innerHTML = 'FAQ';
             } else if (userHREF.includes(categoryID) && subsection.includes(categoryID)) {
                 const moreBtn = document.getElementById('moreBtn');
                 moreBtn.classList.toggle('active');
@@ -183,20 +192,19 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    if(breadcrumbs) {
-        let crumbs = breadcrumbs.getElementsByTagName('li');
-        for(let crumb of crumbs) {
-            if(crumb.title === "Frequently Asked Questions") {
-                crumb.style.display = 'none'
-            }
-        }
-    }
-
     async function wistiaUrl(categoryNames) {
         const projectID = "veamapxp3x";
         const promoVideos = document.querySelector('#promoVideoSection');
         let sectionMatch = false;
-        let wistiaAPI = `https://api.wistia.com/v1/medias?project_id=${projectID}&tags=kbpromoted`
+        let wistiaAPI;
+        
+        if(userHREF.includes('/p/videos')) {
+            wistiaAPI = `https://api.wistia.com/v1/medias?project_id=${projectID}`;
+            getVideos(wistiaAPI);
+        } else {
+            wistiaAPI = `https://api.wistia.com/v1/medias?project_id=${projectID}&tags=kbpromoted`
+        }
+
         for (let j = 0; j < categoryNames.length; j++) {
             // Checking to see if users HREF contains the section ID
             if (userHREF.includes(categoryNames[j].id.toString())) {
@@ -211,7 +219,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 break;
             }
         }
-
         // If the sectionMatch remains false, this means that the user is not on a section that matches, so we will try to display the "PromotedVideos"
         if (!sectionMatch) {
             // Checking to see if #promoVideos is available in the DOM. if it is, we will display the required code.
@@ -243,6 +250,16 @@ window.addEventListener('DOMContentLoaded', function () {
             initOwlCarousel(videoData);
         } else {
             console.log('Whoops! We have no videos to display');
+        }
+    }
+
+    // Video Library
+    async function videoLibrary(videoData) {
+        let videoLibrary = document.getElementById('videoLibrary');
+        let videoCategories = document.getElementById('videoCategories');
+
+        if(videoData.length > 0){
+            console.log(videoData)
         }
     }
 
@@ -330,14 +347,27 @@ window.addEventListener('DOMContentLoaded', function () {
         });
     });
     
-    if(window.location.href.indexOf('/p/getting-started') > 0){
+    if(userHREF.indexOf('/p/getting-started') > 0){
         const loader = document.getElementById('loader');
         document.getElementById('ston-e37mX3j3pG').onload = function() {
             loader.classList.remove('active');
         }
     }
 
-    if(window.location.href.indexOf('/sections/20747472485789')) {
+    // FAQ Changes
+
+    // Remove "Frequently Asked Questions" section from breadcrumb trail.
+    if(breadcrumbs) {
+        let crumbs = breadcrumbs.getElementsByTagName('li');
+        for(let crumb of crumbs) {
+            if(crumb.title === "Frequently Asked Questions") {
+                crumb.style.display = 'none'
+            }
+        }
+    }
+
+    // Remove the (FAQ) tag from all articles within a section
+    if(userHREF.indexOf(`/sections/${faq}`)) {
         const articleTitle = document.querySelectorAll('.article-list-item-link');
         articleTitle.forEach(article => {
             article.textContent = article.textContent.replace(' (FAQ)', '');
@@ -345,4 +375,17 @@ window.addEventListener('DOMContentLoaded', function () {
         })
     }
 
+    // Remove the (FAQ) tag from all articles within an article
+    if(userHREF.indexOf('/articles/') && userHREF.includes('FAQ')){
+        const faqTitle = document.getElementsByTagName('h1')[0];
+        faqTitle.innerHTML = faqTitle.innerHTML.replace(' (FAQ)', '')
+        if(userHREF.includes(faqTitle.id)){
+            const articles = document.getElementsByTagName('li');
+            for(let article of articles) {
+                if(article.id === faqTitle.id) {
+                    article.classList.add('active');
+                }
+            }
+        }
+    }
 });
