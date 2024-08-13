@@ -258,7 +258,31 @@ window.addEventListener('DOMContentLoaded', function () {
     async function videoLibrary(videoData) {
         let videoLibrary = document.getElementById('videoLibrary');
         let videoCategories = document.getElementById('videoCategories');
-        console.log(videoData)
+        let sections = Object.groupBy(videoData.medias, x => x.section);
+        let videos = videoData.medias;
+        console.log(videos);
+        for(let section of Object.keys(sections)) {
+            videoCategories.innerHTML += `<li title="${section}" class="video-categories-item"><button>${section}</button></li>`;
+        }
+
+        for(let video of videos) {
+            let videoURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
+            let videoSection = video && video.section ? video.section.replace(/\s+/g, '-').toLowerCase() : 'default';
+            videoLibrary.innerHTML += `
+            <div class="video videos-${videoSection} video-show">
+                  <div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+                      <div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+                          <span class="wistia_embed wistia_async_${video.hashed_id} popover=true videoFoam=true" style="display: inline-block; height: 100%; position: relative; width: 100%;">&nbsp;</span>
+                      </div>
+                  </div>
+                  <div class="video-meta">
+                      <p>${video.name}</p>
+                      <button name="copyURLButton" onclick="copyURL(this, '${videoURL}')" class="btn-copy">Copy URL</button>
+                  </div>
+                  <div class="pin pin-promoted" aria-promoted="false">Promoted</div>
+              </div>
+            `
+        }
     }
 
     function initOwlCarousel(videoData) {

@@ -6254,10 +6254,14 @@ background-color: lighten(#FF7438, 10%);
 /*MS* Video Library */
 .video-categories {
   display: flex;
+  flex-flow: wrap;
   gap: 10px;
   align-items: center;
   justify-content: center;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 32px;
 }
 
 .video-categories-item button{
@@ -6273,4 +6277,47 @@ background-color: lighten(#FF7438, 10%);
 .video-categories-item button:hover {
   background-color: #1B2037;
   color: white;
+}
+
+.video-library {
+  display: flex;
+  flex-flow: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.video {
+  width: 31%;
+  border-radius: 10px;
+  background-color: #EEE8E2;
+}
+
+.video-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  height: 76px
+}
+
+.btn-copy {
+  border: 1px solid #1B2037;
+  background-color: transparent;
+  border-radius: 999px;
+  padding: 5px 10px;
+  text-wrap: nowrap;
+  transition: ease all 0.3s;
+  cursor: pointer;
+}
+
+.video .wistia_responsive_padding {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  overflow: hidden;
+}
+
+.pin[aria-promoted="false"] {
+  display: none;
 }
