@@ -481,4 +481,54 @@ window.addEventListener('DOMContentLoaded', function () {
     //         }
     //     });
     // }
+
+    if(userHREF.includes('/requests/new')) {
+        const usersAPI = '/api/v2/organizations/20830359422621/users.json?page[size]=100';
+        async function fetchUsers(apiUrl) {
+            const allUsers = []; // Initialize an empty array to hold all users
+
+            try {
+                let nextUrl = apiUrl;
+
+                while (nextUrl) {
+                    let response = await fetch(nextUrl);
+                    let usersData = await response.json();
+
+                    if (response.ok) {
+                        // Accumulate users from the current page into allUsers
+                        allUsers.push(...usersData.users);
+
+                        // Determine the URL for the next page, if available
+                        nextUrl = usersData.meta && usersData.meta.has_more
+                            ? usersData.links && usersData.links.next
+                            : null;
+                    } else {
+                        console.error('Error fetching data:', response.status, response.statusText);
+                        nextUrl = null; // Stop fetching on error
+                    }
+                }
+
+                // Process all accumulated users after fetching all pages
+                processUsers(allUsers);
+
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        }
+
+        function processUsers(usersData) {
+            let users = usersData;
+            console.log(`We currently have ${users.length} users`)
+            for(let user of users){
+                const usersId = document.getElementById(user.id);
+                if(usersId) {
+                    usersId.innerHTML = "I did it!"
+                }
+            }
+        }
+
+        fetchUsers(usersAPI);
+    }
+
+
 });
