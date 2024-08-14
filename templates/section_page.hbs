@@ -6,12 +6,19 @@
   <div class="section-container">
     <header class="section-header">
       <h1>
+        {{!-- Checking to see if its the FAQ Section --}}
         {{#is section.id 20847774218397}}
         Frequently Asked Questions
+        {{!-- Checking to see if its the WhatsNew Section --}}
+        {{else}}
+        {{#is section.id 20876500035485}}
+        What's New
         {{else}}
         {{section.name}}
         {{/is}}
+        {{/is}}
       </h1>
+      {{breadcrumbs}}
 
       {{#if section.description}}
       <p class="page-header-description">{{section.description}}</p>
@@ -51,12 +58,20 @@
       {{/each}}
     </ul>
     {{/if}}
-
     {{else}}
     {{#is section.id 20847774218397}}
     <ul class="article-list" aria-label="FAQ">
       {{#each section.articles}}
       <li id="{{id}}" class="article-list-item" aria-label="FAQ">
+        <a href="{{url}}" title="{{title}}" class="article-list-item-link">{{title}}</a>
+      </li>
+      {{/each}}
+    </ul>
+    {{else}}
+    {{#is section.id 20876500035485}}
+    <ul class="article-list" aria-label="Date">
+      {{#each section.articles}}
+      <li id="{{id}}" class="article-list-item" aria-label="Date">
         <a href="{{url}}" title="{{title}}" class="article-list-item-link">{{title}}</a>
       </li>
       {{/each}}
@@ -71,6 +86,7 @@
       {{/each}}
     </ul>
     {{/if}}
+    {{/is}}
     {{/is}}
     {{/if}}
   </div>

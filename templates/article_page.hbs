@@ -24,6 +24,18 @@
       </ul>
       {{/if}}
       {{/is}}
+
+      {{#is section.id 20876500035485}}
+      {{#if section}}
+      <ul class="article-list article-list-article" aria-label="Date">
+        {{#each section.articles}}
+        <li id="{{id}}" class="article-list-item" aria-label="Date">
+          <a href="{{url}}" title="{{title}}" class="article-list-item-link">{{title}}</a>
+        </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+      {{/is}}
       <div class="article-meta">
         <div class="article-author">
           {{#if settings.show_article_author}}

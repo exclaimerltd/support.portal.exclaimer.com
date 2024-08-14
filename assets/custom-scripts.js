@@ -1,12 +1,14 @@
 window.addEventListener('DOMContentLoaded', function () {
     const userManual = 20847594125597;
     const signatureDesign = 20847627249437;
-    const whatsNew = 20847670662813;
     const solutions = 20847671135773;
+    const whatsNew = 20876500035485;
     const faq = 20847774218397;
 
     const mainsection = [signatureDesign, userManual];
-    const subsection = [whatsNew, solutions];
+    const subsection = [solutions];
+
+    const thisYear = new Date().getFullYear();
 
     const sectionSelector = document.getElementById('categorySelector');
     const sectionSelectorMenu = document.getElementById('categorySelectorMenu');
@@ -151,6 +153,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 const moreBtn = document.getElementById('moreBtn');
                 moreBtn.classList.add('active');
                 moreBtn.innerHTML = 'FAQ';
+            } else if (userHREF.includes(`/sections/${whatsNew}`)) {
+                const moreBtn = document.getElementById('moreBtn');
+                moreBtn.classList.add('active');
+                moreBtn.innerHTML = "What's New";
             } else if (userHREF.includes(categoryID) && subsection.includes(categoryID)) {
                 const moreBtn = document.getElementById('moreBtn');
                 moreBtn.classList.toggle('active');
@@ -256,33 +262,81 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Video Library
     async function videoLibrary(videoData) {
-        let videoLibrary = document.getElementById('videoLibrary');
-        let videoCategories = document.getElementById('videoCategories');
+        const videoLibrary = document.getElementById('videoLibrary');
+        const videoCategories = document.getElementById('videoCategories');
+        const paginationControls = document.getElementById('paginationControls');
+    
+        const videosPerPage = 9;
+        let currentPage = 1;
+        let selectedCategory = 'All';
+    
         let sections = Object.groupBy(videoData.medias, x => x.section);
         let videos = videoData.medias;
-        console.log(videos);
-        for(let section of Object.keys(sections)) {
-            videoCategories.innerHTML += `<li title="${section}" class="video-categories-item"><button>${section}</button></li>`;
-        }
 
-        for(let video of videos) {
-            let videoURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
-            let videoSection = video && video.section ? video.section.replace(/\s+/g, '-').toLowerCase() : 'default';
-            videoLibrary.innerHTML += `
-            <div class="video videos-${videoSection} video-show">
-                  <div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
-                      <div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
-                          <span class="wistia_embed wistia_async_${video.hashed_id} popover=true videoFoam=true" style="display: inline-block; height: 100%; position: relative; width: 100%;">&nbsp;</span>
-                      </div>
-                  </div>
-                  <div class="video-meta">
-                      <p>${video.name}</p>
-                      <button name="copyURLButton" onclick="copyURL(this, '${videoURL}')" class="btn-copy">Copy URL</button>
-                  </div>
-                  <div class="pin pin-promoted" aria-promoted="false">Promoted</div>
-              </div>
-            `
+        function encodeForOnclick(str) {
+            return str.replace(/&/g, '&amp;');
         }
+    
+        // Populate video categories
+        videoCategories.innerHTML = '<li title="All" class="video-categories-item"><button onclick="changeCategory(\'All\')">All Videos</button></li>';
+        for (let section of Object.keys(sections)) {
+            let encodedSection = encodeForOnclick(section);
+            videoCategories.innerHTML += `<li title="${section}" class="video-categories-item"><button onclick="changeCategory('${encodedSection}')">${section}</button></li>`;
+            console.log(section)
+        }
+    
+        function renderVideos(videos, page) {
+            videoLibrary.innerHTML = '';
+            let filteredVideos = selectedCategory === 'All' ? videos : videos.filter(video => video.section === selectedCategory);
+            let startIndex = (page - 1) * videosPerPage;
+            let endIndex = startIndex + videosPerPage;
+            let videosToDisplay = filteredVideos.slice(startIndex, endIndex);
+    
+            for (let video of videosToDisplay) {
+                let videoURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
+                let videoSection = video && video.section ? video.section.replace(/\s+/g, '-').toLowerCase() : 'default';
+                videoLibrary.innerHTML += `
+                <div class="video videos-${videoSection} video-show">
+                      <div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+                          <div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+                              <span class="wistia_embed wistia_async_${video.hashed_id} popover=true videoFoam=true" style="display: inline-block; height: 100%; position: relative; width: 100%;">&nbsp;</span>
+                          </div>
+                      </div>
+                      <div class="video-meta">
+                          <p>${video.name}</p>
+                          <button name="copyURLButton" onclick="copyURL(this, '${videoURL}')" class="btn-copy">Copy URL</button>
+                      </div>
+                      <div class="pin pin-promoted" aria-promoted="false">Promoted</div>
+                  </div>
+                `;
+            }
+    
+            // Update pagination based on filtered videos
+            let totalPages = Math.ceil(filteredVideos.length / videosPerPage);
+            renderPaginationControls(totalPages, currentPage);
+        }
+    
+        function renderPaginationControls(totalPages, currentPage) {
+            paginationControls.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                paginationControls.innerHTML += `<button class="pagination-button ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+        }
+    
+        // Define changePage in the global scope
+        window.changePage = function(page) {
+            currentPage = page;
+            renderVideos(videos, currentPage);
+        }
+    
+        // Define changeCategory in the global scope
+        window.changeCategory = function(category) {
+            selectedCategory = category;
+            currentPage = 1; // Reset to the first page when category changes
+            renderVideos(videos, currentPage);
+        }
+    
+        renderVideos(videos, currentPage);
     }
 
     function initOwlCarousel(videoData) {
@@ -385,6 +439,9 @@ window.addEventListener('DOMContentLoaded', function () {
             if(crumb.title === "Frequently Asked Questions") {
                 crumb.style.display = 'none'
             }
+            if(crumb.title === "whatsnew") {
+                crumb.style.display = 'none'
+            }
         }
     }
 
@@ -410,4 +467,18 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+
+    // Date checker for the Whats New Section.
+    // if(userHREF.indexOf('20876500035485')) {
+    //     let dates = document.querySelectorAll('[aria-label="Date"]');
+    //     dates.forEach(date => {
+    //         let anchors = date.getElementsByTagName('a');
+    //         for (let anchor of anchors) {
+    //             let year = parseInt(anchor.title, 10); // Convert title to a number
+    //             if (year === thisYear) {
+    //                 anchor.classList.add('active')
+    //             }
+    //         }
+    //     });
+    // }
 });
