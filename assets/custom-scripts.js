@@ -520,13 +520,14 @@ window.addEventListener('DOMContentLoaded', function () {
             let users = usersData;
             console.log(`We currently have ${users.length} users`)
             for(let user of users){
-                const usersId = document.getElementById(user.id);
-                if(usersId) {
-                    usersId.innerHTML = "I did it!"
+                let userRole = user.role;
+                if(userRole === 'agent' || userRole === 'admin'){
+                    const formSelector = document.getElementById('formSelector');
+                    formSelector.innerHTML += `<a href="">Form Three (Admin/Agents Only)</a>`
+                    break;
                 }
             }
         }
-
         fetchUsers(usersAPI);
     }
 
