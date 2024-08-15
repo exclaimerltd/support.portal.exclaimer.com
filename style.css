@@ -6375,3 +6375,54 @@ background-color: lighten(#FF7438, 10%);
   background-color: #9AADFF;
   border-color: #9AADFF;
 }
+
+/*MS* forms */
+.form-selector {
+  display: flex;
+  flex-flow: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.form-selector-btn {
+  width: 31%;
+  border: 1px solid #1B2037;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px 0;
+  color: #1B2037;
+  transition: ease all 0.3s;
+}
+
+.form-selector-btn:hover {
+  background-color: #9AADFF;
+  border-color: #9AADFF;
+  text-decoration: none;
+}
+
+.form-selector-btn[aria-label="tech"]::before, .form-selector-btn[aria-label="account"]::before, .form-selector-btn[aria-label="knowledge"]::before,
+.form-selector-btn[aria-label="dist"]::before, .form-selector-btn[aria-label="internal"]::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  font-family: fa-light;
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.form-selector-btn[aria-label="tech"]::before {
+  content: '\f085';
+}
+.form-selector-btn[aria-label="account"]::before {
+  content: '\f4fe';
+}
+.form-selector-btn[aria-label="knowledge"]::before {
+  content: '\f808';
+}
+.form-selector-btn[aria-label="dist"]::before {
+  content: '\f78a';
+}
+.form-selector-btn[aria-label="internal"]::before {
+  content: '\f5ae';
+}

@@ -30,7 +30,7 @@
       <nav class="header-nav">
         {{#if signed_in}}
         <div class="user-info dropdown">
-          <button class="dropdown-toggle" aria-haspopup="true">
+          <button class="dropdown-toggle" aria-haspopup="true" id="userButton" aria-userId="{{user.id}}">
             {{user_avatar class="user-avatar"}}
             {{user_name}}
           </button>

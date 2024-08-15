@@ -10,11 +10,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
     const thisYear = new Date().getFullYear();
 
+    const exclaimerOrgId = 20900067725213;
+
     const sectionSelector = document.getElementById('categorySelector');
     const sectionSelectorMenu = document.getElementById('categorySelectorMenu');
     const promoVideoSection = document.getElementById('promoVideoSection');
     const promoVideos = document.getElementById('promoVideos');
-    const userHREF = window.location.href;
+    let userHREF = window.location.href;
     const localeAPI = '/api/v2/locales';
     let breadcrumbs = document.querySelector('.breadcrumbs');
 
@@ -482,54 +484,67 @@ window.addEventListener('DOMContentLoaded', function () {
     //     });
     // }
 
-    if(userHREF.includes('/requests/new')) {
-        const usersAPI = '/api/v2/organizations/20830359422621/users.json?page[size]=100';
-        async function fetchUsers(apiUrl) {
-            const allUsers = []; // Initialize an empty array to hold all users
-
-            try {
-                let nextUrl = apiUrl;
-
-                while (nextUrl) {
-                    let response = await fetch(nextUrl);
-                    let usersData = await response.json();
-
+    if(userHREF.includes('/p/raise-ticket')) {
+        // Get userButton
+        let userButton = document.getElementById('userButton');
+        if(userButton) {
+            // Get the usersId
+            let userId = userButton.getAttribute('aria-userid');
+            // Assign the usersId to the api url
+            const userAPI = `/api/v2/users/${userId}.json`;
+            
+            // Get the user
+            async function getUserOrg(userAPI){
+                try {
+                    const response = await fetch(userAPI);
+                    const userData = await response.json();
                     if (response.ok) {
-                        // Accumulate users from the current page into allUsers
-                        allUsers.push(...usersData.users);
-
-                        // Determine the URL for the next page, if available
-                        nextUrl = usersData.meta && usersData.meta.has_more
-                            ? usersData.links && usersData.links.next
-                            : null;
+                        // Assign user org id to userOrg
+                        let userOrgId = userData.user.organization_id;
+                        orgType(userOrgId);
                     } else {
-                        console.error('Error fetching data:', response.status, response.statusText);
-                        nextUrl = null; // Stop fetching on error
+                        console.error('Error: Cannot get locale data');
                     }
-                }
-
-                // Process all accumulated users after fetching all pages
-                processUsers(allUsers);
-
-            } catch (error) {
-                console.error('Error:', error.message);
-            }
-        }
-
-        function processUsers(usersData) {
-            let users = usersData;
-            console.log(`We currently have ${users.length} users`)
-            for(let user of users){
-                let userRole = user.role;
-                if(userRole === 'agent' || userRole === 'admin'){
-                    const formSelector = document.getElementById('formSelector');
-                    formSelector.innerHTML += `<a href="">Form Three (Admin/Agents Only)</a>`
-                    break;
+                } catch (error) {
+                    console.error('Error:', error.message);
                 }
             }
+
+            // Get the Organization Type
+            async function orgType(userOrgId) {
+                const orgAPI = `/api/v2/organizations/${userOrgId}.json`;
+                try {
+                    const response = await fetch(orgAPI);
+                    const orgData = await response.json();
+                    if (response.ok) {
+                        // Assign the Organizaton type to orgType
+                        let orgType = orgData.organization.organization_fields.type;
+                        showOptions(orgType, userOrgId);
+                    } else {
+                        console.error('Error: Cannot get locale data');
+                    }
+                } catch (error) {
+                    console.error('Error:', error.message);
+                }
+            }
+
+            // Display the options on the page.
+            async function showOptions(orgType, userOrgId) {
+                let formSelector = document.getElementById('formSelector');
+                // Take the current href and replace it with the requests/new tags
+                userHREF = userHREF.replace('/p/raise-ticket', '/requests/new?ticket_form_id=')
+
+                // Check to see if the Organization Type matches the requirements
+                if(orgType === 'distributor') {
+                    formSelector.innerHTML += `<a href="${userHREF}20902492837917" class="form-selector-btn" aria-label="dist">Distributor</a>`
+                }
+                // Check to see if the users Orgnaization ID matches that of Exclaimers.
+                if(userOrgId === exclaimerOrgId) {
+                    formSelector.innerHTML += `<a href="${userHREF}20902451095709" class="form-selector-btn" aria-label="internal">Template Services</a>`;
+                }
+            }
+
+            getUserOrg(userAPI);
         }
-        fetchUsers(usersAPI);
     }
-
-
 });
