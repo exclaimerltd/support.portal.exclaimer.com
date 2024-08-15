@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     const thisYear = new Date().getFullYear();
 
-    const exclaimerOrgId = 20900067725213;
+    const exclaimerOrgId = 20830359422621;
 
     const sectionSelector = document.getElementById('categorySelector');
     const sectionSelectorMenu = document.getElementById('categorySelectorMenu');
