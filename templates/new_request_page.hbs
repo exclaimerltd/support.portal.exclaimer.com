@@ -1,4 +1,3 @@
-<div class="container-divider"></div>
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
@@ -11,12 +10,18 @@
       {{search submit=false}}
     </div>
   </nav>
+  <div id="formSelector" class="form-selector">
+    <a id="technicalButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20830571495197"
+      class="form-selector-btn form-selector-btn-smaller" aria-label="tech">Technical
+      Support</a>
+    <a id="accountButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20830579866909"
+      class="form-selector-btn form-selector-btn-smaller" aria-label="account">Account
+      Services</a>
+    <a id="knowledgeButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20830564781469"
+      class="form-selector-btn form-selector-btn-smaller" aria-label="knowledge">Knowledgebase Feedback</a>
+  </div>
+  <h1 id="formTitle">
 
-  <h1>
-    {{t 'submit_a_request'}}
-    <span class="follow-up-hint">
-      {{follow_up}}
-    </span>
   </h1>
   {{request_form}}
 

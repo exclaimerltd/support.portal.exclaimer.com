@@ -6382,6 +6382,7 @@ background-color: lighten(#FF7438, 10%);
   flex-flow: wrap;
   gap: 20px;
   justify-content: center;
+  margin-bottom: 32px;
 }
 
 .form-selector-btn {
@@ -6392,6 +6393,20 @@ background-color: lighten(#FF7438, 10%);
   padding: 20px 0;
   color: #1B2037;
   transition: ease all 0.3s;
+}
+
+.form-selector-btn.active {
+  background-color: #9AADFF;
+  border-color: #9AADFF;
+}
+
+.form-selector-btn-smaller {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  width: auto;
+  padding: 10px 20px;
+  border-radius: 999px
 }
 
 .form-selector-btn:hover {
@@ -6411,6 +6426,14 @@ background-color: lighten(#FF7438, 10%);
   margin-bottom: 0.5em;
 }
 
+.form-selector-btn-smaller[aria-label="tech"]::before, .form-selector-btn-smaller[aria-label="account"]::before, .form-selector-btn-smaller[aria-label="knowledge"]::before,
+.form-selector-btn-smaller[aria-label="dist"]::before, .form-selector-btn-smaller[aria-label="internal"]::before {
+  font-family: fa-light;
+  font-size: 1.25em;
+  margin: 0;
+  margin-right: 0.5em;
+}
+
 .form-selector-btn[aria-label="tech"]::before {
   content: '\f085';
 }
@@ -6425,4 +6448,8 @@ background-color: lighten(#FF7438, 10%);
 }
 .form-selector-btn[aria-label="internal"]::before {
   content: '\f5ae';
+}
+
+.request_ticket_form_id {
+  display: none;
 }

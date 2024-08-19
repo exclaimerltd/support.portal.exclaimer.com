@@ -14,7 +14,7 @@
     {{#if category}}
 
     {{!-- User Manual Page --}}
-    {{#is category.id 19833048021661}}
+    {{#is category.id 20847594125597}}
     <ul class="categories c-usermanual">
       {{#each category.sections}}
       <li id="{{id}}" class="category-item">
@@ -24,7 +24,11 @@
     </ul>
     {{!-- FAQ Page --}}
     {{else}}
-    {{#is category.id 19833343268637}}
+    {{#is category.id 20847774218397}}
+    {{!-- Show Nothing as this page does not exsist --}}
+    {{else}}
+    {{#is category.id 20847670662813}}
+    {{!-- Show Nothing as this page does not exsist --}}
     {{!-- Anything else --}}
     {{else}}
     <ul class="categories">
@@ -34,6 +38,7 @@
       </li>
       {{/each}}
     </ul>
+    {{/is}}
     {{/is}}
     {{/is}}
     {{/if}}

@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const userManual = 20847594125597;
     const signatureDesign = 20847627249437;
     const solutions = 20847671135773;
@@ -141,6 +141,19 @@ window.addEventListener('DOMContentLoaded', function () {
                 sectionSelectorMenu.innerHTML += `<a id="${categoryID}" href="${sectionURL}" class="" role="menuitem">${categoryName}</a>`;
             }
 
+            if(userHREF.includes(categoryID)){
+                // Check for breadcrumbs
+                if (breadcrumbs) {
+                    let crumbs = breadcrumbs.querySelectorAll('li');
+                    // Loop through all crumbs and apply the required styles.
+                    for (let crumb of crumbs) {
+                        if(crumb.title ===  categoryName) {
+                            crumb.classList.add('breadcrumb-active')
+                        }
+                    }
+                }
+            }
+
             // Check to see if the user is on a particular section, if so change the button state.
             if (userHREF.includes(categoryID) && mainsection.includes(categoryID)) {
                 const sectionSelectBtn = document.getElementById(`${categoryID}`);
@@ -170,11 +183,12 @@ window.addEventListener('DOMContentLoaded', function () {
     
     async function sections(sectionData) {
         let sectionDetails = [];
+        let categoryDetails = [];
         for (let section of sectionData.sections) {
-            let detail = { sectionName: section.name, sectionId: section.id };
-            sectionDetails.push(detail);
+            let sectionDetail = { sectionName: section.name, sectionId: section.id };
+            sectionDetails.push(sectionDetail);
         }
-        return sectionDetails;
+        return sectionDetails
     }
 
     async function articles(articleData, sectionDetails) {
@@ -284,7 +298,6 @@ window.addEventListener('DOMContentLoaded', function () {
         for (let section of Object.keys(sections)) {
             let encodedSection = encodeForOnclick(section);
             videoCategories.innerHTML += `<li title="${section}" class="video-categories-item"><button onclick="changeCategory('${encodedSection}')">${section}</button></li>`;
-            console.log(section)
         }
     
         function renderVideos(videos, page) {
@@ -433,7 +446,6 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     // FAQ Changes
-
     // Remove "Frequently Asked Questions" section from breadcrumb trail.
     if(breadcrumbs) {
         let crumbs = breadcrumbs.getElementsByTagName('li');
@@ -453,7 +465,7 @@ window.addEventListener('DOMContentLoaded', function () {
         articleTitle.forEach(article => {
             article.textContent = article.textContent.replace(' (FAQ)', '');
             article.title = article.title.replace(' (FAQ)', '')
-        })
+        });
     }
 
     // Remove the (FAQ) tag from all articles within an article
@@ -470,21 +482,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Date checker for the Whats New Section.
-    // if(userHREF.indexOf('20876500035485')) {
-    //     let dates = document.querySelectorAll('[aria-label="Date"]');
-    //     dates.forEach(date => {
-    //         let anchors = date.getElementsByTagName('a');
-    //         for (let anchor of anchors) {
-    //             let year = parseInt(anchor.title, 10); // Convert title to a number
-    //             if (year === thisYear) {
-    //                 anchor.classList.add('active')
-    //             }
-    //         }
-    //     });
-    // }
-
-    if(userHREF.includes('/p/raise-ticket')) {
+    if(userHREF.includes('/p/raise-ticket') || userHREF.includes('/requests/new?ticket_form_id')) {
         // Get userButton
         let userButton = document.getElementById('userButton');
         if(userButton) {
@@ -530,21 +528,72 @@ window.addEventListener('DOMContentLoaded', function () {
 
             // Display the options on the page.
             async function showOptions(orgType, userOrgId) {
-                let formSelector = document.getElementById('formSelector');
-                // Take the current href and replace it with the requests/new tags
-                userHREF = userHREF.replace('/p/raise-ticket', '/requests/new?ticket_form_id=')
+                const regex = /\/hc\/[^\/]+\//;
+                let userLocale = userHREF.match(regex);
 
+                let formSelector = document.getElementById('formSelector');
                 // Check to see if the Organization Type matches the requirements
                 if(orgType === 'distributor') {
-                    formSelector.innerHTML += `<a href="${userHREF}20902492837917" class="form-selector-btn" aria-label="dist">Distributor</a>`
+                    formSelector.innerHTML += `<a 
+                    id="distButton"
+                    href="${userLocale}requests/new?ticket_form_id=20902492837917" 
+                    class="
+                    form-selector-btn${userHREF.includes('/requests/new?ticket_form_id') ? ' form-selector-btn-smaller' : ''}
+                    ${userHREF.includes('20902492837917') ? ' active' : ''}" 
+                    aria-label="dist">Distributor</a>`
                 }
                 // Check to see if the users Orgnaization ID matches that of Exclaimers.
                 if(userOrgId === exclaimerOrgId) {
-                    formSelector.innerHTML += `<a href="${userHREF}20902451095709" class="form-selector-btn" aria-label="internal">Template Services</a>`;
+                    formSelector.innerHTML += `<a 
+                    id="templateButton"
+                    href="${userLocale}requests/new?ticket_form_id=20902451095709"
+                    class="
+                    form-selector-btn${userHREF.includes('/requests/new?ticket_form_id') ? ' form-selector-btn-smaller' : ''}
+                    ${userHREF.includes('20902492837917') ? ' active' : ''}" 
+                    aria-label="internal">Template Services</a>`;
                 }
             }
-
             getUserOrg(userAPI);
         }
+    }
+
+    if(userHREF.includes('/requests/new?ticket_form_id=')) {
+        let formTitle = document.getElementById('formTitle');
+        if(userHREF.includes('20830571495197')) {
+            document.getElementById('technicalButton').classList.add('active');
+            formTitle.innerHTML = 'Technical Support';
+        } else if(userHREF.includes('20830579866909')) {
+            document.getElementById('accountButton').classList.add('active');
+            formTitle.innerHTML = 'Account Services';
+        } else if(userHREF.includes('20830564781469')) {
+            document.getElementById('knowledgeButton').classList.add('active');
+            formTitle.innerHTML = 'Knowledge Base Feedback';
+        } else if(userHREF.includes('20902492837917')) {
+            formTitle.innerHTML = 'Distributor';
+        } else if(userHREF.includes('20902451095709')) {
+            formTitle.innerHTML = 'Template Services';
+        }
+    }
+
+
+    // Whats New Redirect
+    if(userHREF.includes('20847670662813')){
+        const regex = /\/hc\/[^\/]+\//;
+        let userLocale = userHREF.match(regex);
+        window.location.href = `${userLocale}sections/20876500035485`;
+    }
+
+    // FAQ Redirect
+    if(userHREF.includes('20847750803229')){
+        const regex = /\/hc\/[^\/]+\//;
+        let userLocale = userHREF.match(regex);
+        window.location.href = `${userLocale}sections/20847774218397`;
+    }
+
+    // Form redirect
+    if(userHREF.includes('/requests/new') && !userHREF.includes('?ticket_form_id')){
+        const regex = /\/hc\/[^\/]+\//;
+        let userLocale = userHREF.match(regex);
+        window.location.href = `${userLocale}p/raise-ticket`;
     }
 });
