@@ -1,11 +1,7 @@
 <div class="container-divider"></div>
 <div id="main-content" class="error-page">
-  {{!-- <h1>{{t 'oops'}}</h1> --}}
-  <h1>We're currently doing some changes</h1>
-  <p>Please bear with us whilst we work on this.</p>
-  <p>You can continue to raise support tickets here <a href="/requests/new" style="text-decoration: underline">Raise a
-      Ticket</a></p>
-  {{!-- {{#is error 'unauthorized'}}
+  <h1>{{t 'oops'}}</h1>
+  {{#is error 'unauthorized'}}
   <h2>{{link 'sign_in'}}</h2>
   {{/is}}
 
@@ -18,7 +14,7 @@
   <p>{{t 'mistyped_address_or_moved_page'}}</p>
   {{/is}}
 
-  {{#link 'help_center'}}
+  {{#link 'help_center' style="text-decoration: underline"}}
   {{t 'back_to_homepage'}}
-  {{/link}} --}}
+  {{/link}}
 </div>

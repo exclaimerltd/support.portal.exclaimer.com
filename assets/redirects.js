@@ -62,3 +62,8 @@ for (var i = 0; i < newRedirects.length; i++) {
       }
   }
 };
+
+
+if(window.location.href.indexOf('support.exclaimer.com/hc/en-gb') > -1) {
+  window.location.href.indexOf('support.exclaimer.com/hc/en-gb/p/under-maintenance')
+}
