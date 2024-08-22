@@ -615,4 +615,22 @@ document.addEventListener('DOMContentLoaded', function () {
         let userLocale = userHREF.match(regex);
         window.location.href = `${userLocale}p/raise-ticket`;
     }
+
+    // Check for SUB Id then add text below to direct to specific article.
+    if(window.location.href.includes('/requests/new?ticket_form_id=')) {
+        function checkForSubID(){
+            const formSubID = 20921053442845;
+            const subId = document.querySelector(`.request_custom_fields_${formSubID}`);
+            const featureType = document.getElementById('request_custom_fields_20921083732125');
+            subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
+            console.log(featureType)
+            if(featureType === '') {
+
+            } else {
+                
+            }
+
+        }
+        checkForSubID();
+    }
 });

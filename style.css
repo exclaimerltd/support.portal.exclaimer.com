@@ -6419,7 +6419,7 @@ background-color: lighten(#FF7438, 10%);
   text-decoration: none;
 }
 
-.form-selector-btn[aria-label="tech"]::before, .form-selector-btn[aria-label="account"]::before, .form-selector-btn[aria-label="knowledge"]::before,
+.form-selector-btn[aria-label="tech"]::before, .form-selector-btn[aria-label="account"]::before,
 .form-selector-btn[aria-label="dist"]::before, .form-selector-btn[aria-label="internal"]::before {
   display: flex;
   align-items: center;
@@ -6430,7 +6430,7 @@ background-color: lighten(#FF7438, 10%);
   margin-bottom: 0.5em;
 }
 
-.form-selector-btn-smaller[aria-label="tech"]::before, .form-selector-btn-smaller[aria-label="account"]::before, .form-selector-btn-smaller[aria-label="knowledge"]::before,
+.form-selector-btn-smaller[aria-label="tech"]::before, .form-selector-btn-smaller[aria-label="account"]::before,
 .form-selector-btn-smaller[aria-label="dist"]::before, .form-selector-btn-smaller[aria-label="internal"]::before {
   font-family: fa-light;
   font-size: 1.25em;
@@ -6465,4 +6465,18 @@ background-color: lighten(#FF7438, 10%);
 .button-large, input[type="submit"]:hover {
   background-color: #9AADFF;
   color: #1B2037;
+}
+
+.subid-subtext {
+  font-size: 0.8em;
+  color: #a5a5a5;
+}
+
+.subid-subtext a {
+  color: #a5a5a5;
+  text-decoration: underline;
+}
+
+.subid-subtext a:hover{
+  color: #9AADFF;
 }
