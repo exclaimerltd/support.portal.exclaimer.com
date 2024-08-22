@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const userManual = 20847594125597;
-    const signatureDesign = 20847627249437;
-    const solutions = 20847671135773;
-    const whatsNew = 20876500035485;
-    const faq = 20847774218397;
+    const userManual = 21032725627549;
+    const signatureDesign = 21032740223773;
+    const solutions = 21032703837085;
+    const whatsNew = 21032753879581;
+    const faq = 21032745478173;
 
     const mainsection = [signatureDesign, userManual];
     const subsection = [solutions];
 
-    const thisYear = new Date().getFullYear();
+    const exclaimerOrgId = 20921057619101;
 
-    const exclaimerOrgId = 20830359422621;
+    const thisYear = new Date().getFullYear();
 
     const sectionSelector = document.getElementById('categorySelector');
     const sectionSelectorMenu = document.getElementById('categorySelectorMenu');
@@ -555,25 +555,44 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             getUserOrg(userAPI);
         }
+        const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    checkAndSetActiveButton();
+                }
+            }
+        });
+        
+        // Observe the formSelector for changes (e.g., children added)
+        observer.observe(document.getElementById('formSelector'), { childList: true });
+        
+        function checkAndSetActiveButton() {
+            if (userHREF.includes('/requests/new?ticket_form_id=')) {
+                let formTitle = document.getElementById('formTitle');
+                if (userHREF.includes('20921216052125')) {
+                    document.getElementById('technicalButton').classList.add('active');
+                    formTitle.innerHTML = 'Technical Support';
+                } else if (userHREF.includes('20921194890013')) {
+                    document.getElementById('accountButton').classList.add('active');
+                    formTitle.innerHTML = 'Account Services';
+                } else if (userHREF.includes('20921216230813')) {
+                    document.getElementById('knowledgeButton').classList.add('active');
+                    formTitle.innerHTML = 'Knowledge Base Feedback';
+                } else if (userHREF.includes('20902492837917')) {
+                    document.getElementById('distributorButton').classList.add('active');
+                    formTitle.innerHTML = 'Distributor';
+                } else if (userHREF.includes('20902451095709')) {
+                    document.getElementById('templateButton').classList.add('active');
+                    formTitle.innerHTML = 'Template Services';
+                }
+            }
+        }
+        
+        // Initially run the function in case the elements are already in the DOM
+        checkAndSetActiveButton();
     }
 
-    if(userHREF.includes('/requests/new?ticket_form_id=')) {
-        let formTitle = document.getElementById('formTitle');
-        if(userHREF.includes('20830571495197')) {
-            document.getElementById('technicalButton').classList.add('active');
-            formTitle.innerHTML = 'Technical Support';
-        } else if(userHREF.includes('20830579866909')) {
-            document.getElementById('accountButton').classList.add('active');
-            formTitle.innerHTML = 'Account Services';
-        } else if(userHREF.includes('20830564781469')) {
-            document.getElementById('knowledgeButton').classList.add('active');
-            formTitle.innerHTML = 'Knowledge Base Feedback';
-        } else if(userHREF.includes('20902492837917')) {
-            formTitle.innerHTML = 'Distributor';
-        } else if(userHREF.includes('20902451095709')) {
-            formTitle.innerHTML = 'Template Services';
-        }
-    }
+    
 
 
     // Whats New Redirect

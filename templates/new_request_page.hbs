@@ -1,28 +1,19 @@
 <div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12"
-        class="search-icon">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor" />
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5" />
-      </svg>
-      {{search submit=false}}
-    </div>
-  </nav>
+  <header class="category-header">
+    <h1>{{dc 'kb_raiseTicket'}}</h1>
+  </header>
   <div id="formSelector" class="form-selector">
-    <a id="technicalButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20830571495197"
+    <a id="technicalButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20921216052125"
       class="form-selector-btn form-selector-btn-smaller" aria-label="tech">Technical
       Support</a>
-    <a id="accountButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20830579866909"
+    <a id="accountButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20921194890013"
       class="form-selector-btn form-selector-btn-smaller" aria-label="account">Account
       Services</a>
-    <a id="knowledgeButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20830564781469"
+    <a id="knowledgeButton" href="{{page_path 'help_center'}}/requests/new?ticket_form_id=20921216230813"
       class="form-selector-btn form-selector-btn-smaller" aria-label="knowledge">Knowledgebase Feedback</a>
   </div>
-  <h1 id="formTitle">
-
-  </h1>
-  {{request_form}}
-
+  <h2 id="formTitle"></h2>
+  <div class="form">
+    {{request_form wysiwyg=true}}
+  </div>
 </div>

@@ -5587,27 +5587,30 @@ span[aria-label="Previous"]::after {
   color: #fff;
 }
 
-.c-usermanual .category-item-title[aria-label="19582163023133"], .c-usermanual .category-item-title[aria-label="19582147646749"], .c-usermanual .category-item-title[aria-label="19582178038301"], 
-.c-usermanual .category-item-title[aria-label="19582215866013"], .c-usermanual .category-item-title[aria-label="19582216682013"], .c-usermanual .category-item-title[aria-label="19582233721885"] {
+.c-usermanual .category-item-title[aria-label="21031033735197"], .c-usermanual .category-item-title[aria-label="21031022618909"], .c-usermanual .category-item-title[aria-label="21031034145181"], 
+.c-usermanual .category-item-title[aria-label="21031039396893"], .c-usermanual .category-item-title[aria-label="21031022781469"], .c-usermanual .category-item-title[aria-label="21031034193053"],
+.c-usermanual .category-item-title[aria-label="21031034260637"] {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column;
 }
 
-.c-usermanual .category-item-title[aria-label="19582163023133"]::before, .c-usermanual .category-item-title[aria-label="19582147646749"]::before, .c-usermanual .category-item-title[aria-label="19582178038301"]::before, 
-.c-usermanual .category-item-title[aria-label="19582215866013"]::before, .c-usermanual .category-item-title[aria-label="19582216682013"]::before, .c-usermanual .category-item-title[aria-label="19582233721885"]::before {
+.c-usermanual .category-item-title[aria-label="21031033735197"]::before, .c-usermanual .category-item-title[aria-label="21031022618909"]::before, .c-usermanual .category-item-title[aria-label="21031034145181"]::before, 
+.c-usermanual .category-item-title[aria-label="21031039396893"]::before, .c-usermanual .category-item-title[aria-label="21031022781469"]::before, .c-usermanual .category-item-title[aria-label="21031034193053"]::before,
+.c-usermanual .category-item-title[aria-label="21031034260637"]::before {
   font-family: fa-light;
   font-size: 1.5em;
   margin-right: 10px;
 }
 
-.c-usermanual .category-item-title[aria-label="19582163023133"]::before { content: "\f085"}
-.c-usermanual .category-item-title[aria-label="19582147646749"]::before { content: "\f2bb"}
-.c-usermanual .category-item-title[aria-label="19582178038301"]::before { content: "\f62a"}
-.c-usermanual .category-item-title[aria-label="19582215866013"]::before { content: "\f643"}
-.c-usermanual .category-item-title[aria-label="19582216682013"]::before { content: "\f4fe"}
-.c-usermanual .category-item-title[aria-label="19582233721885"]::before { content: "\f071"}
+.c-usermanual .category-item-title[aria-label="21031033735197"]::before { content: "\f085"} /* Configuration */
+.c-usermanual .category-item-title[aria-label="21031022618909"]::before { content: "\f2bb"} /* Signatures */
+.c-usermanual .category-item-title[aria-label="21031034145181"]::before { content: "\f62a"} /* Signatures Tester */
+.c-usermanual .category-item-title[aria-label="21031039396893"]::before { content: "\f140"} /* Campaigns */
+.c-usermanual .category-item-title[aria-label="21031022781469"]::before { content: "\f643"} /* Analytics */
+.c-usermanual .category-item-title[aria-label="21031034193053"]::before { content: "\f4fe"} /* Account Settings */
+.c-usermanual .category-item-title[aria-label="21031034260637"]::before { content: "\f071"} /* Troubleshooting */
 
 /* Category FAQ */
 .c-faq .category-item-title {
@@ -5644,9 +5647,9 @@ span[aria-label="Previous"]::after {
 .sections {
   display: flex;
   flex-flow: wrap;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  gap: 30px;
+  gap: 40px;
 }
 
 .section-header {
@@ -5756,6 +5759,7 @@ span[aria-label="Previous"]::after {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-flow: wrap;
 }
 
 .article-list[aria-label="Date"] {
@@ -6452,4 +6456,13 @@ background-color: lighten(#FF7438, 10%);
 
 .request_ticket_form_id {
   display: none;
+}
+
+.button-large, input[type="submit"] {
+  background-color: #1B2037;
+}
+
+.button-large, input[type="submit"]:hover {
+  background-color: #9AADFF;
+  color: #1B2037;
 }
