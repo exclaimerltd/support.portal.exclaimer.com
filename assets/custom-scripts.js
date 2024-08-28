@@ -592,9 +592,6 @@ document.addEventListener('DOMContentLoaded', function () {
         checkAndSetActiveButton();
     }
 
-    
-
-
     // Whats New Redirect
     if(userHREF.includes('20847670662813')){
         const regex = /\/hc\/[^\/]+\//;
@@ -632,5 +629,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
         checkForSubID();
+    }
+
+    // Whats new Page
+    const getDates = document.getElementById('whatsNewDates');
+    if(getDates) {
+        let dates = getDates.getElementsByTagName('a');
+        for(let date of dates) {
+            if(userHREF.includes(`-${date.title}`)) {
+                date.classList.add('active');
+            }
+        }
     }
 });

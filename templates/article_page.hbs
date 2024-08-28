@@ -13,6 +13,8 @@
         {{/if}}
       </h1>
       {{breadcrumbs}}
+
+      {{!-- FAQ --}}
       {{#is section.id 20847774218397}}
       {{#if section}}
       <ul class="article-list article-list-article" aria-label="FAQ">
@@ -25,12 +27,13 @@
       {{/if}}
       {{/is}}
 
-      {{#is section.id 20876500035485}}
+      {{!-- Whats New--}}
+      {{#is section.id 21032753879581}}
       {{#if section}}
-      <ul class="article-list article-list-article" aria-label="Date">
+      <ul id="whatsNewDates" class="article-list article-list-article" aria-label="Date">
         {{#each section.articles}}
         <li id="{{id}}" class="article-list-item" aria-label="Date">
-          <a href="{{url}}" title="{{title}}" class="article-list-item-link">{{title}}</a>
+          <a href="{{url}}" title="{{title}}" class="article-list-item-link" aria-label="{{title}}">{{title}}</a>
         </li>
         {{/each}}
       </ul>

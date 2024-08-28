@@ -5567,6 +5567,23 @@ span[aria-label="Previous"]::after {
   width: 30%;
 }
 
+.category-item-title {
+  display: flex;
+  width: 100%;
+  font-family: headingFont;
+  font-size: 1.25em;
+  color: #1B2037;
+  border-bottom: 1px solid #EFEFEF;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  transition: ease all 0.3s;
+}
+
+.category-item-title:hover {
+  text-decoration: none;
+  color: #9AADFF;
+}
+
 /* Category User Manual */
 .c-usermanual .category-item-title {
   display: flex;
