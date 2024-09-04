@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
             promotedVideos.style.display = 'block'
             for (let k = 0; k < videoData.length; k++) {
                 const video = videoData[k];
-                const videosURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
+                const videosURL = `https://support.exclaimer.com/hc/en-gb/p/videos?=${video.hashed_id}&wvideo=${video.hashed_id}`;
                 promoVideos.innerHTML += `
                     <a href="${videosURL}" target="_blank" class="video-link">
                         <div class="item video-container">
@@ -307,8 +307,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let videosToDisplay = filteredVideos.slice(startIndex, endIndex);
     
             for (let video of videosToDisplay) {
-                let videoURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
-                
+                let videoURL = `https://support.exclaimer.com/hc/en-gb/p/videos?=${video.hashed_id}&wvideo=${video.hashed_id}`;
+
                 let videoScript = document.createElement('script');
                 videoScript.setAttribute('src', `https://fast.wistia.com/embed/medias/${video.hashed_id}.jsonp`);
 
