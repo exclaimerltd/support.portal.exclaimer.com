@@ -255,18 +255,15 @@ document.addEventListener('DOMContentLoaded', function () {
         let promotedVideos = document.getElementById('promotedVideos');
         if (videoData.length > 0) {
             promotedVideos.style.display = 'block'
-            for (let k = 0; k < videoData.length; k++) {
-                const video = videoData[k];
+            for (let video of videoData) {
                 const videosURL = `https://support.exclaimer.com/hc/en-gb/p/videos?=${video.hashed_id}&wvideo=${video.hashed_id}`;
                 promoVideos.innerHTML += `
-                    <a href="${videosURL}" target="_blank" class="video-link">
-                        <div class="item video-container">
-                            <div class="video">
-                                <img src="${video.thumbnail.url.split("?")[0]}">
-                            </div>
-                            <span class="play-btn"></span>
+                    <div class="video video-promoted">
+                        <div class="wistia_responsive_padding" style="padding: 56.25% 0 0 0; position: relative;">
+                        <div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+                            <span class="wistia_embed wistia_async_${video.hashed_id} popover=true videoFoam=true" style="display: inline-block; height: 100%; position: relative; width: 100%;">&nbsp;</span>
                         </div>
-                    </a>
+                    </div>
                 `;
             }
             initOwlCarousel(videoData);

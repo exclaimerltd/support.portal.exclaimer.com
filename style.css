@@ -6402,6 +6402,16 @@ background-color: lighten(#FF7438, 10%);
   overflow: hidden;
 }
 
+.promoted-videos .owl-stage  {
+  height: auto!important;
+  margin-bottom: 32px;
+}
+
+.video-promoted .wistia_responsive_padding {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 .pin[aria-promoted="false"] {
   display: none;
 }
