@@ -308,6 +308,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
             for (let video of videosToDisplay) {
                 let videoURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
+                
+                let videoScript = document.createElement('script');
+                videoScript.setAttribute('src', `https://fast.wistia.com/embed/medias/${video.hashed_id}.jsonp`);
+
                 let videoSection = video && video.section ? video.section.replace(/\s+/g, '-').toLowerCase() : 'default';
                 videoLibrary.innerHTML += `
                 <div class="video videos-${videoSection} video-show">
@@ -323,6 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
                       <div class="pin pin-promoted" aria-promoted="false">Promoted</div>
                   </div>
                 `;
+                document.getElementById('videos').appendChild(videoScript);
             }
     
             // Update pagination based on filtered videos
