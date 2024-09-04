@@ -16,6 +16,33 @@
   </div>
 </footer>
 
+<script>
+  function copyURL(button, url) {
+    // Create a temporary input element
+    var tempInput = document.createElement("input");
+    // Set its value to the URL
+    tempInput.value = url;
+    // Append the input element to the body
+    document.body.appendChild(tempInput);
+    // Select the input content
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); /* For mobile devices */
+    // Copy the selected content
+    document.execCommand("copy");
+    // Remove the temporary input element
+    document.body.removeChild(tempInput);
+    // Change the button text to "Copied"
+    button.innerText = "Copied";
+    button.classList.add("btn-copied");
+
+    // Return to defaults
+    setTimeout(function () {
+      button.innerText = "Copy URL";
+      button.classList.remove("btn-copied");
+    }, 2000);
+  }
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="{{asset 'owl.carousel.min.js'}}"></script>
 <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
