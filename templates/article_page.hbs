@@ -87,11 +87,11 @@
       <footer>
         {{#with article}}
         <div class="article-help">
-          <h3>Still need help?</h3>
-          <a href="{{page_path 'help_center'}}/p/raise-ticket" class="btn">Raise a ticket</a>
+          <h3>{{dc 'kb_raiseTicket-title'}}</h3>
+          <a href="{{page_path 'help_center'}}/p/raise-ticket" class="btn">{{dc 'kb_raiseTicket'}}</a>
         </div>
         <div class="article-ratings">
-          <h3><b>How easy was it to find what you needed?</b></h3>
+          <h3><b>{{dc 'kb_ct-title'}}</b></h3>
           <div class="article-ratings-icons">
             <a href="https://app.customerthermometer.com/?template=log_feedback&hash=76572781&embed_data=dGVtcGVyYXR1cmVfaWQ9NCZ0aGVybW9tZXRlcl9pZD0xODU3MTUmbnBzX3JhdGluZz0w&e=&f=&l=&c=&c1=&c2=&c3={{url}}&c4=&c5=&c6=&c7=&c8=&c9=&c10="
               aria-label="ratingvalue-0">0</a><a
@@ -116,8 +116,7 @@
               href="https://app.customerthermometer.com/?template=log_feedback&hash=92e47819&embed_data=dGVtcGVyYXR1cmVfaWQ9MSZ0aGVybW9tZXRlcl9pZD0xODU3MTUmbnBzX3JhdGluZz0xMA==&e=&f=&l=&c=&c1=&c2=&c3={{url}}&c4=&c5=&c6=&c7=&c8=&c9=&c10="
               aria-label="ratingvalue-10">10</a>
           </div>
-          <p>Your feedback is valuable and will only take 5
-            seconds.<br />Click or tap the rating which best represents your experience.</p>
+          <p>{{dc 'kb_ct-subwording'}}
         </div>
         {{/with}}
 

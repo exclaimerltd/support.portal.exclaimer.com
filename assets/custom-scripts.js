@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const userManual = 21032725627549;
-    const signatureDesign = 21032740223773;
-    const solutions = 21032703837085;
-    const whatsNew = 21032753879581;
-    const faq = 21032745478173;
+    const userManual = 21228881584157;
+    const signatureDesign = 21229235526045;
+    const solutions = 21229242866333;
+    const whatsNew = 21233569689629;
+    const faq = 21233625812125;
 
     const mainsection = [signatureDesign, userManual];
     const subsection = [solutions];
 
-    const exclaimerOrgId = 20921057619101;
+    const exclaimerOrgId = 5631779863837;
 
     const thisYear = new Date().getFullYear();
 
@@ -252,10 +252,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function showVideos(videoData) {
+        let promotedVideos = document.getElementById('promotedVideos');
         if (videoData.length > 0) {
-            const promoTitle = document.createElement("h2");
-            promoTitle.innerHTML = "Promoted Videos";
-            promoVideoSection.insertBefore(promoTitle, promoVideos);
+            promotedVideos.style.display = 'block'
             for (let k = 0; k < videoData.length; k++) {
                 const video = videoData[k];
                 const videosURL = `https://support.exclaimer.com/hc/en-gb/p/video-library?=${video.hashed_id}&wvideo=${video.hashed_id}`;
@@ -530,28 +529,28 @@ document.addEventListener('DOMContentLoaded', function () {
             async function showOptions(orgType, userOrgId) {
                 const regex = /\/hc\/[^\/]+\//;
                 let userLocale = userHREF.match(regex);
-
+                console.log(userOrgId);
                 let formSelector = document.getElementById('formSelector');
                 // Check to see if the Organization Type matches the requirements
-                if(orgType === 'distributor') {
-                    formSelector.innerHTML += `<a 
-                    id="distButton"
-                    href="${userLocale}requests/new?ticket_form_id=20902492837917" 
-                    class="
-                    form-selector-btn${userHREF.includes('/requests/new?ticket_form_id') ? ' form-selector-btn-smaller' : ''}
-                    ${userHREF.includes('20902492837917') ? ' active' : ''}" 
-                    aria-label="dist">Distributor</a>`
-                }
+                // if(orgType === 'distributor') {
+                //     formSelector.innerHTML += `<a 
+                //     id="distButton"
+                //     href="${userLocale}requests/new?ticket_form_id=20902492837917" 
+                //     class="
+                //     form-selector-btn${userHREF.includes('/requests/new?ticket_form_id') ? ' form-selector-btn-smaller' : ''}
+                //     ${userHREF.includes('20902492837917') ? ' active' : ''}" 
+                //     aria-label="dist">Distributor</a>`
+                // }
                 // Check to see if the users Orgnaization ID matches that of Exclaimers.
-                if(userOrgId === exclaimerOrgId) {
-                    formSelector.innerHTML += `<a 
-                    id="templateButton"
-                    href="${userLocale}requests/new?ticket_form_id=20902451095709"
-                    class="
-                    form-selector-btn${userHREF.includes('/requests/new?ticket_form_id') ? ' form-selector-btn-smaller' : ''}
-                    ${userHREF.includes('20902492837917') ? ' active' : ''}" 
-                    aria-label="internal">Template Services</a>`;
-                }
+                // if(userOrgId === exclaimerOrgId) {
+                //     formSelector.innerHTML += `<a 
+                //     id="templateButton"
+                //     href="${userLocale}requests/new?ticket_form_id=4621666399901"
+                //     class="
+                //     form-selector-btn${userHREF.includes('/requests/new?ticket_form_id') ? ' form-selector-btn-smaller' : ''}
+                //     ${userHREF.includes('4621666399901') ? ' active' : ''}" 
+                //     aria-label="internal">Template Services</a>`;
+                // }
             }
             getUserOrg(userAPI);
         }
@@ -569,19 +568,16 @@ document.addEventListener('DOMContentLoaded', function () {
         function checkAndSetActiveButton() {
             if (userHREF.includes('/requests/new?ticket_form_id=')) {
                 let formTitle = document.getElementById('formTitle');
-                if (userHREF.includes('20921216052125')) {
+                if (userHREF.includes('4459467190557')) {
                     document.getElementById('technicalButton').classList.add('active');
                     formTitle.innerHTML = 'Technical Support';
-                } else if (userHREF.includes('20921194890013')) {
+                } else if (userHREF.includes('19833428118557')) {
                     document.getElementById('accountButton').classList.add('active');
                     formTitle.innerHTML = 'Account Services';
-                } else if (userHREF.includes('20921216230813')) {
-                    document.getElementById('knowledgeButton').classList.add('active');
-                    formTitle.innerHTML = 'Knowledge Base Feedback';
                 } else if (userHREF.includes('20902492837917')) {
                     document.getElementById('distributorButton').classList.add('active');
                     formTitle.innerHTML = 'Distributor';
-                } else if (userHREF.includes('20902451095709')) {
+                } else if (userHREF.includes('4621666399901')) {
                     document.getElementById('templateButton').classList.add('active');
                     formTitle.innerHTML = 'Template Services';
                 }
@@ -590,20 +586,42 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Initially run the function in case the elements are already in the DOM
         checkAndSetActiveButton();
+
+
+        // Turn off translations for these pages:
+        // --- CC Label
+        let ccLabel = document.querySelector('.request_cc_emails');
+        ccLabel.querySelector('.optional').innerHTML = '(optional)';
+        document.querySelector('#request_collaborators_').placeholder = 'Add email addresses'
+        // --- Subject Label
+        document.querySelector('#request_subject_label').innerHTML = 'Subject';
+        // --- Description Label
+        document.querySelector('#request_description_label').innerHTML = 'Description';
+        // --- Attachments Label
+        document.querySelector('label[for="request-attachments"]').innerHTML = 'Attachments<span class="optional">(optional)</span>';
+        // --- Drop Zone
+        let dropzone = document.querySelector('#upload-dropzone');
+        dropzone.querySelector('span').innerHTML = '<a>Add file</a> or drop files here';
+        // --- Submit Button
+        let form = document.querySelector('#new_request');
+        let formFooter = form.querySelector('footer');
+        formFooter.querySelector('input').value = 'Submit';
+        formFooter.querySelector('input').innerHTML = 'Submit';
+    
     }
 
     // Whats New Redirect
-    if(userHREF.includes('20847670662813')){
+    if(userHREF.includes('21229720266013')){
         const regex = /\/hc\/[^\/]+\//;
         let userLocale = userHREF.match(regex);
-        window.location.href = `${userLocale}sections/20876500035485`;
+        window.location.href = `${userLocale}sections/21233569689629`;
     }
 
     // FAQ Redirect
-    if(userHREF.includes('20847750803229')){
+    if(userHREF.includes('21229748766621')){
         const regex = /\/hc\/[^\/]+\//;
         let userLocale = userHREF.match(regex);
-        window.location.href = `${userLocale}sections/20847774218397`;
+        window.location.href = `${userLocale}sections/21233625812125`;
     }
 
     // Form redirect
@@ -616,17 +634,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Check for SUB Id then add text below to direct to specific article.
     if(window.location.href.includes('/requests/new?ticket_form_id=')) {
         function checkForSubID(){
-            const formSubID = 20921053442845;
+            const formSubID = 360014356197;
             const subId = document.querySelector(`.request_custom_fields_${formSubID}`);
-            const featureType = document.getElementById('request_custom_fields_20921083732125');
             subId.innerHTML += '<span class="subid-subtext">To obtain your Sub ID, follow the steps  <a href="../articles/360018307337" target="_blank">here</a></span>';
-            console.log(featureType)
-            if(featureType === '') {
-
-            } else {
-                
-            }
-
         }
         checkForSubID();
     }
