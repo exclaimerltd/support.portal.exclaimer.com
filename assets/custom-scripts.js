@@ -529,7 +529,6 @@ document.addEventListener('DOMContentLoaded', function () {
             async function showOptions(orgType, userOrgId) {
                 const regex = /\/hc\/[^\/]+\//;
                 let userLocale = userHREF.match(regex);
-                console.log(userOrgId);
                 let formSelector = document.getElementById('formSelector');
                 // Check to see if the Organization Type matches the requirements
                 // if(orgType === 'distributor') {
@@ -590,9 +589,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Turn off translations for these pages:
         // --- CC Label
-        let ccLabel = document.querySelector('.request_cc_emails');
-        ccLabel.querySelector('.optional').innerHTML = '(optional)';
-        document.querySelector('#request_collaborators_').placeholder = 'Add email addresses'
+        if(userButton) {
+            let ccLabel = document.querySelector('.request_cc_emails');
+            ccLabel.querySelector('.optional').innerHTML = '(optional)';
+            document.querySelector('#request_collaborators_').placeholder = 'Add email addresses'
+        } else {
+            document.querySelector('label[for="request_anonymous_requester_email"]').innerHTML = 'Your email address';
+        }
         // --- Subject Label
         document.querySelector('#request_subject_label').innerHTML = 'Subject';
         // --- Description Label
