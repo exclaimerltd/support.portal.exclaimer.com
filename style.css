@@ -6579,13 +6579,14 @@ a:hover {
 }
 
 .cp-container-body-item h3::before {
-  font-family: fa-thin;
+  font-family: fa-thin, fa-brands;
   margin-right: 10px;
   color: #9AADFF;
+  
 }
 
 .outlook-addin::before { content: '\f57d'; }
-.desktopagent-windows::before { content: '\f17a' }
+.desktopagent-windows::before { content: '\f17a';font-weight: normal; }
 .desktopagent-mac::before { content: '\f179' }
 
 .cp-container-body-item h4 {
