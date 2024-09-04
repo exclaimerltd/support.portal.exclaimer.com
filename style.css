@@ -6557,3 +6557,90 @@ a:hover {
   color: #FF5004;
   text-decoration: none;
 }
+
+
+/* Outlook Client Page */
+.cp-header h1 {
+  text-align: center;
+}
+
+.cp-container-body {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cp-container-body-item {
+  width: 32%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.cp-container-body-item h3::before {
+  font-family: fa-thin;
+  margin-right: 10px;
+  color: #9AADFF;
+}
+
+.outlook-addin::before { content: '\f57d'; }
+.desktopagent-windows::before { content: '\f17a' }
+.desktopagent-mac::before { content: '\f179' }
+
+.cp-container-body-item h4 {
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.cp-container-body-item > table td:first-child {
+  font-weight: bold;
+}
+
+.cp-container-body-item p {
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.cp-container-body-item > table {
+  border-collapse: collapse;
+  margin: 0;
+  
+}
+
+.cp-container-body-item > table tr {
+  margin: 0;
+  padding: 0;
+}
+
+.cp-container-body-item > table td {
+  margin: 0;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.cp-btn {
+  display: inline-block;
+  background-color: #1B2037;
+  color: white;
+  font-size: 0.8em;
+  border-radius: 999px;
+  padding: 10px 15px;
+  margin: 10px 0;
+}
+
+.cp-container-footer {
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.cp-container-footer h3{
+  margin: 0;
+}
+
+.cp-container-footer p {
+  margin: 0;
+}
