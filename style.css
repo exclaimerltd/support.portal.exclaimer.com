@@ -5612,30 +5612,30 @@ span[aria-label="Previous"]::after {
   color: #fff;
 }
 
-.c-usermanual .category-item-title[aria-label="21031033735197"], .c-usermanual .category-item-title[aria-label="21031022618909"], .c-usermanual .category-item-title[aria-label="21031034145181"], 
-.c-usermanual .category-item-title[aria-label="21031039396893"], .c-usermanual .category-item-title[aria-label="21031022781469"], .c-usermanual .category-item-title[aria-label="21031034193053"],
-.c-usermanual .category-item-title[aria-label="21031034260637"] {
+.c-usermanual .category-item-title[aria-label="20980394014877"], .c-usermanual .category-item-title[aria-label="20980421895837"], .c-usermanual .category-item-title[aria-label="20980417247389"], 
+.c-usermanual .category-item-title[aria-label="20980417974173"], .c-usermanual .category-item-title[aria-label="20980442661789"], .c-usermanual .category-item-title[aria-label="20980443631901"],
+.c-usermanual .category-item-title[aria-label="20980426358941"] {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column;
 }
 
-.c-usermanual .category-item-title[aria-label="21031033735197"]::before, .c-usermanual .category-item-title[aria-label="21031022618909"]::before, .c-usermanual .category-item-title[aria-label="21031034145181"]::before, 
-.c-usermanual .category-item-title[aria-label="21031039396893"]::before, .c-usermanual .category-item-title[aria-label="21031022781469"]::before, .c-usermanual .category-item-title[aria-label="21031034193053"]::before,
-.c-usermanual .category-item-title[aria-label="21031034260637"]::before {
+.c-usermanual .category-item-title[aria-label="20980394014877"]::before, .c-usermanual .category-item-title[aria-label="20980421895837"]::before, .c-usermanual .category-item-title[aria-label="20980417247389"]::before, 
+.c-usermanual .category-item-title[aria-label="20980417974173"]::before, .c-usermanual .category-item-title[aria-label="20980442661789"]::before, .c-usermanual .category-item-title[aria-label="20980443631901"]::before,
+.c-usermanual .category-item-title[aria-label="20980426358941"]::before {
   font-family: fa-light;
   font-size: 1.5em;
   margin-right: 10px;
 }
 
-.c-usermanual .category-item-title[aria-label="21031033735197"]::before { content: "\f085"} /* Configuration */
-.c-usermanual .category-item-title[aria-label="21031022618909"]::before { content: "\f2bb"} /* Signatures */
-.c-usermanual .category-item-title[aria-label="21031034145181"]::before { content: "\f62a"} /* Signatures Tester */
-.c-usermanual .category-item-title[aria-label="21031039396893"]::before { content: "\f140"} /* Campaigns */
-.c-usermanual .category-item-title[aria-label="21031022781469"]::before { content: "\f643"} /* Analytics */
-.c-usermanual .category-item-title[aria-label="21031034193053"]::before { content: "\f4fe"} /* Account Settings */
-.c-usermanual .category-item-title[aria-label="21031034260637"]::before { content: "\f071"} /* Troubleshooting */
+.c-usermanual .category-item-title[aria-label="20980394014877"]::before { content: "\f085"} /* Configuration */
+.c-usermanual .category-item-title[aria-label="20980421895837"]::before { content: "\f2bb"} /* Signatures */
+.c-usermanual .category-item-title[aria-label="20980417247389"]::before { content: "\f62a"} /* Signatures Tester */
+.c-usermanual .category-item-title[aria-label="20980417974173"]::before { content: "\f140"} /* Campaigns */
+.c-usermanual .category-item-title[aria-label="20980442661789"]::before { content: "\f643"} /* Analytics */
+.c-usermanual .category-item-title[aria-label="20980443631901"]::before { content: "\f4fe"} /* Account Settings */
+.c-usermanual .category-item-title[aria-label="20980426358941"]::before { content: "\f071"} /* Troubleshooting */
 
 /* Category FAQ */
 .c-faq .category-item-title {
